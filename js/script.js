@@ -186,8 +186,8 @@ function validaData(data) {
 		var mm = String(hoje.getMonth() + 1).padStart(2, '0'); //January is 0!
 		var yyyy = hoje.getFullYear();
 		let dataValidade = data.split('/');
-
-		if(Number(dataValidade[1]) <= Number(yyyy)){
+		
+		if(Number(dataValidade[1]) <= Number(yyyy) && (Number(dataValidade[0]) >= 1 || Number(dataValidade[0]) <= 12)){
 			if (Number(dataValidade[1]) < Number(yyyy) || Number(dataValidade[0]) < Number(mm)) {
 				const message = `Erro: Cartão Vencido`
 				inputValidateInfo.querySelector('.message').innerText = message
@@ -200,8 +200,11 @@ function validaData(data) {
 				btnSubmit.classList.remove('disable');
 			}	
 		}
-		else if (Number(mm) < 1 || Number(mm) > 12) {
-				
+		else if (Number(dataValidade[0]) < 1 || Number(dataValidade[0]) > 12) {
+			const message = `Erro: Mês Inválido`
+			inputValidateInfo.querySelector('.message').innerText = message
+			inputValidateInfo.classList.add('visible')
+			btnSubmit.classList.add('disable')
 		}
 		else{
 			inputValidateInfo.querySelector('.message').innerText = ""

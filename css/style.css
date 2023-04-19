@@ -6,6 +6,7 @@ body {
 	display: grid;
 	place-items: center;
 	height: 100vh;
+	background-color: #0c0c39;
 }
 
 .wrapper .form-container {
@@ -238,12 +239,12 @@ body {
 .card-body .number-card {
 	margin-bottom: 1rem;
 	word-spacing: 8px;
-    letter-spacing: 0.25rem;
+    letter-spacing: 0.09rem;
 }
 
-.form-container .box-form .card-content .content
+/* .form-container .box-form .card-content .content
 .card-body .name {
-}
+} */
 
 .form-container .button-submit {
 	height: 3.5rem;

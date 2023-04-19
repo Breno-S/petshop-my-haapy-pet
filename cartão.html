@@ -341,7 +341,7 @@
                     
                     <div class="box-input">
                         <label>Nome do titular</label>
-                        <input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão" onkeydown="handleName(event)">
+                        <input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão" onkeydown="handleName(event)" oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(\..*)\./g, '$1');">
                         <div class="info">
                             <span class="icon">
                                 <img src="./assets/warning.svg" />
@@ -371,7 +371,7 @@
                                     <img src="./assets/help.svg" />
                                 </span>
                             </label>
-                            <input autocomplete="off" id="input-cvv" type="password" maxlength="3" placeholder="cvv" onkeydown="handleCvv(event)">
+                            <input autocomplete="off" id="input-cvv" type="password" maxlength="3" placeholder="cvv" onkeydown="handleCvv(event)" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
                             <div class="info">
                                 <span class="icon">
                                     <img src="./assets/warning.svg" />
@@ -409,7 +409,7 @@
                             <div class="content card-2">
                                 <div class="bar"></div>
                                 <div class="cvv">
-                                    <input id="card-user-cvv" class="cvv-number" type="password">
+                                    <input id="card-user-cvv" class="cvv-number" type="password" readonly>
                                     <div class="cvv-text">CVV</div>
                                 </div>
                             </div>

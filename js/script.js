@@ -92,8 +92,7 @@ inputValidate.onblur = (e) => {
 		return false;
 	}
 
-	inputValidateInfo.querySelector('.message').innerText = ''
-	inputValidateInfo.classList.remove('visible')
+	validaData(value);
 	canSubmit();
 }
 
@@ -116,7 +115,6 @@ const handleName = (e) => {
 const handleNumber = (e) => {
 
 	setTimeout(() => {
-		let apagou = false;
 		let teste = '';
 
 		const value = e.target.value
@@ -210,7 +208,7 @@ function validaData(data) {
 			inputValidateInfo.querySelector('.message').innerText = ""
 			inputValidateInfo.classList.remove('visible');
 			btnSubmit.classList.remove('disable');
-		}		
+		}	
 	}
 }
 

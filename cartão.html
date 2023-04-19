@@ -329,7 +329,7 @@
                 <div class="input-content">
                     <div class="box-input">
                         <label>Número do cartão</label>
-                        <input autocomplete="off" id="input-number" type="text" maxlength="19"  placeholder="Número do cartão" style="word-spacing: 8px;" onkeydown="handleNumber(event)">
+                        <input autocomplete="off" id="input-number" type="text" maxlength="19"  placeholder="Número do cartão" style="word-spacing: 8px;" onkeydown="handleNumber(event)" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\..*)\./g, '$1');">
                         <div class="info">
                             <span class="icon">
                                 <img src="./assets/warning.svg" />
@@ -354,7 +354,7 @@
                     <div class="box-input-more">
                         <div class="box-one">
                             <label>Validade</label>
-                            <input autocomplete="off" id="input-validate" maxlength="7" type="text" placeholder="mm/aa" onkeydown="handleValidate(event)">
+                            <input autocomplete="off" id="input-validate" maxlength="7" type="text" placeholder="mm/aa" onkeydown="handleValidate(event)" onkeyup="validaData(this.value)" oninput="this.value = this.value.replace(/[^0-9\/]/g, '').replace(/(\..*)\./g, '$1');">
                             <div class="info">
                                 <span class="icon">
                                     <img src="./assets/warning.svg" />
@@ -374,7 +374,7 @@
                             <input autocomplete="off" id="input-cvv" type="password" maxlength="3" placeholder="cvv" onkeydown="handleCvv(event)">
                             <div class="info">
                                 <span class="icon">
-                                    <img src="./assets/warning.svg" / />
+                                    <img src="./assets/warning.svg" />
                                 </span>
                                 
                                 <span class="message"></span>
@@ -409,7 +409,7 @@
                             <div class="content card-2">
                                 <div class="bar"></div>
                                 <div class="cvv">
-                                    <div id="card-user-cvv" class="cvv-number"></div>
+                                    <input id="card-user-cvv" class="cvv-number" type="password">
                                     <div class="cvv-text">CVV</div>
                                 </div>
                             </div>
@@ -621,7 +621,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>

@@ -116,6 +116,8 @@ const handleName = (e) => {
 const handleNumber = (e) => {
 
 	setTimeout(() => {
+		let apagou = false;
+		let teste = '';
 
 		const value = e.target.value
 
@@ -126,12 +128,16 @@ const handleNumber = (e) => {
 
 		if(e.key == 'Backspace') {
 			cardViewNumber.innerText = value
+			apagou = true;
 			return false
 		}
 
-		if(value.length == 4 || value.length == 9 || value.length == 14) {
+		if(value.length == 5 || value.length == 10 || value.length == 15) {
 
-			e.target.value += " "
+			teste = value.replace(/ /g,"");
+			teste = teste.match(/.{1,4}/g);
+			e.target.value = teste.join(' ');
+			// e.target.value += " "
 		}
 
 		cardViewNumber.innerText = value
@@ -147,7 +153,7 @@ const handleCvv = (e) => {
 		const value = e.target.value
 
 
-		cardViewCvv.innerText = value
+		cardViewCvv.value = value
 
 	}, 0)
 	
@@ -156,14 +162,53 @@ const handleCvv = (e) => {
 const handleValidate = (e) => {
 
 	setTimeout(() => {
+		
 
 		const value = e.target.value
 
 
 		cardViewDate.innerText = value
 
+		let adcBarra = '';
+		if(value.length == 3) {
+
+			adcBarra = value.replace(/\//ig,"");
+			adcBarra = adcBarra.match(/.{1,2}/g);
+			e.target.value = adcBarra.join('/');
+		}
 	}, 0)
 	
+}
+
+function validaData(data) {
+	if (data.length == 7) {
+		var hoje = new Date();
+		var mm = String(hoje.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = hoje.getFullYear();
+		let dataValidade = data.split('/');
+
+		if(Number(dataValidade[1]) <= Number(yyyy)){
+			if (Number(dataValidade[1]) < Number(yyyy) || Number(dataValidade[0]) < Number(mm)) {
+				const message = `Erro: Cartão Vencido`
+				inputValidateInfo.querySelector('.message').innerText = message
+				inputValidateInfo.classList.add('visible')
+				btnSubmit.classList.add('disable')
+			}
+			else{
+				inputValidateInfo.querySelector('.message').innerText = ""
+				inputValidateInfo.classList.remove('visible');
+				btnSubmit.classList.remove('disable');
+			}	
+		}
+		else if (Number(mm) < 1 || Number(mm) > 12) {
+				
+		}
+		else{
+			inputValidateInfo.querySelector('.message').innerText = ""
+			inputValidateInfo.classList.remove('visible');
+			btnSubmit.classList.remove('disable');
+		}		
+	}
 }
 
 inputCvv.onfocus = () => {

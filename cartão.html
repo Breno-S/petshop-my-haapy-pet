@@ -341,7 +341,7 @@
                     
                     <div class="box-input">
                         <label>Nome do titular</label>
-                        <input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão" style="font-size: 12px;" maxlength="16" onkeydown="handleName(event)" oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(\..*)\./g, '$1');">
+                        <input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão" maxlength="16" onkeydown="handleName(event)" oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(\..*)\./g, '$1');">
                         <div class="info">
                             <span class="icon">
                                 <img src="./assets/warning.svg" />
@@ -398,7 +398,7 @@
                                     <div id="card-user-number" class="number-card">•••• •••• •••• ••••</div>
                                     
                                     <div class="name-and-date">
-                                        <div id="card-user-name" class="name">(Seu nome)</div>
+                                        <div id="card-user-name" class="name" style="font-size: 12px;">(Seu nome)</div>
                                         <div id="card-user-date" class="date">• • / • • • •</div>
                                     </div>
                                 </div>

@@ -33,7 +33,7 @@ function valida($cpf){
         $soma = array_sum($separado2);
         
         //checa se o primeiro dígito está correto e faz a conta para validar o segundo
-        if (11 - ($soma % 11) == $digito1 or $soma2 % 11 < 2 && $digito2 == 0) {
+        if (11 - ($soma % 11) == $digito1 or $soma % 11 < 2 && $digito == 0) {
             $chave = 11;
             for ($i=0; $i < 10; $i++) { 
                 if ($i <= 9) {

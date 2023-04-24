@@ -16,10 +16,7 @@
     $bairro = filter_input(INPUT_POST, 'bairro', FILTER_SANITIZE_STRING);
     $logradouro = filter_input(INPUT_POST, 'logradouro', FILTER_SANITIZE_STRING);
     $numero = intval(filter_input(INPUT_POST, 'numero', FILTER_SANITIZE_NUMBER_INT));
-    $numero = str_replace('(', '', $numero);
-    $numero = str_replace(')', '', $numero);
     $numero = str_replace('-', '', $numero);
-    $numero = str_replace('+', '', $numero);
 
     // dados pessoais
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
@@ -50,6 +47,10 @@
     // dados cadastro
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $celular = filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_NUMBER_INT);
+    $celular = str_replace('(', '', $celular);
+    $celular = str_replace(')', '', $celular);
+    $celular = str_replace('+', '', $celular);
+    $celular = str_replace('-', '', $celular);
     $senha = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
     $senhaCrip = md5($senha);
     date_default_timezone_set('America/Sao_Paulo');
@@ -124,10 +125,10 @@
             $path = $dir . $name . "." . $fileType;
             // caso seja png, jpg ou jpeg, move o arquivo para a pasta images/imgCliente com o nome dele
             $allowTypes = array('jpg','png','jpeg'); 
-            if(in_array($fileType, $allowTypes)){ 
+            if(in_array($fileType, $allowTypes) && ($image['size'] / 1024) <= 2048){ 
                 move_uploaded_file($tmp_name, "$path");
                 $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente (id_cadastro, dir_img_cliente, criado) VALUES ($id_cad, '$path', NOW());");
-                // $guarda_caminho = mysqli_query($conn, "INSERT INTO imagem_cliente (id_cadastro, dir_img_cliente, criado) VALUES $id_cad, \'$path\', '$data_cad'");
+                $guarda_caminho = mysqli_query($conn, "INSERT INTO imagem_cliente (id_cadastro, dir_img_cliente, criado) VALUES ($id_cad, '$path', '$data_cad')");
             }
             else {
                 $_SESSION['msg'] = "Formato não suportado. Escolha uma imagem png, jpg ou jpeg.";
@@ -139,10 +140,12 @@
     else {
         if (!$valido || !$valido2 || !$rgvalido) {
             $_SESSION['msg'] = "Dados Inválidos";
+            header('Location: cadastro.html');
         }
         else {
             $_SESSION['msg'] = "Usuário já cadastrado";
+            header('Location: cadastro.html');
         }
     }
-    header('Location: cad_cliente.php');
+    
 ?>

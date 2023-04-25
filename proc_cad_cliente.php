@@ -11,12 +11,12 @@
     ///// entrada de dados
     // dados local
     $cep = filter_input(INPUT_POST, 'cep', FILTER_SANITIZE_NUMBER_INT);
+    $cep = str_replace('-', '', $cep);
     $estado = filter_input(INPUT_POST, 'estado', FILTER_SANITIZE_STRING);
     $municipio = filter_input(INPUT_POST, 'municipio', FILTER_SANITIZE_STRING);
     $bairro = filter_input(INPUT_POST, 'bairro', FILTER_SANITIZE_STRING);
     $logradouro = filter_input(INPUT_POST, 'logradouro', FILTER_SANITIZE_STRING);
-    $numero = intval(filter_input(INPUT_POST, 'numero', FILTER_SANITIZE_NUMBER_INT));
-    $numero = str_replace('-', '', $numero);
+    $numero = filter_input(INPUT_POST, 'numero', FILTER_SANITIZE_NUMBER_INT);
 
     // dados pessoais
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
@@ -68,12 +68,15 @@
     $cadastros = mysqli_fetch_assoc($checa_cadastrado);
 
     // checa se endereço já está cadastrado
-    $chec_cadastrado_end = "SELECT COUNT(idEndereco) AS cadastros FROM endereco WHERE logradouro = '$logradouro' AND numero = $numero AND cep = '$cep';";
+    $chec_cadastrado_end = "SELECT COUNT(idEndereco) AS cadastros FROM endereco WHERE logradouro = '$logradouro' AND numero = ". intval($numero) ." AND cep = '$cep';";
     $checa_cadastrado_end = mysqli_query($conn, $chec_cadastrado_end);
     $cadastros_end = mysqli_fetch_assoc($checa_cadastrado_end);
 
     // se algum desses estiver errado, cadastro inválido
-    if (strlen($cep) != 8 || strlen($numero) > 5  || (strlen($celular) != 11 && strlen($celular) != 13)) {
+    if (strlen($cep) != 8 || strlen($numero) > 5  || strlen($celular) > 11) {
+        echo(strlen($cep) . "<br>");
+        echo(strlen($numero). "<br>");
+        echo(strlen($celular));
         $valido2 = false;
     }
 
@@ -82,7 +85,7 @@
 
         // inserção dados endereço (caso não exista o mesmo cadastrado)
         if ($cadastros_end['cadastros'] == 0) {
-            $result_cadastro_end = "INSERT INTO endereco (cep, estado, municipio, bairro, logradouro, numero) VALUES ('$cep', '$estado', '$municipio', '$bairro', '$logradouro', $numero);";
+            $result_cadastro_end = "INSERT INTO endereco (cep, estado, municipio, bairro, logradouro, numero) VALUES ('$cep', '$estado', '$municipio', '$bairro', '$logradouro', ". intval($numero) .");";
             $resultado_cadastro_end = mysqli_query($conn, $result_cadastro_end);
         }
     
@@ -140,12 +143,13 @@
     else {
         if (!$valido || !$valido2 || !$rgvalido) {
             $_SESSION['msg'] = "Dados Inválidos";
-            header('Location: cadastro.html');
+            // header('Location: cadastro.html');
         }
         else {
             $_SESSION['msg'] = "Usuário já cadastrado";
-            header('Location: cadastro.html');
+            // header('Location: cadastro.html');
         }
     }
+    echo($_SESSION['msg']);
     
 ?>

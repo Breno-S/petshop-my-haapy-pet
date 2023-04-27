@@ -137,8 +137,8 @@
                 $_SESSION['msg'] = "Formato não suportado. Escolha uma imagem png, jpg ou jpeg.";
             }
             // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
-            header('Location:login.html');
         }
+        header('Location:login.html');
 
     }
     else {

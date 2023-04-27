@@ -7,5 +7,6 @@
     $id_animal = intval(filter_input(INPUT_POST, 'animal', FILTER_SANITIZE_NUMBER_INT));
     $id_horario = intval(filter_input(INPUT_POST, 'horario', FILTER_SANITIZE_NUMBER_INT));
 
-    $reserva_horario = mysqli_query($conn, "INSERT INTO agendamento (id_cliente, id_animal, id_horario) VALUES (". $_SESSION['idCliente'] .", $id_animal, $id_horario);")
+    $reserva_horario = mysqli_query($conn, "INSERT INTO agendamento (id_cliente, id_animal, id_horario) VALUES (". $_SESSION['idCliente'] .", $id_animal, $id_horario);");
+    header('Location:agendamento.php');
 ?>

@@ -137,6 +137,7 @@
                 $_SESSION['msg'] = "Formato não suportado. Escolha uma imagem png, jpg ou jpeg.";
             }
             // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
+            header('Location:login.html');
         }
 
     }
@@ -149,7 +150,8 @@
             $_SESSION['msg'] = "Usuário já cadastrado";
             // header('Location: cadastro.html');
         }
+        header('Location:cadastro.html');
     }
-    echo($_SESSION['msg']);
+    
     
 ?>

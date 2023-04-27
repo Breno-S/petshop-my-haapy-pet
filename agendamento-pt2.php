@@ -214,7 +214,7 @@
 				</li>
 
 				<li>
-					<a href="servicos.html">Seriços</a>
+					<a href="servicos.html">Serviços</a>
 				</li>
 
 				<li>

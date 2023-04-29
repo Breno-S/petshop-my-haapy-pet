@@ -897,7 +897,7 @@ iframe {border: none;}
 .p-l-12, .p-lr-12, .p-all-12 {padding-left: 12px;}
 .p-l-13, .p-lr-13, .p-all-13 {padding-left: 13px;}
 .p-l-14, .p-lr-14, .p-all-14 {padding-left: 14px;}
-.p-l-15, .p-lr-15, .p-all-15 {padding-left: 15px;}
+.p-l-15, .p-lr-15, .p-all-15 {padding-left: 15px; padding-top: 6%;}
 .p-l-16, .p-lr-16, .p-all-16 {padding-left: 16px;}
 .p-l-17, .p-lr-17, .p-all-17 {padding-left: 17px;}
 .p-l-18, .p-lr-18, .p-all-18 {padding-left: 18px;}
@@ -3827,7 +3827,8 @@ iframe {border: none;}
 	color:#fff;
 	background-color: #85B4E7;
 	border-color: #7095bd;
-	width: 100%;
+	width: 60%;
+	margin-left: 20%;
 	
 }
 
@@ -3930,12 +3931,13 @@ iframe {border: none;}
 	text-align: center;
   }
   
+ 
+ 
+ 
+ 
   /* ------------------Cadastro do Pet ----------------------*/
  
-
-
-
-  .card-body {
+.card-body {
     max-width: 500px;
     margin: auto;
     padding: 20px;

@@ -3869,71 +3869,122 @@ iframe {border: none;}
 
 
 
+
+
+
+
+
+
 /* ------------------Estilização do agendamento ----------------------*/
-  h3{
-	color: #FFFFFF;
-	font-family: 'Roboto', sans-serif;
-	margin-left: 1rem;
-  }
   
-  .icon{
-	margin-right: 8px;
+
+input[type="radio"]{
+	border-radius: 20px;
+
+}
+input[type="radio"]:checked+img {
+	background-color: green;
+	padding: 2px;
   }
 
-  .pet-form {
-	background-color: #f6f6f6;
-	padding: 20px;
-	border-radius: 10px;
+  /*esconder o botão do radio quando estiver selecionado*/
+  input[type=radio]:checked {
+	display: none;
+
   }
-  
-  .cor-agenda {
-	color: #666;
-	font-weight: bold;
-	font-size: 1.2em;
-	margin-bottom: 10px;
+
+/*esconder o botão do radio quando não estiver selecionado*/
+  input[type=radio]:not(:checked) {
+	display: none;
+	
   }
-  
-  .pet-options {
-	flex-wrap: wrap;
-  }
-  
-  .pet-option {
+
+  .pet-form .pet-option {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 20px;
-	width: 170px;
-	height: 200px;
-	border-radius: 10px;
-	border: none;
-	box-shadow: 0px 0px 10px #ccc;
-	overflow: hidden;
+	width: 150px;
+	height: 150px;
+	border: 2px solid #ccc;
+	margin: 10px;
 	position: relative;
   }
   
-  .pet-img {
+  .pet-form .pet-option input[type="radio"] {
+	display: none;
+  }
+  
+  .pet-form .pet-option img {
 	max-width: 100%;
 	max-height: 100%;
 	object-fit: cover;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
   }
   
-  .pet-name {
-	margin-top: 10px;
-	font-size: 1.2em;
+  .pet-form .pet-option:hover {
+	border-color: #999;
+  }
+  
+  .pet-form .pet-option input[type="radio"]:checked + img {
+	filter: grayscale(0);
+  }
+  
+  .pet-form .pet-option input[type="radio"]:checked::after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	width: 20px;
+	height: 20px;
+	background-color: #0f0;
+	border-radius: 50%;
+  }
+
+  .pet-form .pet-option {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	height: 150px;
+	margin: 10px;
+	padding: 0;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+  }
+  
+  .pet-form .pet-option:hover {
+	background-color: #f1f1f1;
+  }
+  
+  .pet-form .pet-option input[type="radio"] {
+	display: none;
+  }
+  
+  .pet-form .pet-img {
+	width: 100px;
+	height: 100px;
+	margin-bottom: 10px;
+  }
+  
+  .pet-form .pet-name {
 	font-weight: bold;
 	text-align: center;
+	font-size: 1rem;
+	color: #333;
   }
+  .row{
+	margin-left: 4%;
+  }
+	
   
- 
- 
- 
+  
+  
+
+
+
+
  
   /* ------------------Cadastro do Pet ----------------------*/
  

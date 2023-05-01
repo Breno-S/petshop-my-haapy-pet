@@ -2,7 +2,7 @@
     include_once('conexao.php');
     session_start();
 	// temporário
-	// $_SESSION['idCliente'] = 1;
+	$_SESSION['idCliente'] = 1;
 
     $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios");
     $pega_funcionarios = mysqli_fetch_assoc($funcionarios);
@@ -60,6 +60,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/joao.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -424,60 +425,42 @@
                                         </div>
 										<div class="form-row pet-form">
 											<div class="form-group col-md-12">
-											  <label class="cor-agenda">Escolha o(s) seu(s) pet(s):</label>
-											  <div class="row">
+												<label class="cor-agenda">Escolha o(s) seu(s) pet(s):</label>
+												<div class="row">
 												<?php
-													while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {
-														$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet = ". $row_animal['idPet']);
-														$pega_img_pet = mysqli_fetch_assoc($img_pet);
-														if (($qt_animais_total % 2) != 0) {
-															echo('
-															<div class="col-md-6">
-																<div class="pet-options d-flex pet-option-group">
-																<label class="btn btn-outline-secondary pet-option mr-3">
-																	<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">');
-																if (isset($pega_img_pet['dir_img_pet'])) {
-																	echo('
-																		<img src="'. $pega_img_pet['dir_img_pet'] .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img">');
-																}
-																else{
-																	echo('
-																	<img src="images/imgPet/placeholder_pet.png" alt="'. $row_animal['nome_pet'] .'" class="pet-img">');
-																}
-																	echo('
-																	<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
-																</label>');
-														}
-														else {
-															echo('
-															<label class="btn btn-outline-secondary pet-option mr-3">
-																<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">');
-																if (isset($pega_img_pet['dir_img_pet'])) {
-																	echo('
-																		<img src="'. $pega_img_pet['dir_img_pet'] .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img">');
-																}
-																else{
-																	echo('
-																	<img src="images/imgPet/placeholder_pet.png" alt="'. $row_animal['nome_pet'] .'" class="pet-img">');
-																}
-																	echo('
-																<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
-															</label>
-															</div>
-														</div>');
-														}
-														$qt_animais_total++;
-													}
+												while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {
+													$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet = ". $row_animal['idPet']);
+													$pega_img_pet = mysqli_fetch_assoc($img_pet);
 													if (($qt_animais_total % 2) != 0) {
-														echo('
-															</div>
-														</div>
-														');
+													echo('
+													<div class="d-flex align-items-center">
+														<label class="btn btn-outline-secondary pet-option mr-3">
+														<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">
+														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img" style="vertical-align: middle; display: inline-block;">
+														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
+														</label>
+													</div>');
+													} else {
+													echo('
+													<label class="btn btn-outline-secondary pet-option mr-3">
+														<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">
+														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img flex-fill" style="display: inline-block;">
+														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
+													</label>');
 													}
+													$qt_animais_total++;
+												}
+												if (($qt_animais_total % 2) != 0) {
+													echo('
+													</div>
+												</div>');
+												}
 												?>
-											  </div>
+												</div>
 											</div>
-										  </div>
+										</div>
+
+
 										  
 										  
 										<div class="form-row">

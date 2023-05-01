@@ -64,6 +64,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/joao.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -460,7 +461,7 @@
                                         </div>
 										<div class="form-row pet-form">
 											<div class="form-group col-md-12">
-											  <label class="cor-agenda">Escolha o(s) seu(s) pet(s):</label>
+											  <label class="cor-agenda">Seu pet selecionado:</label>
 											  <div class="row">
 												<?php
 													while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {

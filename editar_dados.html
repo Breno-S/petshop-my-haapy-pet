@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Serviços</title>
+	<title>Usuário</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -288,16 +288,16 @@
 						<a href="editar_dados.html"><span class="fa fa-user mr-3"></span>Editar Dados</a>
 					</li>
 					<li>
-					<a href="meus_pet.html"><span class="fa fa-sticky-note mr-3"></span>Meus Pets</a>
+					<a href="#"><span class="fa fa-sticky-note mr-3"></span>Meus Pets</a>
 					</li>
 					<li>
-					<a href="senha.html"><span class="fa fa-cogs mr-3"></span> Senha e Segurança</a>
+					<a href="#"><span class="fa fa-cogs mr-3"></span> Senha e Segurança</a>
 					</li>
 					<li>
 					<a href="cartao.html"><span class="fa fa-paper-plane mr-3"></span>Metodo de Pagamento</a>
 					</li>
 					<li>
-						<a href="servicos.html"><span class="fa fa-paper-plane mr-3"></span>Serviços</a>
+						<a href="#"><span class="fa fa-paper-plane mr-3"></span>Serviços</a>
 						</li>
 					</ul>
 
@@ -315,78 +315,149 @@
 		
 		<div class="wrapper">
 			
-			
-	<!-- Banner -->
-	<div class="sec-banner bg0 p-t-80 p-b-50">
-		<div class="container">
-			<div class="row">
-				
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Consulta
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Visualizar
+			<section class="h-100">
+				<div class="container h-100">
+					<div class="row justify-content-md-center h-100">
+						<div class="card-wrapper">
+							
+							<div class="card fat">
+								<div class="card-body" style="padding-left: 15%;">
+									
+									<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="">
+										<h1 style="font-weight: 600;">Informações da Conta</h1><br>
+										<div class="form-row">
+										  <div class="form-group col-md-10">
+											<label for="nomeCompleto">Nome completo</label>
+											<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" value="" required autofocus>
+											<div class="invalid-feedback">
+											  Nome completo válido
+											</div>
+										  </div>
+										</div>
+									  
+										<div class="form-row">
+										  <div class="form-group col-md-5">
+											<label for="cpf">CPF </label>
+											<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
+											<div class="invalid-feedback">
+											  CPF válido
+											</div>
+										  </div>
+									  
+										  <div class="form-group col-md-5">
+											<label for="rg">RG </label>
+											<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus>
+											<div class="invalid-feedback">
+											  RG válido
+											</div>
+										  </div>
+										</div>
+									  
+										<div class="form-row">
+										  <div class="form-group col-md-5">
+											<label for="date">Data de Nascimento </label>
+											<input id="date" type="date" class="form-control" name="date" value="" required autofocus>
+											<div class="invalid-feedback">
+											  Data de Nascimento válida
+											</div>
+										  </div>
+										  
+										  <div class="form-group col-md-5">
+											  <label for="celular">Celular</label>
+											  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
+											  <div class="invalid-feedback">
+												  Celular válido
+												</div>
+											</div>
+										  <div class="form-group col-md-10">
+											<label for="email">E-mail</label>
+											<input id="email" type="email" data-js="E-Mail" class="form-control" name="email" value="" required autofocus>
+											<div class="invalid-feedback">
+											  E-mail válido
+											</div>
+										  </div>
+										</div>
+									  
+										<div class="form-row">
+										  <div class="form-group col-md-6">
+											<label for="cep">CEP</label>
+											<input id="cep" type="address" class="form-control" name="CEP" value="" onblur="pesquisacep(this.value)" required autofocus>
+											<div class="invalid-feedback">
+											  CEP válido
+											</div>
+										  </div>
+									  
+										  <div class="form-group col-md-4">
+											<label for="estado">UF</label>
+											<input id="estado" type="address" class="form-control" name="estado" value="" required autofocus>
+											<div class="invalid-feedback">
+											  UF válido
+											</div>
+										  </div>
+									  </div>
+										  <div class="form-row">
+											  <div class="form-group col-md-5">
+												  <label for="municipio">Município</label>
+												  <input id="municipio" type="address" class="form-control" name="municipio" value="" required autofocus>
+												  <div class="invalid-feedback">
+													  Município válido
+													</div>
+												</div>
+												<div class="form-group col-md-5">
+												  <label for="bairro">Bairro</label>
+												  <input id="bairro" type="address" class="form-control" name="bairro" value="" required autofocus>
+												  <div class="invalid-feedback">
+													  Bairro válido
+													</div>
+												</div>
+										   </div>
+										  
+										  <div class="form-row">
+										  <div class="form-group col-md-6">
+										   <label for="logradouro">Logradouro</label>
+										   <input id="logradouro" type="address" class="form-control" name="logradouro" value="" required autofocus>
+										   <div class="invalid-feedback">
+											   Logradouro válido
+										   </div>
+									   </div>
+									   <div class="form-group col-md-4">
+										   <label for="numero">Número</label>
+										   <input id="numero" type="address" class="form-control" name="logradouro" value="" required autofocus>
+										   <div class="invalid-feedback">
+											   Logradouro válido
+										   </div>
+									   </div>
+									</div>
+									  
+									<div class="form-row">
+										<div class="form-group col-md-10">
+											<label for="password">Senha</label>
+											<input id="password" type="password" class="form-control" name="senha" required data-eye>
+											<div class="invalid-feedback">
+												Senha é requerida
+											</div>
+										</div>
+									</div>
+		
+										<div class="form-group col-md-6">
+											<div class="custom-checkbox custom-control">
+												<input type="checkbox" name="remember" id="remember" class="custom-control-input">
+												<label for="remember" class="custom-control-label">Lembrar-me</label>
+											</div>
+										</div>
+		
+										<div class="form-group col-md-10">
+											<button type="submit" class="btn btn-primary btn-block">
+												Cadastrar
+											</button>
+										</div>
+									</form>
 								</div>
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
-
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-02.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-15 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Banho e Tosa
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Visualizar
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-					<!-- Block1 -->
-					<div class="block1 wrap-pic-w">
-						<img src="images/banner-03.jpg" alt="IMG-BANNER">
-
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-							<div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Consulta
-								</span>
-							</div>
-
-							<div class="block1-txt-child2 p-b-4 trans-05">
-								<div class="block1-link stext-101 cl0 trans-09">
-									Visualizar
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+			</section>
 		</div>
 	</div>  
 		

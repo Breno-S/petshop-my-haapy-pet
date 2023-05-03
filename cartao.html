@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Sobre</title>
+	<title>Usuário</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -33,7 +33,19 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 <!--===============================================================================================-->
+
+<!-- Biblioteca de Animações CSS | START -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<!-- Biblioteca de Animações CSS | END -->
+
+<!-- Arquivos CSS | START -->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
+<link rel="stylesheet" href="./css/style.css" />
+<!-- Arquivos CSS | END -->
+
 </head>
 <body class="animsition">
 	
@@ -71,11 +83,11 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
+							<li class="active-menu">
 								<a href="index.html">Home</a>
 							</li>
 
-							<li class="active-menu">
+							<li>
 								<a href="sobre.html">Sobre</a>
 							</li>
 
@@ -249,228 +261,316 @@
 			</div>
 		</div>
 	</div><br><br><br>
-	
+
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			Sobre
+			Minha Conta
 		</h2>
 	</section>	
 
 
-	<!-- Content page -->
-	<section class="bg0 p-t-75 p-b-120">
-		<div class="container">
-			<div class="row p-b-148">
-				<div class="col-md-7 col-lg-8">
-					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-						<h3 class="mtext-111 cl2 p-b-16">
-							Nossa História
-						</h3>
-
-						<p class="stext-113 cl6 p-b-26">
-							Myhappypet inaugurou sua primeira loja no dia 04 de Abril de 2022 no Santo Amaro, em São Paulo. Implementou o conceito de megaloja voltada especialmente para o cuidado de animais de estimação.
-						</p>
-
-						<p class="stext-113 cl6 p-b-26">
-							Hoje, com a sua primeira loja no Brasil, nossa principal transação é a de afetos, num lugar que proporciona tantos encontros: de colaboradores, de clientes, de pets. Somos quem abastece a parte divertida do lar.
-							Trabalhamos para que você e seus pets tenham a melhor experiência em nossas lojas, seja através dos serviços de estética e veterinária ou pela variedade de produtos espalhados nos mais diversos mundos: cães, gatos, 
-							peixes, aves. Ah, mantemos nossas orelhas em pé para saber das novidades do mundo pet e levá-las até você.
-						</p>
-
-						<p class="stext-113 cl6 p-b-26">
-							Alguma Pergunta? Informe-nos na loja física na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para +55 11 9808 04532
-						</p>
-					</div>
-				</div>
-
-				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
-					<div class="how-bor1 ">
-						<div class="hov-img0">
-							<img src="images/about-01.jpg" alt="IMG">
-						</div>
-					</div>
-				</div>
+	 <!-- ======= Header ======= -->
+	<div class="wrapper d-flex align-items-stretch">
+		<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+				</button>
 			</div>
-			
-			<div class="row">
-				<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
-					<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
-						<h3 class="mtext-111 cl2 p-b-16">
-							Nossa Missão
-						</h3>
-
-						<p class="stext-113 cl6 p-b-26">
-							Criar valor na interação com os apaixonados por animais de estimação, potencializando o bem da relação entre o pet e sua família.
-						</p>
-
-						<h3 class="mtext-111 cl2 p-b-16">
-							Nossa Visão
-						</h3>
-
-						<p class="stext-113 cl6 p-b-26">
-							Ser mundialmente reconhecido como melhor ecossistema do segmento pet até 2030.
-						</p>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
-					<div class="how-bor2">
-						<div class="hov-img0">
-							<img src="images/about-02.jpg" alt="IMG">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>	
 	
-<!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Categorias
-				</h4>
-
-				<ul>
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Cachorro
-						</a>
+			<div class="">
+				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
+					<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a href="usuario.html"><span class="fa fa-home mr-3"></span> Meus Dados</a>
 					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Gato
-						</a>
+					<li>
+						<a href="editar_dados.html"><span class="fa fa-user mr-3"></span>Editar Dados</a>
 					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Pássaro
-						</a>
+					<li>
+					<a href="#"><span class="fa fa-sticky-note mr-3"></span>Meus Pets</a>
 					</li>
-
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Peixe
-						</a>
+					<li>
+					<a href="#"><span class="fa fa-cogs mr-3"></span> Senha e Segurança</a>
 					</li>
-				</ul>
-			</div>
-
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Ajuda
-				</h4>
-
-				<ul>
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Acompanhar Pedidos
-						</a>
+					<li>
+					<a href="cartao.html"><span class="fa fa-paper-plane mr-3"></span>Metodo de Pagamento</a>
 					</li>
+					<li>
+						<a href="#"><span class="fa fa-paper-plane mr-3"></span>Serviços</a>
+						</li>
+					</ul>
 
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Comprar
+					<div class="mb-5 px-4">
+								<h3 class="h6 mb-3">Sair</h3>
+								<form action="#" class="subscribe-form">
+						
+					</form>
+							</div>
+
+					</div>
+
+		</nav><br><br><br>
+
+		
+		<div class="wrapper">
+			
+			<form action="" class="form-container">
+				<div class="box-form">
+					<div class="input-content">
+						<div class="box-input">
+							<label>Número do cartão</label>
+							<input autocomplete="off" id="input-number" type="text" maxlength="19"  placeholder="Número do cartão" style="word-spacing: 8px;" onkeydown="handleNumber(event)" oninput="this.value = this.value.replace(/[^0-9 ]/g, '').replace(/(\..*)\./g, '$1');">
+							<div class="info">
+								<span class="icon">
+									<img src="./assets/warning.svg" />
+								</span>
+								
+								<span class="message"></span>
+							</div>
+						</div>
+						
+						<div class="box-input">
+							<label>Nome do titular</label>
+							<input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão" oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(\..*)\./g, '$1');" onkeydown="handleName(event)">
+							<div class="info">
+								<span class="icon">
+									<img src="./assets/warning.svg" />
+								</span>
+								
+								<span class="message"></span>
+							</div>
+						</div>
+						
+						<div class="box-input-more">
+							<div class="box-one">
+								<label>Validade</label>
+								<input autocomplete="off" id="input-validate" maxlength="7" type="text" placeholder="mm/aa" onkeydown="handleValidate(event)" oninput="this.value = this.value.replace(/[^0-9\/]/g, '').replace(/(\..*)\./g, '$1');">
+								<div class="info">
+									<span class="icon">
+										<img src="./assets/warning.svg" />
+									</span>
+									
+									<span class="message"></span>
+								</div>
+							</div>
+							
+							<div class="box-two">
+								<label>
+									CVV
+									<span class="icon" title="Ajuda">
+										<img src="./assets/help.svg" />
+									</span>
+								</label>
+								<input autocomplete="off" id="input-cvv" type="password" maxlength="3" placeholder="cvv" onkeydown="handleCvv(event)" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+								<div class="info">
+									<span class="icon">
+										<img src="./assets/warning.svg" />
+									</span>
+									
+									<span class="message"></span>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="card-content animate__animated animate__backInUp">
+						
+						<div class="card-content-box rotate  ">
+							<div class=" box-card">
+								<div class="content ">
+									<div class="card-header">
+										<span class="icon"><img src="./assets/visa-logo.svg" /></span>
+										<span class="icon"><img src="./assets/contact-less-payment.svg" /></span>
+									</div>
+									
+									<div class="card-body">
+										<div id="card-user-number" class="number-card">•••• •••• •••• ••••</div>
+										
+										<div class="name-and-date">
+											<div id="card-user-name" class="name">(Seu nome)</div>
+											<div id="card-user-date" class="date">• • / • • • •</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class=" box-card">
+								<div class="content card-2">
+									<div class="bar"></div>
+									<div class="cvv">
+										<div id="card-user-cvv" class="cvv-number" readonly></div>
+										<div class="cvv-text">CVV</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div id="rotate-card" class="rotate-card" title="Ver a outra parte do cartão">
+							<img src="./assets/rotate.svg" width="20px">
+						</div>
+						
+						<div class="status-security">
+							<span class="icon"><img src="./assets/shield.svg" /></span>
+							<span>Seus dados estão seguros</span>
+						</div>
+					</div>
+				</div>
+				
+				<button id="input-submit" type="submit" class="button-submit" >Adicionar cartão</button>
+			</form>
+		</div>
+		
+	   </nav><br><br><br>
+	</div>
+	  
+		
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Categorias
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Cachorro
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Gato
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Pássaro
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Peixe
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Ajuda
+					</h4>
+
+					<ul>
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Acompanhar Pedidos
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Comprar
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Carrinho
+							</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								FAQs
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Entrar em contato
+					</h4>
+
+					<p class="stext-107 cl7 size-201">
+						Alguma Pergunta? Informe-nos na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para +55 11 9808 04532
+					</p>
+
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
 						</a>
-					</li>
 
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							Carrinho
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
 						</a>
-					</li>
 
-					<li class="p-b-10">
-						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-							FAQs
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
 						</a>
-					</li>
-				</ul>
-			</div>
+					</div>
+				</div>
 
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Entrar em contato
-				</h4>
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						Parceiro Myhappypet
+					</h4>
 
-				<p class="stext-107 cl7 size-201">
-					Alguma Pergunta? Informe-nos na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para +55 11 9808 04532
-				</p>
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
 
-				<div class="p-t-27">
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-facebook"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-instagram"></i>
-					</a>
-
-					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-						<i class="fa fa-pinterest-p"></i>
-					</a>
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+								Increva-se
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 
-			<div class="col-sm-6 col-lg-3 p-b-50">
-				<h4 class="stext-301 cl0 p-b-30">
-					Parceiro Myhappypet
-				</h4>
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+					</a>
 
-				<form>
-					<div class="wrap-input1 w-full p-b-4">
-						<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-						<div class="focus-input1 trans-04"></div>
-					</div>
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+					</a>
 
-					<div class="p-t-18">
-						<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-							Increva-se
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+					</a>
 
-		<div class="p-t-40">
-			<div class="flex-c-m flex-w p-b-18">
-				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-				</a>
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+					</a>
 
-				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-				</a>
+					<a href="#" class="m-all-1">
+						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+					</a>
+				</div>
 
-				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-				</a>
-
-				<a href="#" class="m-all-1">
-					<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-				</a>
-			</div>
-
-			<p class="stext-107 cl6 txt-center">
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os Direitos Reservados | by Myhappypet</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-			</p>
+				</p>
+			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
+
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
 		<span class="symbol-btn-back-to-top">
@@ -479,7 +579,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 	</div>
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->	
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -514,8 +615,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 			})
 		});
 	</script>
+
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	
+    <script src="js/script.js"></script>
+
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
 </body>
 </html>

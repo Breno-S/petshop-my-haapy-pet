@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Cadastro</title>
+	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -53,7 +53,7 @@
 							Ajuda & FAQs
 						</a>
 
-						<a href="login.html" class="flex-c-m trans-04 p-lr-25">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Minha conta
 						</a>
 					</div>
@@ -80,11 +80,13 @@
 							</li>
 
 							<li>
-								<a href="servicos.html">Seriços</a>
-							</li>
-
-							<li>
 								<a href="comprar.html">Comprar</a>
+								<ul class="sub-menu">
+									<li><a href="produto_cachorro.html">Cachorro</a></li>
+									<li><a href="produto_gato.html">Gato</a></li>
+									<li><a href="produto_passaros.html">Pássaro</a></li>
+									<li><a href="produto_peixe.html">Peixe</a></li>
+								</ul>
 							</li>
 
 							<li>
@@ -183,10 +185,6 @@
 				</li>
 
 				<li>
-					<a href="servicos.html">Seriços</a>
-				</li>
-
-				<li>
 					<a href="carrinho.html">Carrinho</a>
 				</li>
 
@@ -211,7 +209,7 @@
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search" placeholder="Procurar...">
+					<input class="plh3" type="text" name="search" placeholder="Search...">
 				</form>
 			</div>
 		</div>
@@ -296,218 +294,220 @@
 				</div>
 			</div>
 		</div>
+	</div><br><br><br>
+
+
+	<!-- breadcrumb -->
+	<div class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="blog.html" class="stext-109 cl8 hov-cl1 trans-04">
+				Blog
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Como escolher a ração ideal para seu pet.
+			</span>
+		</div>
 	</div>
 
-		
 
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.png');">
-		<h2 class="ltext-105 cl0 txt-center">
-			Cadastro
-		</h2>
-	</section>	
+	<!-- Content page -->
+	<section class="bg0 p-t-52 p-b-20">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-lg-9 p-b-80">
+					<div class="p-r-45 p-r-0-lg">
+						<!--Descrição da página  -->
+						<div class="wrap-pic-w how-pos5-parent">
+							<img src="images/Rectangle 91.png" alt="IMG-BLOG">
 
+							<div class="flex-col-c-m size-123 bg9 how-pos5">
+								<span class="ltext-107 cl2 txt-center">
+									26
+								</span>
 
-	 <!-- ======= Header ======= -->
-	 <header id="header" class="header d-flex align-items-center fixed-top">
-		<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-		  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-		  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-	
-		</div>
-	  </header><!-- End Header -->
-	  <!-- End Header -->
-	  
-	  <main id="main">
-	
-		<!-- ======= Breadcrumbs ======= -->
-		<div class="breadcrumbs">
-		  <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/banner_secundario.avif');">
-			<div class="container position-relative">
-			  <div class="row d-flex justify-content-center">
-			  </div>
-			</div>
-		  </div>
-		</div><!-- End Breadcrumbs -->
-		<br><br>
-	<body class="my-login-page">
-		<section class="h-100">
-			<div class="container h-100">
-				<div class="row justify-content-md-center h-100">
-					<div class="card-wrapper">
-						
-						<div class="card fat">
-							<div class="card-body">
-								
-								<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="">
-									<h1 style="font-weight: 600;">Seu Cadastro</h1><br>
-									<div class="form-row">
-									  <div class="form-group col-md-12">
-										<label for="nomeCompleto">Nome completo</label>
-										<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" value="" required autofocus>
-										<div class="invalid-feedback">
-										  Nome completo válido
-										</div>
-									  </div>
-									</div>
-								  
-									<div class="form-row">
-									  <div class="form-group col-md-6">
-										<label for="cpf">CPF </label>
-										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
-										<div class="invalid-feedback">
-										  CPF válido
-										</div>
-									  </div>
-								  
-									  <div class="form-group col-md-6">
-										<label for="rg">RG </label>
-										<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus>
-										<div class="invalid-feedback">
-										  RG válido
-										</div>
-									  </div>
-									</div>
-								  
-									<div class="form-row">
-									  <div class="form-group col-md-6">
-										<label for="date">Data de Nascimento </label>
-										<input id="date" type="date" class="form-control" name="date" value="" required autofocus>
-										<div class="invalid-feedback">
-										  Data de Nascimento válida
-										</div>
-									  </div>
-									  
-									  <div class="form-group col-md-6">
-										  <label for="celular">Celular</label>
-										  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
-										  <div class="invalid-feedback">
-											  Celular válido
-											</div>
-										</div>
-									  <div class="form-group col-md-12">
-										<label for="email">E-mail</label>
-										<input id="email" type="email" data-js="E-Mail" class="form-control" name="email" value="" required autofocus>
-										<div class="invalid-feedback">
-										  E-mail válido
-										</div>
-									  </div>
-									</div>
-								  
-									<div class="form-row">
-									  <div class="form-group col-md-7">
-										<label for="cep">CEP</label>
-										<input id="cep" type="address" class="form-control" placeholder="00000-000" name="CEP" value="" required autofocus>
-										<div class="invalid-feedback">
-										  CEP válido
-										</div>
-									  </div>
-								  
-									  <div class="form-group col-md-5">
-										<label for="uf">UF</label>
-										<input id="uf" type="address" class="form-control" placeholder="" name="UF" value="" required autofocus>
-										<div class="invalid-feedback">
-										  UF válido
-										</div>
-									  </div>
-								  </div>
-									  <div class="form-row">
-										  <div class="form-group col-md-5">
-											  <label for="municipio">Município</label>
-											  <input id="municipio" type="address" class="form-control" name="municipio" value="" required autofocus>
-											  <div class="invalid-feedback">
-												  Município válido
-												</div>
-											</div>
-									  	  <div class="form-group col-md-7">
-											  <label for="bairro">Bairro</label>
-										      <input id="bairro" type="address" class="form-control" name="bairro" value="" required autofocus>
-										      <div class="invalid-feedback">
-										          Bairro válido
-										        </div>
-									        </div>
-									   </div>
-									  
-									  <div class="form-row">
-									  <div class="form-group col-md-9">
-									   <label for="logradouro">Logradouro</label>
-									   <input id="logradouro" type="address" class="form-control" name="logradouro" value="" required autofocus>
-									   <div class="invalid-feedback">
-										   Logradouro válido
-									   </div>
-								   </div>
-								   <div class="form-group col-md-3">
-									   <label for="numero">Número</label>
-									   <input id="numero" type="address" class="form-control" name="logradouro" value="" required autofocus>
-									   <div class="invalid-feedback">
-										   Logradouro válido
-									   </div>
-								   </div>
-								</div>
-								  
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="password">Senha</label>
-										<input id="password" type="password" class="form-control" name="senha" required data-eye>
-										<div class="invalid-feedback">
-											Senha é requerida
-										</div>
-									</div>
-								</div>
-	
-									<div class="form-group col-md-6">
-										<div class="custom-checkbox custom-control">
-											<input type="checkbox" name="remember" id="remember" class="custom-control-input">
-											<label for="remember" class="custom-control-label">Lembrar-me</label>
-										</div>
-									</div>
-	
-									<div class="form-group col-md-12">
-										<button type="submit" class="btn btn-primary btn-block" center>
-											Cadastrar
-										</button>
-									</div>
-								</form>
+								<span class="stext-109 cl3 txt-center">
+									Nov 2022
+								</span>
 							</div>
+						</div>
+
+						<div class="p-t-32">
+							<span class="flex-w flex-m stext-111 cl2 p-b-19">
+								<span>
+									<span class="cl4">By</span> My Happy Pet  
+									<span class="cl12 m-l-4 m-r-6">|</span>
+								</span>
+
+								<span>
+									26 Nov, 2022
+									<span class="cl12 m-l-4 m-r-6">|</span>
+								</span>
+
+								<span>
+									8 Comments
+								</span>
+							</span>
+
+							<h4 class="ltext-109 cl2 p-b-28">
+								Como escolher a ração ideal para seu pet.
+							</h4>
+
+							<p class="stext-117 cl6 p-b-26">
+								A escolha da ração certa é essencial para manter a saúde do animal de estimação. Aqui estão algumas dicas para ajudar na escolha da ração ideal:
+							</p>
+
+							<p class="stext-117 cl6 p-b-26">
+								- Considere a idade do animal: animais jovens precisam de uma dieta diferente de animais mais velhos. Certifique-se de escolher uma ração adequada para a idade do animal. <br>
+
+								- Considere a condição de saúde do animal: animais com problemas de saúde, como alergias ou doenças renais, podem precisar de uma dieta especial. Consulte o veterinário para obter recomendações específicas para o seu animal. <br>
+
+								- Leia os rótulos: verifique os ingredientes da ração e escolha uma que contenha proteína de alta qualidade, como frango ou carne bovina, em vez de subprodutos de carne. Evite ração que contenha muitos aditivos químicos. <br>
+
+								- Verifique as informações nutricionais: certifique-se de que a ração escolhida contenha os nutrientes necessários para a saúde do animal. Proteínas, carboidratos, gorduras, vitaminas e minerais são essenciais para manter o animal saudável. <br>
+
+								- Considere o tamanho e a raça do animal: animais grandes precisam de ração diferente de animais pequenos. Certifique-se de escolher uma ração adequada para o tamanho e a raça do seu animal. <br>
+
+								- Evite mudanças bruscas na dieta: mudar a dieta do animal repentinamente pode causar problemas de saúde. Introduza novos alimentos gradualmente e sempre consulte o veterinário antes de fazer alterações significativas na dieta do animal. <br><br>
+
+								Escolher a ração certa para o seu animal de estimação pode parecer complicado, mas com as dicas acima e a orientação de um veterinário, é possível fazer a escolha certa para garantir a saúde e bem-estar do animal.
+							</p>
+						</div>
+
+						<!-- Comentários  -->
+						<div class="p-t-40">
+							<h5 class="mtext-113 cl2 p-b-12">
+								Deixe um comentário
+							</h5>
+
+							<p class="stext-107 cl6 p-b-40">
+								Seu endereço de email não será exibido junto ao comentário!
+							</p>
+
+							<form>
+								<div class="bor19 m-b-20">
+									<textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comente..." required></textarea>
+								</div>
+
+								<div class="bor19 size-218 m-b-20">
+									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Nome *" required>
+								</div>
+
+								<div class="bor19 size-218 m-b-20">
+									<input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *" required>
+								</div>
+
+								<button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+									Comentar
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
-			</div><br><br>
+
+				<div class="col-md-4 col-lg-3 p-b-80">
+					<div class="side-menu">
+
+						<div class="p-t-65">
+							<h4 class="mtext-112 cl2 p-b-33">
+								Featured Products
+							</h4>
+
+							<ul>
+								<li class="flex-w flex-t p-b-30">
+									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+										<img src="images/product-min-01.jpg" alt="PRODUCT">
+									</a>
+
+									<div class="size-215 flex-col-t p-t-8">
+										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+											White Shirt With Pleat Detail Back
+										</a>
+
+										<span class="stext-116 cl6 p-t-20">
+											$19.00
+										</span>
+									</div>
+								</li>
+
+								<li class="flex-w flex-t p-b-30">
+									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+										<img src="images/product-min-02.jpg" alt="PRODUCT">
+									</a>
+
+									<div class="size-215 flex-col-t p-t-8">
+										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+											Converse All Star Hi Black Canvas
+										</a>
+
+										<span class="stext-116 cl6 p-t-20">
+											$39.00
+										</span>
+									</div>
+								</li>
+
+								<li class="flex-w flex-t p-b-30">
+									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
+										<img src="images/product-min-03.jpg" alt="PRODUCT">
+									</a>
+
+									<div class="size-215 flex-col-t p-t-8">
+										<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
+											Nixon Porter Leather Watch In Tan
+										</a>
+
+										<span class="stext-116 cl6 p-t-20">
+											$17.00
+										</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
 	
-		</section>
-	
+		
+
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Categorias
+						Categories
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Cachorro
+								Women
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Gato
+								Men
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Pássaro
+								Shoes
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Peixe
+								Watches
 							</a>
 						</li>
 					</ul>
@@ -515,25 +515,25 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Ajuda
+						Help
 					</h4>
 
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Acompanhar Pedidos
+								Track Order
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Comprar
+								Returns 
 							</a>
 						</li>
 
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Carrinho
+								Shipping
 							</a>
 						</li>
 
@@ -547,11 +547,11 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Entrar em contato
+						GET IN TOUCH
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Alguma Pergunta? Informe-nos na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para +55 11 9808 04532
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
 					</p>
 
 					<div class="p-t-27">
@@ -571,7 +571,7 @@
 
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Parceiro Myhappypet
+						Newsletter
 					</h4>
 
 					<form>
@@ -582,7 +582,7 @@
 
 						<div class="p-t-18">
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Increva-se
+								Subscribe
 							</button>
 						</div>
 					</form>
@@ -614,13 +614,14 @@
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os Direitos Reservados | by Myhappypet</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
 			</div>
 		</div>
 	</footer>
+
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -666,12 +667,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-	<script src="js/map-custom.js"></script>
-
-<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="js/cep.js"></script>
 
 </body>
 </html>

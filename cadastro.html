@@ -301,7 +301,7 @@
 		
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.png');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Cadastro
 		</h2>
@@ -340,127 +340,131 @@
 						<div class="card fat">
 							<div class="card-body">
 								
-								<form enctype="multipart/form-data" method="POST" action="proc_cad_cliente.php" class="my-login-validation" novalidate="" >
-									<div class="form-group">
-										<label for="nome">Nome</label>
-										<input id="nome" type="text" class="form-control" name="nome" required autofocus>
+								<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="">
+									<h1 style="font-weight: 600;">Seu Cadastro</h1><br>
+									<div class="form-row">
+									  <div class="form-group col-md-12">
+										<label for="nomeCompleto">Nome completo</label>
+										<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" value="" required autofocus>
 										<div class="invalid-feedback">
-											Nome completo válido
+										  Nome completo válido
 										</div>
+									  </div>
 									</div>
-
-									<div class="form-group">
+								  
+									<div class="form-row">
+									  <div class="form-group col-md-6">
 										<label for="cpf">CPF </label>
 										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
 										<div class="invalid-feedback">
-											CPF válido
+										  CPF válido
 										</div>
-									</div>
-
-									<div class="form-group">
+									  </div>
+								  
+									  <div class="form-group col-md-6">
 										<label for="rg">RG </label>
 										<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus>
 										<div class="invalid-feedback">
-											RG válido
+										  RG válido
 										</div>
+									  </div>
 									</div>
-
-									
-									<div class="form-group">
-										<label for="data_nasc">Data de Nascimento </label>
-										<input id="data_nasc" type="date" class="form-control" name="data_nasc" value="" required autofocus>
+								  
+									<div class="form-row">
+									  <div class="form-group col-md-6">
+										<label for="date">Data de Nascimento </label>
+										<input id="date" type="date" class="form-control" name="date" value="" required autofocus>
 										<div class="invalid-feedback">
-											Data de Nascimento válida
+										  Data de Nascimento válida
 										</div>
-									</div>
-
-
-									<div class="form-group">
+									  </div>
+									  
+									  <div class="form-group col-md-6">
+										  <label for="celular">Celular</label>
+										  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
+										  <div class="invalid-feedback">
+											  Celular válido
+											</div>
+										</div>
+									  <div class="form-group col-md-12">
 										<label for="email">E-mail</label>
-										<input id="email" type="email" data-js= "E-Mail" class="form-control" name="email" value="" required autofocus>
+										<input id="email" type="email" data-js="E-Mail" class="form-control" name="email" value="" required autofocus>
 										<div class="invalid-feedback">
-											E-mail válido
+										  E-mail válido
 										</div>
+									  </div>
 									</div>
-
-									<div class="form-group">
-										<label for="celular">Celular</label>
-										<input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
-										<div class="invalid-feedback">
-											Celular válido
-										</div>
-									</div>
-
-									<div class="form-group">
+								  
+									<div class="form-row">
+									  <div class="form-group col-md-7">
 										<label for="cep">CEP</label>
-										<input id="cep" type="address" class="form-control" name="cep" required autofocus onblur="pesquisacep(this.value)">
+										<input id="cep" type="address" class="form-control" placeholder="00000-000" name="CEP" value="" required autofocus>
 										<div class="invalid-feedback">
-											CEP válido
+										  CEP válido
 										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="estado">Estado</label>
-										<input id="estado" type="address" class="form-control" name="estado" required autofocus>
+									  </div>
+								  
+									  <div class="form-group col-md-5">
+										<label for="uf">UF</label>
+										<input id="uf" type="address" class="form-control" placeholder="" name="UF" value="" required autofocus>
 										<div class="invalid-feedback">
-											UF válido
+										  UF válido
 										</div>
-									</div>
-	
-									<div class="form-group">
-										<label for="municipio">Município</label>
-										<input id="municipio" type="address" class="form-control" name="municipio" required autofocus>
-										<div class="invalid-feedback">
-											Município válido
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="bairro">Bairro</label>
-										<input id="bairro" type="address" class="form-control" name="bairro" required autofocus>
-										<div class="invalid-feedback">
-											Bairro válido
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="logradouro">Logradouro</label>
-										<input id="logradouro" type="address" class="form-control" name="logradouro" required autofocus>
-										<div class="invalid-feedback">
-											Logradouro válido
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="numero">Número</label>
-										<input id="numero" type="address" class="form-control" name="numero" required autofocus>
-										<div class="invalid-feedback">
-											Logradouro válido
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label for="senha">Senha</label>
-										<input id="senha" type="password" class="form-control" name="senha" required data-eye>
+									  </div>
+								  </div>
+									  <div class="form-row">
+										  <div class="form-group col-md-5">
+											  <label for="municipio">Município</label>
+											  <input id="municipio" type="address" class="form-control" name="municipio" value="" required autofocus>
+											  <div class="invalid-feedback">
+												  Município válido
+												</div>
+											</div>
+									  	  <div class="form-group col-md-7">
+											  <label for="bairro">Bairro</label>
+										      <input id="bairro" type="address" class="form-control" name="bairro" value="" required autofocus>
+										      <div class="invalid-feedback">
+										          Bairro válido
+										        </div>
+									        </div>
+									   </div>
+									  
+									  <div class="form-row">
+									  <div class="form-group col-md-9">
+									   <label for="logradouro">Logradouro</label>
+									   <input id="logradouro" type="address" class="form-control" name="logradouro" value="" required autofocus>
+									   <div class="invalid-feedback">
+										   Logradouro válido
+									   </div>
+								   </div>
+								   <div class="form-group col-md-3">
+									   <label for="numero">Número</label>
+									   <input id="numero" type="address" class="form-control" name="logradouro" value="" required autofocus>
+									   <div class="invalid-feedback">
+										   Logradouro válido
+									   </div>
+								   </div>
+								</div>
+								  
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="password">Senha</label>
+										<input id="password" type="password" class="form-control" name="senha" required data-eye>
 										<div class="invalid-feedback">
 											Senha é requerida
 										</div>
 									</div>
-
-									<div class="form-group">
-										<label for="image">Foto</label>
-										<input id="image" type="file" class="form-control" name="image" data-eye>
-									</div>
+								</div>
 	
-									<div class="form-group">
+									<div class="form-group col-md-6">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" name="remember" id="remember" class="custom-control-input">
 											<label for="remember" class="custom-control-label">Lembrar-me</label>
 										</div>
 									</div>
 	
-									<div class="form-group m-0">
-										<button type="submit" class="btn btn-primary btn-block">
+									<div class="form-group col-md-12">
+										<button type="submit" class="btn btn-primary btn-block" center>
 											Cadastrar
 										</button>
 									</div>

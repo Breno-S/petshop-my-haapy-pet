@@ -114,6 +114,7 @@
 
 
         $_SESSION['msg'] = "Cadastrado com Sucesso";
+        var_dump($_FILES['image']);
         ///// inserção da imagem do cliente
         if (isset($_FILES['image'])) {
             // seleção do diretório
@@ -128,6 +129,7 @@
             $path = $dir . $name . "." . $fileType;
             // caso seja png, jpg ou jpeg, move o arquivo para a pasta images/imgCliente com o nome dele
             $allowTypes = array('jpg','png','jpeg'); 
+            echo('teste');
             if(in_array($fileType, $allowTypes) && ($image['size'] / 1024) <= 2048){ 
                 move_uploaded_file($tmp_name, "$path");
                 $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente (id_cadastro, dir_img_cliente, criado) VALUES ($id_cad, '$path', NOW());");
@@ -138,7 +140,7 @@
             }
             // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
         }
-        header('Location:login.html');
+        // header('Location:login.html');
 
     }
     else {

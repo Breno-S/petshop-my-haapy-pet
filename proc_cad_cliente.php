@@ -114,7 +114,7 @@
 
 
         $_SESSION['msg'] = "Cadastrado com Sucesso";
-        var_dump($_FILES['image']);
+        // var_dump($_FILES['image']);
         ///// inserção da imagem do cliente
         if (isset($_FILES['image'])) {
             // seleção do diretório
@@ -140,7 +140,7 @@
             }
             // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
         }
-        // header('Location:login.html');
+        header('Location:login.html');
 
     }
     else {

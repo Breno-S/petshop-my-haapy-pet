@@ -1,6 +1,6 @@
 <?php
-$servidor = "dbserverjhordy.mysql.database.azure.com";
-$usuario = "adminjhordy";
+$servidor = "dbservergu.mysql.database.azure.com";
+$usuario = "admin1";
 $senha = "$#nai@115";
 $dbname = "petshop";
 

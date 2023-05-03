@@ -24,7 +24,7 @@
 
 	$animais_cliente = mysqli_query($conn, "SELECT * FROM cadastro_pet WHERE idPet = ". intval($pet));
 
-    $horarios = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE id_funcionario = ". intval($funcionario[1]) ." AND data >= NOW() AND reservado = 0");
+    $horarios = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE id_funcionario = ". intval($funcionario[1]) ." AND data >= NOW() AND reservado = 0 AND servico LIKE '$servico'");
 
 	$qt_animais_total = 1;
 ?>

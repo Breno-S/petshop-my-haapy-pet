@@ -104,7 +104,7 @@
         $id_cliente = $pega_id_cliente['idCliente'];
     
         // inserção dados cadastro
-        $result_cadastro_cad = "INSERT INTO cadastro_cliente (id_cliente, data_cad, email, celular, senha) VALUES ($id_cliente, '$data_cad', '$email', '$celular', '$senhaCrip');";
+        $result_cadastro_cad = "INSERT INTO cadastro_cliente (id_cliente, data_cad, email, celular, senha) VALUES ($id_cliente, NOW(), '$email', '$celular', '$senhaCrip');";
         $resultado_cadastro_cad = mysqli_query($conn, $result_cadastro_cad);
 
         // pega id do cadastro do cliente

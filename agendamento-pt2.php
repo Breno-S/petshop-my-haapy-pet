@@ -120,10 +120,6 @@
 							</li>
 
 							<li>
-								<a href="carrinho.html">Carrinho</a>
-							</li>
-
-							<li>
 								<a href="blog.html">Blog</a>
 							</li>
 

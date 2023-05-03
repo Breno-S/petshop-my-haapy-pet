@@ -36,6 +36,8 @@ session_start();
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/joao.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -74,31 +76,26 @@ session_start();
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li>
 								<a href="index.html">Home</a>
 							</li>
-
+			
 							<li>
 								<a href="sobre.html">Sobre</a>
 							</li>
-
+			
 							<li>
-								<a href="servicos.html">Seriços</a>
+								<a href="servicos.html">Serviços</a>
 							</li>
-
+			
 							<li>
-								<a href="comprar.html">Comprar</a>
+								<a href="agendamento.php">Agendamento</a>
 							</li>
-
-							<li>
-								<a href="carrinho.html">Carrinho</a>
-							</li>
-
+			
 							<li>
 								<a href="blog.html">Blog</a>
 							</li>
-
-
+			
 							<li>
 								<a href="contato.html">Contato</a>
 							</li>

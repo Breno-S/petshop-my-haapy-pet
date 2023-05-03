@@ -388,13 +388,7 @@ session_start();
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label for="image">Foto do funcionário</label>
-										<input id="image" type="file" class="form-control" name="imagefunc" required data-eye>
-										<div class="invalid-feedback">
-											Imagem requerida
-										</div>
-									</div>
+							
 	
 									<div class="form-group m-0">
 										<button type="submit" class="btn btn-primary btn-block">

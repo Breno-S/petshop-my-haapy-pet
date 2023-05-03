@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'petgu'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DD41278F9B6F4AEEB36354C4D3AEB153 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DA8661374F0F42AF8F53A2A4BE7409BB }}
           package: .

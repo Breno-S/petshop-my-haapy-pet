@@ -35,7 +35,6 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/joao.css">
 <!--===============================================================================================-->
 
 <!-- Biblioteca de Animações CSS | START -->
@@ -66,7 +65,7 @@
 							Ajuda & FAQs
 						</a>
 
-						<a href="checa_login.php" class="flex-c-m trans-04 p-lr-25">
+						<a href="login.php" class="flex-c-m trans-04 p-lr-25">
 							Minha conta
 						</a>
 					</div>
@@ -84,26 +83,31 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li>
+							<li class="active-menu">
 								<a href="index.html">Home</a>
 							</li>
-			
+
 							<li>
 								<a href="sobre.html">Sobre</a>
 							</li>
-			
+
 							<li>
 								<a href="servicos.html">Serviços</a>
 							</li>
-			
+
 							<li>
-								<a href="agendamento.php">Agendamento</a>
+								<a href="comprar.html">Comprar</a>
 							</li>
-			
+
+							<li>
+								<a href="agendamento.html">Agendamento</a>
+							</li>
+
 							<li>
 								<a href="blog.html">Blog</a>
 							</li>
-			
+
+
 							<li>
 								<a href="contato.html">Contato</a>
 							</li>
@@ -111,20 +115,7 @@
 					</div>	
 
 					
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-					</div>
+					
 				</nav>
 			</div>	
 		</div>
@@ -136,20 +127,7 @@
 				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
 
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="0">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
-			</div>
+			
 
 			<!-- Button show menu -->
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -209,61 +187,12 @@
 			</ul>
 		</div>
 
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Procurar...">
-				</form>
-			</div>
-		</div>
-	</header>
-
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Seu carrinho
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-			
-			
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: R$ 00.00
-					</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="carrinho.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Carrinho
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><br><br><br>
-
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg'); margin-top: 0%;">
 		<h2 class="ltext-105 cl0 txt-center">
-			Minha Conta
+			Editar Dados
 		</h2>
-	</section>	
+	</section>
 
 
 	 <!-- ======= Header ======= -->
@@ -277,23 +206,23 @@
 			<div class="">
 				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
 					<ul class="list-unstyled components mb-5">
-					<li class="active">
-						<a href="usuario.html"><span class="fa fa-home mr-3"></span> Meus Dados</a>
-					</li>
-					<li>
-						<a href="editar_dados.html"><span class="fa fa-user mr-3"></span>Editar Dados</a>
-					</li>
-					<li>
-					<a href="#"><span class="fa fa-sticky-note mr-3"></span>Meus Pets</a>
-					</li>
-					<li>
-					<a href="#"><span class="fa fa-cogs mr-3"></span> Senha e Segurança</a>
-					</li>
-					<li>
-					<a href="cartao.html"><span class="fa fa-paper-plane mr-3"></span>Metodo de Pagamento</a>
-					</li>
-					<li>
-						<a href="#"><span class="fa fa-paper-plane mr-3"></span>Serviços</a>
+						<li class="active">
+							<a href="meus_dados.html"><span class="fa fa-user mr-3"></span> Meus Dados</a>
+						</li>
+						<li>
+							<a href="editar_dados.html"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
+						</li>
+						<li>
+						<a href="meus_pet.html"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
+						</li>
+						<li>
+						<a href="senha_seguranca.html"><span class="fa fa-lock mr-3"></span> Senha e Segurança</a>
+						</li>
+						<li>
+						<a href="cartao.html"><span class="fa fa-credit-card mr-3"></span>Metodo de Pagamento</a>
+						</li>
+						<li>
+							<a href="servicos.html"><span class="fa fa-server mr-3"></span>Serviços</a>
 						</li>
 					</ul>
 
@@ -306,10 +235,10 @@
 
 					</div>
 
-		</nav><br><br><br>
+		</nav><br><br>
 
 		
-		<div class="wrapper">
+		<div class="wrapper"><br><br>
 			
 			<section class="h-100">
 				<div class="container h-100">
@@ -317,135 +246,123 @@
 						<div class="card-wrapper">
 							
 							<div class="card fat">
-								<div class="card-body" style="padding-left: 15%;">
-									
+								<div class="card-body">
 									<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="">
-										<h1 style="font-weight: 600;">Informações da Conta</h1><br>
-										<div class="form-row">
-										  <div class="form-group col-md-10">
-											<label for="nomeCompleto">Nome completo</label>
-											<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" value="" required autofocus>
-											<div class="invalid-feedback">
-											  Nome completo válido
-											</div>
-										  </div>
-										</div>
-									  
-										<div class="form-row">
-										  <div class="form-group col-md-5">
-											<label for="cpf">CPF </label>
-											<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
-											<div class="invalid-feedback">
-											  CPF válido
-											</div>
-										  </div>
-									  
-										  <div class="form-group col-md-5">
-											<label for="rg">RG </label>
-											<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus>
-											<div class="invalid-feedback">
-											  RG válido
-											</div>
-										  </div>
-										</div>
-									  
-										<div class="form-row">
-										  <div class="form-group col-md-5">
-											<label for="date">Data de Nascimento </label>
-											<input id="date" type="date" class="form-control" name="date" value="" required autofocus>
-											<div class="invalid-feedback">
-											  Data de Nascimento válida
-											</div>
-										  </div>
-										  
-										  <div class="form-group col-md-5">
-											  <label for="celular">Celular</label>
-											  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
-											  <div class="invalid-feedback">
-												  Celular válido
-												</div>
-											</div>
-										  <div class="form-group col-md-10">
-											<label for="email">E-mail</label>
-											<input id="email" type="email" data-js="E-Mail" class="form-control" name="email" value="" required autofocus>
-											<div class="invalid-feedback">
-											  E-mail válido
-											</div>
-										  </div>
-										</div>
-									  
-										<div class="form-row">
-										  <div class="form-group col-md-6">
-											<label for="cep">CEP</label>
-											<input id="cep" type="address" class="form-control" name="CEP" value="" onblur="pesquisacep(this.value)" required autofocus>
-											<div class="invalid-feedback">
-											  CEP válido
-											</div>
-										  </div>
-									  
-										  <div class="form-group col-md-4">
-											<label for="estado">UF</label>
-											<input id="estado" type="address" class="form-control" name="estado" value="" required autofocus>
-											<div class="invalid-feedback">
-											  UF válido
-											</div>
-										  </div>
-									  </div>
-										  <div class="form-row">
-											  <div class="form-group col-md-5">
-												  <label for="municipio">Município</label>
-												  <input id="municipio" type="address" class="form-control" name="municipio" value="" required autofocus>
-												  <div class="invalid-feedback">
-													  Município válido
+										<div class="container">
+											<div class="row">
+												<div class="col-md-6">
+													<h1 style="font-weight: 600; font-size: 200%;">Informações da Conta</h1><br>
+													<div class="form-group">
+														<label for="nomeCompleto">Nome completo</label>
+														<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" placeholder="Nome completo" value="" required autofocus readonly>
+														<div class="invalid-feedback">
+															Nome completo válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="email">E-mail</label>
+														<input id="email" type="email" class="form-control" name="email" placeholder="E-mail completo" value="" required autofocus>
+														<div class="invalid-feedback">
+															E-mail válido
+														</div>
+													</div>
+													<div class="col-md-6"></div>
+													<div class="form-group">
+														<label for="cpf">CPF</label>
+														<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus readonly>
+														<div class="invalid-feedback">
+															CPF válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="rg">RG</label>
+														<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus readonly>
+														<div class="invalid-feedback">
+															RG válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="date">Data de Nascimento</label>
+														<input id="date" type="date" class="form-control" name="date" value="" required autofocus readonly>
+														<div class="invalid-feedback">
+															Data de Nascimento válida
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="celular">Celular</label>
+														<input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
+														<div class="invalid-feedback">
+															Celular válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="password">Senha</label>
+														<input id="password" type="password" class="form-control" name="senha" required data-eye>
+														<div class="invalid-feedback">
+															Senha é requerida
+														</div>
 													</div>
 												</div>
-												<div class="form-group col-md-5">
-												  <label for="bairro">Bairro</label>
-												  <input id="bairro" type="address" class="form-control" name="bairro" value="" required autofocus>
-												  <div class="invalid-feedback">
-													  Bairro válido
+												<div class="col-md-6">
+													<h1 style="font-weight: 600; font-size: 200%;">Endereço</h1><br>
+													<div class="form-group">
+														<label for="cep">CEP</label>
+														<input id="cep" type="text" class="form-control" name="cep" placeholder="00000-000" required autofocus>
+														<div class="invalid-feedback">
+															CEP válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="rua">Rua</label>
+														<input id="rua" type="text" class="form-control" name="rua" value="" required autofocus>
+														<div class="invalid-feedback">
+															Rua válida
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="numero">Número</label>
+														<input id="numero" type="text" class="form-control" name="numero" value="" required autofocus>
+														<div class="invalid-feedback">
+															Número válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="complemento">Complemento</label>
+														<input id="complemento" type="text" class="form-control" name="complemento" value="" autofocus>
+														<div class="invalid-feedback">
+															Complemento válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="bairro">Bairro</label>
+														<input id="bairro" type="text" class="form-control" name="bairro" value="" required autofocus>
+														<div class="invalid-feedback">
+															Bairro válido
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="cidade">Cidade</label>
+														<input id="cidade" type="text" class="form-control" name="cidade" value="" required autofocus>
+														<div class="invalid-feedback">
+															Cidade válida
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="estado">Estado</label>
+														<input id="estado" type="text" class="form-control" name="estado" value="" required autofocus>
+														<div class="invalid-feedback">
+															Estado válido
+														</div>
 													</div>
 												</div>
-										   </div>
-										  
-										  <div class="form-row">
-										  <div class="form-group col-md-6">
-										   <label for="logradouro">Logradouro</label>
-										   <input id="logradouro" type="address" class="form-control" name="logradouro" value="" required autofocus>
-										   <div class="invalid-feedback">
-											   Logradouro válido
-										   </div>
-									   </div>
-									   <div class="form-group col-md-4">
-										   <label for="numero">Número</label>
-										   <input id="numero" type="address" class="form-control" name="logradouro" value="" required autofocus>
-										   <div class="invalid-feedback">
-											   Logradouro válido
-										   </div>
-									   </div>
-									</div>
-									  
-									<div class="form-row">
-										<div class="form-group col-md-10">
-											<label for="password">Senha</label>
-											<input id="password" type="password" class="form-control" name="senha" required data-eye>
-											<div class="invalid-feedback">
-												Senha é requerida
+												<div class="col-md-12">
+													<div class="form-group">
+														<button type="submit" class="btn btn-primary btn-lg btn-block" >
+															Alterar
+														</button>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
-		
-										<div class="form-group col-md-6">
-											<div class="custom-checkbox custom-control">
-												<input type="checkbox" name="remember" id="remember" class="custom-control-input">
-												<label for="remember" class="custom-control-label">Lembrar-me</label>
-											</div>
-										</div>
-		
-										<div class="form-group col-md-10">
-											<button type="submit" class="btn btn-primary btn-block">
-												Cadastrar
-											</button>
 										</div>
 									</form>
 								</div>
@@ -455,7 +372,7 @@
 				</div>
 			</section>
 		</div>
-	</div>  
+	</div>
 		
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -654,6 +571,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
+	
 
 </body>
 </html>

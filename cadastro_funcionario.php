@@ -58,7 +58,7 @@ session_start();
 							Ajuda & FAQs
 						</a>
 
-						<a href="login.html" class="flex-c-m trans-04 p-lr-25">
+						<a href="checa_login.php" class="flex-c-m trans-04 p-lr-25">
 							Minha conta
 						</a>
 					</div>

@@ -3837,15 +3837,6 @@ iframe {border: none;}
 }
 
 
-
-
-
-
-
-
-
-
-
 /* ------------------Estilização do agendamento ----------------------*/
   
 
@@ -3969,7 +3960,7 @@ input[type="radio"]:checked+img {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    height: 30%;
 }
 
 .form-label {
@@ -3993,4 +3984,22 @@ input[type="radio"]:checked+img {
     background-color: #3e8e41;
 }
 
+  
+
+/* ------------- Meus Pets ------------- */
+
+.pet-container {
+	flex: 1;
+	margin-right: 10px;
+  }
+
+  #imagem,
+  #imagem2 {
+	max-width: 200px;
+	width: 100%;
+
+  }
+  .modal {
+    z-index: 9999;
+  }
   

@@ -5,8 +5,8 @@ body {
 .wrapper {
 	display: grid;
 	place-items: center;
-	height: 100vh;
-	background-color: #0c0c39;
+	background-color: #012348;
+	
 }
 
 .wrapper .form-container {
@@ -164,7 +164,7 @@ body {
 }
 
 .form-container .box-form .card-content .rotate-card:hover {
-	background-color: rgba(255, 255, 255, 0.04);
+	background-color: rgba(251, 244, 244, 0.04);
 	cursor: pointer;
 }
 
@@ -242,9 +242,9 @@ body {
     letter-spacing: 0.05rem;
 }
 
-/* .form-container .box-form .card-content .content
+.form-container .box-form .card-content .content
 .card-body .name {
-} */
+}
 
 .form-container .button-submit {
 	height: 3.5rem;
@@ -324,3 +324,4 @@ body {
     	display: none;
     }
 }
+

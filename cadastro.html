@@ -342,7 +342,7 @@
 									<div class="form-row">
 									  <div class="form-group col-md-12">
 										<label for="nome">Nome completo</label>
-										<input id="nome" type="text" class="form-control" name="nome" value="" required autofocus>
+										<input id="nome" type="text" class="form-control" name="nome" value="" required autofocus oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 										  Nome completo válido
 										</div>

@@ -352,7 +352,7 @@
 									<div class="form-row">
 									  <div class="form-group col-md-6">
 										<label for="cpf">CPF </label>
-										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
+										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 										  CPF válido
 										</div>
@@ -360,7 +360,7 @@
 								  
 									  <div class="form-group col-md-6">
 										<label for="rg">RG </label>
-										<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus>
+										<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 										  RG válido
 										</div>
@@ -378,7 +378,7 @@
 									  
 									  <div class="form-group col-md-6">
 										  <label for="celular">Celular</label>
-										  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus>
+										  <input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus oninput="this.value = this.value.replace(/[^0-9-\(\)]/g, '').replace(/(.*)/g, '$1');">
 										  <div class="invalid-feedback">
 											  Celular válido
 											</div>
@@ -395,7 +395,7 @@
 									<div class="form-row">
 									  <div class="form-group col-md-7">
 										<label for="cep">CEP</label>
-										<input id="cep" type="address" class="form-control" placeholder="00000-000" name="cep" value="" required autofocus onblur="pesquisacep(this.value)">
+										<input id="cep" type="address" class="form-control" placeholder="00000-000" name="cep" value="" required autofocus onblur="pesquisacep(this.value)" oninput="this.value = this.value.replace(/[^0-9-]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 										  CEP válido
 										</div>
@@ -436,7 +436,7 @@
 								   </div>
 								   <div class="form-group col-md-3">
 									   <label for="numero">Número</label>
-									   <input id="numero" type="address" class="form-control" name="numero" value="" required autofocus>
+									   <input id="numero" type="address" class="form-control" name="numero" value="" required autofocus oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(.*)/g, '$1');">
 									   <div class="invalid-feedback">
 										   Logradouro válido
 									   </div>

@@ -2,6 +2,12 @@
     session_start();
     include_once("conexao.php");
 
+    if (isset($_SESSION['idCliente'])) {
+        unset($_SESSION['idCliente']);
+    }
+    if (isset($_SESSION['idFuncionario'])) {
+        unset($_SESSION['idFuncionario']);
+    }
     $_SESSION['logado'] = false;
 
     // Dados do Login (CPF e Senha)
@@ -10,7 +16,7 @@
     $senha = md5($senha);
 
     // Verificação no Banco pelo Funcionário
-    $query_funcionario = "SELECT * FROM funcionarios WHERE cpf = '$usuario' AND senha = '$senha'";
+    $query_funcionario = "SELECT * FROM funcionarios WHERE cpf_funcionario = '$usuario' AND senha_funcionario = '$senha'";
     $result_funcionario = mysqli_query($conn, $query_funcionario);
     $row_funcionario = mysqli_fetch_assoc($result_funcionario);
 
@@ -36,7 +42,7 @@
                 break;
             
             default:
-                $_SESSION['msg'] = "<center><span style='color:red;'>Erro no Cargo. Consulte um Administrador.</span></center>"
+                $_SESSION['msg'] = "<center><span style='color:red;'>Erro no Cargo. Consulte um Administrador.</span></center>";
                 header('Location: login.html');
                 break;
         }

@@ -6,7 +6,7 @@
     $valido2 = true;
 
     // ID do cliente
-    $id = $_SESSION['id'];
+    $id = $_SESSION['idCliente'];
 
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
     $sobrenome = filter_input(INPUT_POST, 'sobrenome', FILTER_SANITIZE_STRING);

@@ -8,7 +8,7 @@
     $novaSenha2 = filter_input(INPUT_POST, 'novaSenha2');
 
     // Id de quando o Usuario Loga
-    $id = $_SESSION['id'];
+    $id = $_SESSION['idCliente'];
 
     // Criptografia da Senha Atual para Verificação no Banco
     $senhaAtual = md5($senhaAtual);

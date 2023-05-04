@@ -12,7 +12,7 @@ $peso_pet = filter_input(INPUT_POST,'peso');
 $nasc_pet = filter_input(INPUT_POST,'nascimento_pet',FILTER_SANITIZE_STRING);
 
  $peso_pet = str_replace(',', '', $peso_pet);
-$id = $_SESSION['id'];
+$id = $_SESSION['idCliente'];
  
 
  if(is_numeric ($peso_pet )){

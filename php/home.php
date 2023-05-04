@@ -6,7 +6,7 @@
         unset($_SESSION['msg']);
     }
 
-    echo $_SESSION['id'];
+    echo $_SESSION['idCliente'];
     
 
 ?>

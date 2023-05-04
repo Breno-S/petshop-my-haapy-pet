@@ -24,7 +24,7 @@
             unset($_SESSION['msg']);
         }
 
-        echo $_SESSION['id'];
+        echo $_SESSION['idCliente'];
         ?>
 
         <form action="proc_senha.php" method="POST">

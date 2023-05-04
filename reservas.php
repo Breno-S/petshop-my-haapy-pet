@@ -1,6 +1,7 @@
 <?php
     include_once('conexao.php');
     session_start();
+    
 
     // temporário
     $_SESSION['idCliente'] = 1;

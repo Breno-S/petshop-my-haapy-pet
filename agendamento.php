@@ -1,6 +1,10 @@
 <?php
     include_once('conexao.php');
     session_start();
+	if (!isset($_SESSION['idCliente'])) {
+		header('Location:login.html');
+	}
+
 	// temporário
 	$_SESSION['idCliente'] = 1;
 

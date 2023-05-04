@@ -230,7 +230,7 @@
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-42" style="background-image: url('images/bg-01.png');">
 		<h2 class="ltext-105 cl0 txt-center">
-			
+			Cadastro do Pet
 		</h2>
 	</section>	
 
@@ -277,7 +277,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 											  <label for="especie">Espécie:</label>
-											  <select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)">
+											  <select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)" required>
 												<option value="">Selecione seu animal</option>
 												<option value="cachorro">Cachorro</option>
 												<option value="gato">Gato</option>
@@ -287,7 +287,7 @@
 											<div class="form-group">
 											  <label for="cor">Cor:</label>
 											  <select type="text" id="cor" name="cor" class="form-control" disabled>
-												<option value="">Selecione seu animal</option>
+												<option value="">Selecione a cor</option>
 												<!-- Opções de cor para Cachorro -->
 												<!-- <optgroup id="cachorroColors" label="Cores para Cachorro" style="display:none;">
 												  <option value="branco">Branco</option>
@@ -316,55 +316,21 @@
 											</div>
 											<div class="form-group">
 												<label id="peso-label" for="peso">Peso:</label>
-												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg">
+												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg"required>
 											  </div>
 										</div>
 										  
-										  <script>
-											let especieDropdown = document.getElementById('especie');
-											let corDropdown = document.getElementById('cor');
-											function cores(animal) {
-												document.getElementById("cor").removeAttribute("disabled");
-												if (animal == "cachorro") {
-													document.getElementById("cor").innerHTML = `
-													<option value="branco">Branco</option>
-													  <option value="preto">Preto</option>
-													  <option value="marrom">Marrom</option>
-													  <option value="mesclado">Mesclado</option>
-													`
-												} else if (animal == "gato") {
-													document.getElementById("cor").innerHTML = `
-													<option value="branco">Branco</option>
-													  <option value="preto">Preto</option>
-													  <option value="marrom">Marrom</option>
-													  <option value="mesclado">Mesclado</option>
-													`
-												} else if (animal == "passaro"){
-													document.getElementById("cor").innerHTML = `
-													<option value="branco">lilas</option>
-													  <option value="preto">Preto</option>
-													  <option value="marrom">Marrom</option>
-													  <option value="mesclado">Mesclado</option>
-													`
-												}
-												else {
-													document.getElementById("cor").setAttribute("disabled", "");
-												}
-
-												
-											}
-											
-										  
-											</script>
 										  
 
                                         
 										<div class="col-md-6">
                                            
-                                                <div class="form-group">
-                                                    <label id="idade" for="idade" >Data de nascimento:</label>
-                                                    <input type="text" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000">
-                                                </div>
+											<div class="form-group">
+												<label id="idade" for="idade">Data de nascimento:</label>
+												<input type="text" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required>
+											</div>
+											
+											
                                                 <div class="form-group">
                                                     <label for="sexo">Sexo:</label>
                                                     <select name="sexo" id="sexo" class="form-control">
@@ -379,7 +345,7 @@
 										
                                                 <div class="form-group">
                                                     <label for="foto">Foto:</label>
-                                                    <input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
+                                                    <input type="file" class="form-control" id="foto" name="foto" class="form-control-file" required>
                                                 </div>
 											               
                                                 <div class="form-group">
@@ -387,6 +353,128 @@
                                                 </div>
 											 
                                         </div>
+										
+
+										
+										<!-- js do campo da data de nascimanto-->
+												<script>
+												
+														var nascimentoInput = document.getElementById("nascimento");
+														nascimentoInput.addEventListener("input", function() {
+														// Obtém o valor atual do campo de data de nascimento
+														var nascimento = nascimentoInput.value;
+												
+														// Verifica se o valor do campo tem a primeira barra (/)
+														if (nascimento.indexOf('/') === -1) {
+															// Se não tiver, adiciona a primeira barra
+															if (nascimento.length > 2) {
+																nascimentoInput.value = nascimento.substring(0, 2) + '/' + nascimento.substring(2);
+															}
+														}
+												
+														// Verifica se o valor do campo tem a segunda barra (/)
+														if (nascimento.lastIndexOf('/') === 2) {
+															// Se não tiver, adiciona a segunda barra
+															if (nascimento.length > 5) {
+																nascimentoInput.value = nascimento.substring(0, 5) + '/' + nascimento.substring(5, 9);
+															}
+														}
+													});
+												</script>
+
+										
+										<!----------------- js da limitação do peso -------------------->
+												<script>
+													var pesoInput = document.getElementById("peso");
+													pesoInput.addEventListener("keypress", function(event) {
+													// Obtém o valor atual do campo de peso
+													var peso = pesoInput.value;
+												
+													// Verifica se a tecla pressionada é um número ou um ponto
+													if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 46) {
+														event.preventDefault();
+													}
+												
+													// Verifica se o valor do campo é numérico
+													if (!isNaN(peso)) {
+														// Converte o valor em um número decimal
+														var pesoDecimal = parseFloat(peso);
+												
+														// Verifica se o valor é maior que 99.99
+														if (pesoDecimal > 99.99) {
+														// Se for, define o campo de peso para 99.99
+														pesoInput.value = "99.99kg";
+														}
+													}
+													});
+												
+													pesoInput.addEventListener("blur", function() {
+													// Obtém o valor atual do campo de peso
+													var peso = pesoInput.value;
+												
+													// Verifica se o valor do campo é numérico
+													if (!isNaN(peso)) {
+														// Converte o valor em um número decimal
+														var pesoDecimal = parseFloat(peso);
+												
+														// Verifica se o valor é maior que 99.99
+														if (pesoDecimal > 99.99) {
+														// Se for, define o campo de peso para 99.99
+														pesoInput.value = "99.99kg";
+														} else {
+														// Se não for, adiciona "kg" ao final do valor
+														pesoInput.value = pesoDecimal + "kg";
+														}
+													}
+													});
+												</script>
+										  
+										
+												
+										
+										<!---------------- js da Cor/ especie --------------------->
+												<script>
+													let especieDropdown = document.getElementById('especie');
+													let corDropdown = document.getElementById('cor');
+													function cores(animal) {
+														document.getElementById("cor").removeAttribute("disabled");
+														if (animal == "cachorro") {
+															document.getElementById("cor").innerHTML = `
+															<option value="branco">Branco</option>
+															<option value="preto">Preto</option>
+															<option value="cinza">Cinza</option>
+															<option value="marrom">Marrom</option>
+															<option value="mesclado">Mesclado</option>
+															`
+														} else if (animal == "gato") {
+															document.getElementById("cor").innerHTML = `
+															<option value="branco">Branco</option>
+															<option value="preto">Preto</option>
+															<option value="cinza">Cinza</option>
+															<option value="laranja">Laranja</option>
+															<option value="marrom">Marrom</option>
+															<option value="mesclado">Mesclado</option>
+															`
+														} else if (animal == "passaro"){
+															document.getElementById("cor").innerHTML = `
+															<option value="branco">lilas</option>
+															<option value="preto">Preto</option>
+															<option value="amarelo">Amarelo</option>
+															<option value="azul">Azul</option>
+															<option value="verde">Verde</option>
+															<option value="vermelho">Vermelho</option>
+															<option value="cinza">Cinza</option>
+															<option value="marrom">Marrom</option>
+															<option value="mesclado">Mesclado</option>
+															`
+														}
+														else {
+															document.getElementById("cor").setAttribute("disabled", "");
+														}
+
+														
+													}
+												</script>
                                        </div>
 									</form>
                             	</div>

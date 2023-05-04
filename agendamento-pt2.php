@@ -2,10 +2,6 @@
     include_once('conexao.php');
     session_start();
 
-	if (!isset($_SESSION['idCliente'])) {
-		header('Location:login.html');
-	}
-
     date_default_timezone_set('America/Sao_Paulo');
     date_default_timezone_get();
     $myvalue = date('Y-m-d H:i:s');

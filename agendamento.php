@@ -6,7 +6,7 @@
 	}
 
 	// temporário
-	$_SESSION['idCliente'] = 1;
+	// $_SESSION['idCliente'] = 1;
 
     $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios");
     $pega_funcionarios = mysqli_fetch_assoc($funcionarios);

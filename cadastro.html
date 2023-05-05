@@ -218,12 +218,12 @@
 						<div class="card fat">
 							<div class="card-body" style="padding-left: 15%;">
 								
-								<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="" enctype="multipart/form-data">
+								<form method="POST" action="proc_cad_cliente.php" class="my-login-validation" novalidate="" enctype="multipart/form-data">
 									<h1 style="font-weight: 600;">Seu Cadastro</h1><br>
 									<div class="form-row">
 									  <div class="form-group col-md-10">
-										<label for="nomeCompleto">Nome completo</label>
-										<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" value="" required autofocus>
+										<label for="nome">Nome completo</label>
+										<input id="nome" type="text" class="form-control" name="nome" value="" required autofocus>
 										<div class="invalid-feedback">
 										  Nome completo válido
 										</div>
@@ -250,8 +250,8 @@
 								  
 									<div class="form-row">
 									  <div class="form-group col-md-5">
-										<label for="date">Data de Nascimento </label>
-										<input id="date" type="date" class="form-control" name="date" value="" required autofocus>
+										<label for="data_nasc">Data de Nascimento </label>
+										<input id="data_nasc" type="date" class="form-control" name="data_nasc" value="" required autofocus>
 										<div class="invalid-feedback">
 										  Data de Nascimento válida
 										</div>
@@ -276,7 +276,7 @@
 									<div class="form-row">
 									  <div class="form-group col-md-6">
 										<label for="cep">CEP</label>
-										<input id="cep" type="address" class="form-control" name="CEP" value="" onblur="pesquisacep(this.value)" required autofocus>
+										<input id="cep" type="address" class="form-control" name="cep" value="" onblur="pesquisacep(this.value)" required autofocus>
 										<div class="invalid-feedback">
 										  CEP válido
 										</div>
@@ -317,7 +317,7 @@
 								   </div>
 								   <div class="form-group col-md-4">
 									   <label for="numero">Número</label>
-									   <input id="numero" type="address" class="form-control" name="logradouro" value="" required autofocus>
+									   <input id="numero" type="address" class="form-control" name="numero" value="" required autofocus>
 									   <div class="invalid-feedback">
 										   Logradouro válido
 									   </div>
@@ -326,8 +326,8 @@
 								  
 								<div class="form-row">
 									<div class="form-group col-md-10">
-										<label for="password">Senha</label>
-										<input id="password" type="password" class="form-control" name="senha" required data-eye>
+										<label for="senha">Senha</label>
+										<input id="senha" type="password" class="form-control" name="senha" required data-eye>
 										<div class="invalid-feedback">
 											Senha é requerida
 										</div>

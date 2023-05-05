@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	include_once('conexao.php');
+	$_SESSION['idCliente'] = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +11,35 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	
+
+</head>
+<body class="animsition">
+	
+	<!-- Header -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<!-- Topbar -->
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Frete grátis para pedidos padrão acima de R$50
+					</div>
+
+					<div class="right-top-bar flex-w h-full">
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							Ajuda & FAQs
+						</a>
+
+						<a href="login.php" class="flex-c-m trans-04 p-lr-25">
+							Minha conta
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap-menu-desktop"><link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -33,8 +67,9 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/joao.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 <!--===============================================================================================-->
 
 <!-- Biblioteca de Animações CSS | START -->
@@ -45,34 +80,6 @@
 <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
 <link rel="stylesheet" href="./css/style.css" />
 <!-- Arquivos CSS | END -->
-
-</head>
-<body class="animsition">
-	
-	<!-- Header -->
-	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Frete grátis para pedidos padrão acima de R$50
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Ajuda & FAQs
-						</a>
-
-						<a href="checa_login.php" class="flex-c-m trans-04 p-lr-25">
-							Minha conta
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
 					
 					<!-- Logo desktop -->		
@@ -236,133 +243,86 @@
 		</nav><br><br>
 
 		
-		<div class="wrapper"><br><br>
+		<div class="wrapper">
 			
-			<section class="h-100">
+			<section class="h-100" style="height: 20%!important">
 				<div class="container h-100">
 					<div class="row justify-content-md-center h-100">
-						<div class="card-wrapper">
+						<div class="card-wrapper" id="cardpinci">
 							
 							<div class="card fat">
-								<div class="card-body">
-									<form method="POST" action="proc_login.php" class="my-login-validation" novalidate="">
-										<div class="container">
-											<div class="row">
-												<div class="col-md-6">
-													<h1 style="font-weight: 600; font-size: 200%;">Informações da Conta</h1><br>
-													<div class="form-group">
-														<label for="nomeCompleto">Nome completo</label>
-														<input id="nomeCompleto" type="text" class="form-control" name="nomeCompleto" placeholder="Nome completo" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Nome completo válido
-														</div>
+								<div class="d-flex flex-wrap justify-content-between align-items-center">
+
+									<?php
+									if (isset($_SESSION['msg_cad_pet'])) {
+										echo $_SESSION['msg_cad_pet'];
+										unset($_SESSION['msg_cad_pet']);
+									}
+									?>
+
+									<?php
+
+									$idCliente = $_SESSION['idCliente'];
+
+									$result_pet = "SELECT * FROM cadastro_pet INNER JOIN cliente 
+								on cadastro_pet.id_cliente = cliente.idCliente WHERE idCliente= $idCliente;";
+
+									$resultado_pet = mysqli_query($conn, $result_pet);
+
+									while ($row_pet = mysqli_fetch_assoc($resultado_pet)) {
+										$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet =". $row_pet['idPet']);
+										$imagem_pet = mysqli_fetch_assoc($img_pet);
+									?>
+
+										<div class="pet-container">
+											<img src="
+											<?php 
+											if (isset($imagem_pet['dir_img_pet'])) {
+												echo $imagem_pet['dir_img_pet'];
+											} else {
+												echo('images/imgPet/placeholder_pet.png');
+											}
+											  ?>
+											" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo($row_pet['nome_pet']); ?>" class="img-thumbnail">
+										</div>
+
+										<!-- Modal -->
+										<div class="modal fade" id="myModal<?php echo($row_pet['nome_pet']); ?>">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<!-- cabeçalho do Modal -->
+													<div class="modal-header">
+														<h4 class="modal-title">Informações do Pet</h4>
+														<button type="button" class="close" data-dismiss="modal">&times;</button>
 													</div>
-													<div class="form-group">
-														<label for="email">E-mail</label>
-														<input id="email" type="email" class="form-control" name="email" placeholder="E-mail completo" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															E-mail válido
-														</div>
+													<!-- Adicione o corpo do Modal -->
+													<div class="modal-body">
+														<p>
+															Nome: <?php echo $row_pet['nome_pet']; ?> <br>
+															Raça: <?php echo $row_pet['raca']; ?> <br>
+															Cor: <?php echo $row_pet['cor_pet']; ?> <br>
+															Nascimento: <?php echo $row_pet['data_nasc_pet']; ?> <br>
+															Peso: <?php echo $row_pet['peso_pet']; ?>
+														</p>
 													</div>
-													<div class="col-md-6"></div>
-													<div class="form-group">
-														<label for="cpf">CPF</label>
-														<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus readonly>
-														<div class="invalid-feedback">
-															CPF válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="rg">RG</label>
-														<input id="rg" type="text" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus readonly>
-														<div class="invalid-feedback">
-															RG válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="date">Data de Nascimento</label>
-														<input id="date" type="date" class="form-control" name="date" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Data de Nascimento válida
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="celular">Celular</label>
-														<input id="celular" type="tel" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus readonly>
-														<div class="invalid-feedback">
-															Celular válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="password">Senha</label>
-														<input id="password" type="password" class="form-control" name="senha" required data-eye readonly>
-														<div class="invalid-feedback">
-															Senha é requerida
-														</div>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<h1 style="font-weight: 600; font-size: 200%;">Endereço</h1><br>
-													<div class="form-group">
-														<label for="cep">CEP</label>
-														<input id="cep" type="text" class="form-control" name="cep" placeholder="00000-000" required autofocus readonly>
-														<div class="invalid-feedback">
-															CEP válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="rua">Rua</label>
-														<input id="rua" type="text" class="form-control" name="rua" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Rua válida
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="numero">Número</label>
-														<input id="numero" type="text" class="form-control" name="numero" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Número válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="complemento">Complemento</label>
-														<input id="complemento" type="text" class="form-control" name="complemento" value="" autofocus readonly>
-														<div class="invalid-feedback">
-															Complemento válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="bairro">Bairro</label>
-														<input id="bairro" type="text" class="form-control" name="bairro" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Bairro válido
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="cidade">Cidade</label>
-														<input id="cidade" type="text" class="form-control" name="cidade" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Cidade válida
-														</div>
-													</div>
-													<div class="form-group">
-														<label for="estado">Estado</label>
-														<input id="estado" type="text" class="form-control" name="estado" value="" required autofocus readonly>
-														<div class="invalid-feedback">
-															Estado válido
-														</div>
-													</div>
-												</div>
-												<div class="col-md-12">
-													<div class="form-group">
-														<button  class="btn btn-primary btn-lg btn-block">
-															Editar
-														</button>
+													<!-- Adicione o rodapé do Modal -->
+													<div class="modal-footer">
+														<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
 													</div>
 												</div>
 											</div>
 										</div>
-									</form>
+
+									<?php
+									}
+									?>
+
+									<a href="cadastropet.php?id_cliente=<?php echo $idCliente ?>" style="width: 30%;">
+										<img src="images/pluspaw.png" style="width: 78%;">
+										Adicionar novo pet
+									</a>
+
+
 								</div>
 							</div>
 						</div>

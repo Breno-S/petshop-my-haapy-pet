@@ -3999,7 +3999,12 @@ input[type="radio"]:checked+img {
 	width: 100%;
 
   }
-  .modal {
-    z-index: 9999;
+  .modal-dialogue {
+    z-index: 5;
+	
   }
+
+.teste123{
+	min-height: fit-content;
+}
   

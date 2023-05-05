@@ -2,6 +2,8 @@
 	session_start();
 	include_once('conexao.php');
 	$_SESSION['idCliente'] = 1;
+
+	$qt_pet = 0;
 ?>
 
 <!DOCTYPE html>
@@ -201,7 +203,7 @@
 
 
 	 <!-- ======= Header ======= -->
-	<div class="wrapper d-flex align-items-stretch">
+	<div class="wrapper d-flex align-items-stretch" id="teste123">
 		<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -252,75 +254,121 @@
 							
 							<div class="card fat">
 								<div class="d-flex flex-wrap justify-content-between align-items-center">
+										<?php
+										if (isset($_SESSION['msg_cad_pet'])) {
+											echo $_SESSION['msg_cad_pet'];
+											unset($_SESSION['msg_cad_pet']);
+										}
+										?>
 
-									<?php
-									if (isset($_SESSION['msg_cad_pet'])) {
-										echo $_SESSION['msg_cad_pet'];
-										unset($_SESSION['msg_cad_pet']);
-									}
-									?>
+										<?php
 
-									<?php
+										$idCliente = $_SESSION['idCliente'];
 
-									$idCliente = $_SESSION['idCliente'];
+										$result_pet = "SELECT * FROM cadastro_pet INNER JOIN cliente 
+										on cadastro_pet.id_cliente = cliente.idCliente WHERE idCliente= $idCliente;";
 
-									$result_pet = "SELECT * FROM cadastro_pet INNER JOIN cliente 
-								on cadastro_pet.id_cliente = cliente.idCliente WHERE idCliente= $idCliente;";
+										$resultado_pet = mysqli_query($conn, $result_pet);
 
-									$resultado_pet = mysqli_query($conn, $result_pet);
+										while ($row_pet = mysqli_fetch_assoc($resultado_pet)) {
+											$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet =". $row_pet['idPet']);
+											$imagem_pet = mysqli_fetch_assoc($img_pet);
+											if ($qt_pet % 3 != 0) {											
+										?>
+											<div class="pet-container">
+												<img src="
+												<?php 
+												if (isset($imagem_pet['dir_img_pet'])) {
+													echo $imagem_pet['dir_img_pet'];
+												} else {
+													echo('images/imgPet/placeholder_pet.png');
+												}
+												?>
+												" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo($row_pet['nome_pet']); ?>" class="img-thumbnail">
+											</div>
 
-									while ($row_pet = mysqli_fetch_assoc($resultado_pet)) {
-										$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet =". $row_pet['idPet']);
-										$imagem_pet = mysqli_fetch_assoc($img_pet);
-									?>
-
-										<div class="pet-container">
-											<img src="
-											<?php 
-											if (isset($imagem_pet['dir_img_pet'])) {
-												echo $imagem_pet['dir_img_pet'];
-											} else {
-												echo('images/imgPet/placeholder_pet.png');
-											}
-											  ?>
-											" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo($row_pet['nome_pet']); ?>" class="img-thumbnail">
-										</div>
-
-										<!-- Modal -->
-										<div class="modal fade" id="myModal<?php echo($row_pet['nome_pet']); ?>">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-													<!-- cabeçalho do Modal -->
-													<div class="modal-header">
-														<h4 class="modal-title">Informações do Pet</h4>
-														<button type="button" class="close" data-dismiss="modal">&times;</button>
-													</div>
-													<!-- Adicione o corpo do Modal -->
-													<div class="modal-body">
-														<p>
-															Nome: <?php echo $row_pet['nome_pet']; ?> <br>
-															Raça: <?php echo $row_pet['raca']; ?> <br>
-															Cor: <?php echo $row_pet['cor_pet']; ?> <br>
-															Nascimento: <?php echo $row_pet['data_nasc_pet']; ?> <br>
-															Peso: <?php echo $row_pet['peso_pet']; ?>
-														</p>
-													</div>
-													<!-- Adicione o rodapé do Modal -->
-													<div class="modal-footer">
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+											<!-- Modal -->
+											<div class="modal fade" id="myModal<?php echo($row_pet['nome_pet']); ?>">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content">
+														<!-- cabeçalho do Modal -->
+														<div class="modal-header">
+															<h4 class="modal-title">Informações do Pet</h4>
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+														</div>
+														<!-- Adicione o corpo do Modal -->
+														<div class="modal-body">
+															<p>
+																Nome: <?php echo $row_pet['nome_pet']; ?> <br>
+																Raça: <?php echo $row_pet['raca']; ?> <br>
+																Cor: <?php echo $row_pet['cor_pet']; ?> <br>
+																Nascimento: <?php echo $row_pet['data_nasc_pet']; ?> <br>
+																Peso: <?php echo $row_pet['peso_pet']; ?>
+															</p>
+														</div>
+														<!-- Adicione o rodapé do Modal -->
+														<div class="modal-footer">
+															<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
 
-									<?php
-									}
-									?>
+										<?php
+											}
+											else {
+												?>
+												</div>
+												<div class="3-pets d-flex flex-wrap justify-content-between align-items-center">
+													<div class="pet-container">
+														<img src="
+														<?php 
+														if (isset($imagem_pet['dir_img_pet'])) {
+															echo $imagem_pet['dir_img_pet'];
+														} else {
+															echo('images/imgPet/placeholder_pet.png');
+														}
+														?>
+														" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo($row_pet['nome_pet']); ?>" class="img-thumbnail">
+													</div>
 
-									<a href="cadastropet.php?id_cliente=<?php echo $idCliente ?>" style="width: 30%;">
-										<img src="images/pluspaw.png" style="width: 78%;">
-										Adicionar novo pet
-									</a>
+													<!-- Modal -->
+													<div class="modal fade" id="myModal<?php echo($row_pet['nome_pet']); ?>">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<!-- cabeçalho do Modal -->
+																<div class="modal-header">
+																	<h4 class="modal-title">Informações do Pet</h4>
+																	<button type="button" class="close" data-dismiss="modal">&times;</button>
+																</div>
+																<!-- Adicione o corpo do Modal -->
+																<div class="modal-body">
+																	<p>
+																		Nome: <?php echo $row_pet['nome_pet']; ?> <br>
+																		Raça: <?php echo $row_pet['raca']; ?> <br>
+																		Cor: <?php echo $row_pet['cor_pet']; ?> <br>
+																		Nascimento: <?php echo $row_pet['data_nasc_pet']; ?> <br>
+																		Peso: <?php echo $row_pet['peso_pet']; ?>
+																	</p>
+																</div>
+																<!-- Adicione o rodapé do Modal -->
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												<?php
+											}
+											$qt_pet++;
+										}
+										?>
+
+										<a href="cadastropet.php?id_cliente=<?php echo $idCliente ?>" style="width: 30%;">
+											<img src="images/pluspaw.png" style="width: 78%;">
+											Adicionar novo pet
+										</a>
+									</div>
 
 
 								</div>

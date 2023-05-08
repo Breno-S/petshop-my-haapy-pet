@@ -1,4 +1,3 @@
-
 <?php
 	include_once('php/conexao.php');
 
@@ -13,13 +12,22 @@
 			header('Location:login.php');
 		}
 	}
+    if (isset($_POST['idCliente'])) {
+        $idCliente = $_POST['idCliente'];
+    
+        $cliente_edit = mysqli_query($conn, "SELECT * FROM cliente INNER JOIN cadastro_cliente ON idCliente = id_cliente INNER JOIN endereco ON id_endereco = idEndereco WHERE idCliente = $idCliente");
+        $pega_cliente_edit = mysqli_fetch_assoc($cliente_edit);
+    }
+    else {
+        header('Location: busca_cliente.php');
+    }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Cadastrar Pets</title>
+	<title>Editar Clientes</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -329,228 +337,133 @@
 							
 							<div class="card fat">
 								<div class="card-body">
-								<?php 
-								if(isset($_SESSION['msg_cad_pet'])){
-									echo $_SESSION['msg_cad_pet'];
-									unset($_SESSION['msg_cad_pet']);
-								}					
-								?>
-                                    
-									<form action="php/proc_cad_pet_func.php" method="post" class="row" enctype="multipart/form-data">
-                                        <div class="col-md-12">
-                                           
-                                                <h1>Cadastro do Pet</h1><br><br>
-                                                <label id="name" for="nome">Nome:</label>
-                                                <input type="text" id="nome" name="nome" class="form-control" required>
-                                            
-                                        </div><br>
-										<div class="col-md-6">
-											<div class="form-group">
-											  <label for="especie">Espécie:</label>
-											  <select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)" required>
-												<option value="">Selecione seu animal</option>
-												<option value="Cachorro">Cachorro</option>
-												<option value="Gato">Gato</option>
-												<option value="Pássaro">Pássaro</option>
-											  </select>
-											</div>
-											<div class="form-group">
-											  <label for="cor">Cor:</label>
-											  <select type="text" id="cor" name="cor" class="form-control" disabled>
-												<option value="">Selecione a cor</option>
-												<!-- Opções de cor para Cachorro -->
-												<!-- <optgroup id="cachorroColors" label="Cores para Cachorro" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="marrom">Marrom</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-												<!-- Opções de cor para Gato -->
-												<!-- <optgroup id="gatoColors" label="Cores para Gato" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="marrom">Marrom</option>
-												  <option value="cinza">Cinza</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-												<!-- Opções de cor para Pássaro -->
-												<!-- <optgroup id="passaroColors" label="Cores para Pássaro" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="azul">Azul</option>
-												  <option value="amarelo">Amarelo</option>
-												  <option value="cinza">Cinza</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-											  </select>
-											</div>
-											<div class="form-group">
-												<label id="peso-label" for="peso">Peso:</label>
-												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg"required>
+								<form  method="POST" action="php/proc_edit_cliente_func.php" enctype="multipart/form-data" class="my-login-validation" >
+									<?php
+											if(isset($_SESSION['msg'])){
+												echo $_SESSION['msg'];
+												unset($_SESSION['msg']);
+											}
+											if(isset($_SESSION['cls'])){
+												echo $_SESSION['cls'];
+												unset ($_SESSION['cls']);
+											}
+										?>
+								
+									<div class="">
+
+									</div>
+									<h1 style="font-weight: 600;">Editar Cadastro</h1><br>
+										<div class="form-row">
+										<div class="form-group col-md-10">
+                                            <input type="hidden" name="idCliente" value="<?php echo($pega_cliente_edit['idCliente']);?>">
+											<label for="usuario">Nome</label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['nome'] . ' ' . $pega_cliente_edit['sobrenome']); ?>" name="nome" id="nome" class="form-control" placeholder="Seu nome" autofocus>
+											<div class="invalid-feedback">
+											Nome completo válido
 											</div>
 										</div>
-										  
-										  
-
-                                        
-										<div class="col-md-6">
-                                           
-											<div class="form-group">
-												<label id="idade" for="nascimento">Data de nascimento:</label>
-												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required max="<?php echo date("Y-m-d");?>">
+										</div>
+									
+										<div class="form-row"> 
+										<div class="form-group col-md-5">
+											<label for="cpf">CPF </label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['cpf']); ?>" readonly name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" id="cpf" class="form-control" placeholder="000.000.000-00" autofocus>
+											<div class="invalid-feedback">
+											CPF válido
 											</div>
-											
-											
-                                                <div class="form-group">
-                                                    <label for="sexo">Sexo:</label>
-                                                    <select name="sexo" id="sexo" class="form-control">
-														<option value="">Selecione o sexo</option>
-														<option value="Macho">Macho</option>
-														<option value="Fêmea">Fêmea</option>
-													</select>
-                                                </div>
-												<div class="form-group">
-													<label id="peso-label" for="peso">CPF:</label>
-													<input type="text" id="cpf" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" class="form-control" placeholder="000.000.000-00"required oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(\..*)\./g, '$1');">
+										</div>
+									
+										<div class="form-group col-md-5">
+										<label for="rg">RG </label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['rg']); ?>" readonly name="rg" id="rg" class="form-control" placeholder="00.000.000-0" autofocus>
+											<div class="invalid-feedback">
+											RG válido
+											</div>
+										</div>
+										</div>
+									
+										<div class="form-row">
+										<div class="form-group col-md-5">
+											<label for="date">Data de Nascimento </label>
+											<input required type="date" value="<?php echo($pega_cliente_edit['data_nasc']); ?>" readonly name="data_nasc" id="data_nasc" class="form-control" autofocus max="<?php echo date("Y-m-d");?>">
+											<div class="invalid-feedback">
+											Data de Nascimento válida
+											</div>
+										</div>
+										
+										<div class="form-group col-md-5">
+												<label for="celular">Celular</label>
+												<input required type="text" value="<?php echo($pega_cliente_edit['celular']); ?>" name="celular" id="celular" class="form-control" placeholder="(00) 00000-0000" autofocus>
+												<div class="invalid-feedback">
+												Celular válido
 												</div>
-											
-                                        </div>
-										<div class="col-md-12"> 
+											</div>
+										<div class="form-group col-md-10">
+											<label for="email">E-mail</label>
+											<input id="email" type="email" value="<?php echo($pega_cliente_edit['email']); ?>" data-js="E-Mail" class="form-control" name="email" placeholder="seuemail@..." required autofocus>
+											<div class="invalid-feedback">
+											E-mail válido
+											</div>
+										</div>
+										</div>
+									
+										<div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="cep">CEP</label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['cep']); ?>" placeholder="00000-000" name="cep" id="cep" onblur="pesquisacep(this.value);" size="10" maxlength="9" class="form-control" autofocus>
+											<div class="invalid-feedback">
+											CEP válido
+											</div>
+										</div>
+									
+										<div class="form-group col-md-4">
+											<label for="uf">UF</label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['estado']); ?>" name="estado" placeholder="UF" id="estado" size="2" class="form-control" required autofocus>
+											<div class="invalid-feedback">
+											UF válido
+											</div>
+										</div>
+									</div>
+										<div class="form-row">
+											<div class="form-group col-md-5">
+													<label for="municipio">Município</label>
+													<input required type="text" value="<?php echo($pega_cliente_edit['municipio']); ?>" name="municipio" placeholder="Município" id="municipio" class="form-control" autofocus>
+													<div class="invalid-feedback">
+													Município válido
+													</div>
+												</div>
+											<div class="form-group col-md-5">
+													<label for="bairro">Bairro</label>
+													<input required type="text" value="<?php echo($pega_cliente_edit['bairro']); ?>" name="bairro" id="bairro"  placeholder="Bairro" class="form-control" autofocus>	
+													<div class="invalid-feedback">
+													Bairro válido
+													</div>
+												</div>
+										</div>
 										
-                                                <div class="form-group">
-                                                    <label for="foto">Foto:</label>
-                                                    <input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
-                                                </div>
-											               
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-                                                </div>
-											 
-                                        </div>
-										
-
-										
-										<!-- js do campo da data de nascimanto-->
-												<script>
-												
-													// 	var nascimentoInput = document.getElementById("nascimento");
-													// 	nascimentoInput.addEventListener("input", function() {
-													// 	// Obtém o valor atual do campo de data de nascimento
-													// 	var nascimento = nascimentoInput.value;
-												
-													// 	// Verifica se o valor do campo tem a primeira barra (/)
-													// 	if (nascimento.indexOf('/') === -1) {
-													// 		// Se não tiver, adiciona a primeira barra
-													// 		if (nascimento.length > 2) {
-													// 			nascimentoInput.value = nascimento.substring(0, 2) + '/' + nascimento.substring(2);
-													// 		}
-													// 	}
-												
-													// 	// Verifica se o valor do campo tem a segunda barra (/)
-													// 	if (nascimento.lastIndexOf('/') === 2) {
-													// 		// Se não tiver, adiciona a segunda barra
-													// 		if (nascimento.length > 5) {
-													// 			nascimentoInput.value = nascimento.substring(0, 5) + '/' + nascimento.substring(5, 9);
-													// 		}
-													// 	}
-													// });
-												</script>
-
-										
-										<!----------------- js da limitação do peso -------------------->
-												<script>
-													var pesoInput = document.getElementById("peso");
-													pesoInput.addEventListener("keypress", function(event) {
-													// Obtém o valor atual do campo de peso
-													var peso = pesoInput.value;
-												
-													// Verifica se a tecla pressionada é um número ou um ponto
-													if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 46) {
-														event.preventDefault();
-													}
-												
-													// Verifica se o valor do campo é numérico
-													if (!isNaN(peso)) {
-														// Converte o valor em um número decimal
-														var pesoDecimal = parseFloat(peso);
-												
-														// Verifica se o valor é maior que 99.99
-														if (pesoDecimal > 99.99) {
-														// Se for, define o campo de peso para 99.99
-														pesoInput.value = "99.99kg";
-														}
-													}
-													});
-												
-													pesoInput.addEventListener("blur", function() {
-													// Obtém o valor atual do campo de peso
-													var peso = pesoInput.value;
-												
-													// Verifica se o valor do campo é numérico
-													if (!isNaN(peso)) {
-														// Converte o valor em um número decimal
-														var pesoDecimal = parseFloat(peso);
-												
-														// Verifica se o valor é maior que 99.99
-														if (pesoDecimal > 99.99) {
-														// Se for, define o campo de peso para 99.99
-														pesoInput.value = "99.99kg";
-														} else {
-														// Se não for, adiciona "kg" ao final do valor
-														pesoInput.value = pesoDecimal + "kg";
-														}
-													}
-													});
-												</script>
-										  
-										
-												
-										
-										<!---------------- js da Cor/ especie --------------------->
-												<script>
-													let especieDropdown = document.getElementById('especie');
-													let corDropdown = document.getElementById('cor');
-													function cores(animal) {
-														document.getElementById("cor").removeAttribute("disabled");
-														if (animal == "Cachorro") {
-															document.getElementById("cor").innerHTML = `
-															<option value="Branco">Branco</option>
-															<option value="Preto">Preto</option>
-															<option value="Cinza">Cinza</option>
-															<option value="Marrom">Marrom</option>
-															<option value="Mesclado">Mesclado</option>
-															`
-														} else if (animal == "Gato") {
-															document.getElementById("cor").innerHTML = `
-															<option value="Branco">Branco</option>
-															<option value="Preto">Preto</option>
-															<option value="Cinza">Cinza</option>
-															<option value="Laranja">Laranja</option>
-															<option value="Marrom">Marrom</option>
-															<option value="Mesclado">Mesclado</option>
-															`
-														} else if (animal == "Pássaro"){
-															document.getElementById("cor").innerHTML = `
-															<option value="Branco">lilas</option>
-															<option value="Preto">Preto</option>
-															<option value="Amarelo">Amarelo</option>
-															<option value="Azul">Azul</option>
-															<option value="Verde">Verde</option>
-															<option value="Vermelho">Vermelho</option>
-															<option value="Cinza">Cinza</option>
-															<option value="Marrom">Marrom</option>
-															<option value="Mesclado">Mesclado</option>
-															`
-														}
-														else {
-															document.getElementById("cor").setAttribute("disabled", "");
-														}
-
-														
-													}
-												</script>
-                                       </div>
-									</form>
+										<div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="logradouro">Logradouro</label>
+											<input required type="text" value="<?php echo($pega_cliente_edit['logradouro']); ?>" name="logradouro" id="logradouro" placeholder="Rua" class="form-control" autofocus>
+										<div class="invalid-feedback">
+											Logradouro válido
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+											<label for="numero">Número</label>
+											<input required type="number" value="<?php echo($pega_cliente_edit['numero']); ?>" name="numero" id="numero" placeholder="Número" class="form-control" autofocus>
+											<div class="invalid-feedback">
+											Logradouro válido
+											</div>
+									</div>
+									</div>
+		
+										<div class="form-group col-md-10">
+											<button type="submit" class="btn btn-primary btn-block">
+												Editar
+											</button>
+										</div>
+								</form>
 								</div>
 							</div>
 						</div>

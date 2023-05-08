@@ -14,7 +14,12 @@
         }
         else {
 			$nome = explode(" ", $_SESSION['buscaCliente']);
-            $cliente = mysqli_query($conn, "SELECT * FROM cliente WHERE nome LIKE '%". $nome[0] ."%' AND sobrenome LIKE '%". $nome[1] ."%'");
+			if (sizeof($nome) == 2) {
+				$cliente = mysqli_query($conn, "SELECT * FROM cliente WHERE nome LIKE '%". $nome[0] ."%' AND sobrenome LIKE '%". $nome[1] ."%'");
+			}
+			else {
+				$cliente = mysqli_query($conn, "SELECT * FROM cliente WHERE nome LIKE '%". $nome[0] ."%'");
+			}
         }
         unset($_SESSION['buscaCliente']);
     }
@@ -324,9 +329,8 @@
 		</div>
 
 	</nav><br><br><br>
-
 		
-		    <div class="wrapper"><br><br>
+		    <div class="wrapper d-flex justify-content-center"><br><br>
                 <form class="buscar" action="php/proc_busca_cliente.php" method="post">
                     <h1 class="title_contato">Buscar Cliente</h1>
                     <div class="style-form-input full">
@@ -346,17 +350,27 @@
                         echo('<div class="buscar2"> 
                                 <h1 class="nome_cliente">Nome: '. $row_cliente['nome'] .' '. $row_cliente['sobrenome'] .'</h1>
                                 <div class="pet-info">
-                                    <p class="cpf_cliente">CPF: '. $row_cliente['cpf'] .'</p>
-                                    <p class="rg_cliente">RG: '. $row_cliente['rg'] .'</p>
-                                    <p class="data_nasc_cliente">Data de Nascimento: '. $row_cliente['data_nasc'] .'</p>
-                                    <p class="data_cad_cliente>Data de Cadastro: '. $dados_cliente['data_cad'] .'</p>
-                                    <p class="email_cliente">Email: '. $dados_cliente['email'] .'</p>
-                                    <p class="cep_cliente">CEP: '. $dados_cliente2['cep'] .'</p>
-                                    <p class="estado_cliente">Estado: '. $dados_cliente2['estado'] .'</p>
-                                    <p class="municipio_cliente">Municipio: '. $dados_cliente2['municipio'] .'</p>
-                                    <p class="bairro_cliente">Bairro: '. $dados_cliente2['bairro'] .'</p>
-                                    <p class="logradouro_cliente">Logradouro: '. $dados_cliente2['logradouro'] .'</p>
-                                    <p class="numero_cliente">Número: '. $dados_cliente2['numero'] .'</p>  
+									<form action="edit_cliente_func.php" method="post">
+										<input type="hidden" name="idCliente" value="'. $row_cliente['idCliente'] .'">
+										<p class="cpf_cliente">CPF: '. $row_cliente['cpf'] .'</p>
+										<p class="rg_cliente">RG: '. $row_cliente['rg'] .'</p>
+										<p class="data_nasc_cliente">Data de Nascimento: '. date_format(date_create($row_cliente['data_nasc']), 'd/m/Y') .'</p>
+										<p class="data_cad_cliente>Data de Cadastro: '. $dados_cliente['data_cad'] .'</p>
+										<p class="email_cliente">Email: '. $dados_cliente['email'] .'</p>
+										<p class="cep_cliente">CEP: '. $dados_cliente2['cep'] .'</p>
+										<p class="estado_cliente">Estado: '. $dados_cliente2['estado'] .'</p>
+										<p class="municipio_cliente">Municipio: '. $dados_cliente2['municipio'] .'</p>
+										<p class="bairro_cliente">Bairro: '. $dados_cliente2['bairro'] .'</p>
+										<p class="logradouro_cliente">Logradouro: '. $dados_cliente2['logradouro'] .'</p>
+										<p class="numero_cliente">Número: '. $dados_cliente2['numero'] .'</p>'); 
+										if($_SESSION['cargo'] == 'Secretária' || $_SESSION['cargo'] == 'Administrador'){
+											echo('
+											<button type="submit" class="btn btn-primary btn-block">
+												Editar
+											</button>');
+										} 
+									echo('
+									</form>
                                 </div> 
                             </div>');
                         }

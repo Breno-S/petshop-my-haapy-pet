@@ -11,6 +11,11 @@
 
     // Dados do Login (CPF e Senha)
     $usuario = $_POST['usuario'];
+    if (is_numeric($usuario)) {
+        $usuario = str_replace('-', '', $usuario);
+        $usuario = str_replace('+', '', $usuario);
+        $usuario = str_replace('.', '', $usuario);
+    }
     $senha = filter_input(INPUT_POST, 'senha');
     $senha = md5($senha);
  

@@ -20,13 +20,13 @@
                 header("Location: relatorio_animal.php");
     }else{
         //busca a data de cadastro do pet
-        $result_usuario1 = "SELECT data_cad_pet as cad_pet  FROM cadastro_pet INNER JOIN agendamento on cadastro_pet.id_cliente = agendamento.id_cliente where cadastro_pet.id_cliente = '$id' and nome_pet LIKE '$nome'";
+        $result_usuario1 = "SELECT * FROM cadastro_pet WHERE id_cliente = '$id' and nome_pet LIKE '$nome'";
         $resultado_usuario1 = mysqli_query($conn, $result_usuario1);
         $row_usuario1 = mysqli_fetch_assoc($resultado_usuario1);
         
 
         //conta quantos atendimentos esse animal fez
-        $result_usuario2 = "SELECT COUNT(idAgendamento) as quantidade  FROM cadastro_pet INNER JOIN agendamento on cadastro_pet.idPet = agendamento.id_animal where cadastro_pet.id_cliente = '$id' and nome_pet LIKE '$nome'";
+        $result_usuario2 = "SELECT COUNT(idAgendamento) as quantidade FROM agendamento WHERE id_animal =". $row_usuario1['idPet'];
         $resultado_usuario2 = mysqli_query($conn, $result_usuario2);
         $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
@@ -34,7 +34,7 @@
             $_SESSION['msg'] = "<p style = 'color:red;'>Não encontrado</p>";
                 
         }else{
-            echo "Data de Cadastro do Pet: ".$row_usuario1['cad_pet'];
+            echo "Data de Cadastro do Pet: ".$row_usuario1['data_cad_pet'];
 
             echo "<br><br>";
 
@@ -42,7 +42,7 @@
             
         }
 
-        $_SESSION['data_cad_pet'] = $row_usuario1['cad_pet'];
+        $_SESSION['data_cad_pet'] = $row_usuario1['data_cad_pet'];
         $_SESSION['qt_atendimento'] = $row_usuario2['quantidade'];
 
         header("Location: ../relatorio_animal.php");

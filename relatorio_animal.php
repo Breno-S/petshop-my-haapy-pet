@@ -331,7 +331,8 @@
 													
 													<div class="form-group">
 														<label for="cpf">CPF </label>
-														<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
+														<input id="cpf" type="text" class="form-control" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');"
+ placeholder="000.000.000-00" required autofocus>
 														<div class="invalid-feedback">
 														  CPF válido
 														</div>
@@ -347,7 +348,7 @@
 
 													<div class="form-group">
 														<label for="dia">Data de cadastro:</label>
-														<input id="dia" type="text" class="form-control" name="dia" <?php if(isset($_SESSION['data_cad_pet'])){echo('value ="'. $_SESSION['data_cad_pet'] .'"'); unset($_SESSION['data_cad_pet']);} ?> autofocus readonly >
+														<input id="dia" type="text" class="form-control" name="dia" <?php if(isset($_SESSION['data_cad_pet'])){echo('value ="'. date_format(date_create($_SESSION['data_cad_pet']), 'd/m/Y H:i:s') .'"'); unset($_SESSION['data_cad_pet']);} ?> autofocus readonly >
 														<div class="invalid-feedback">
 															Cadastros no Dia
 														</div>

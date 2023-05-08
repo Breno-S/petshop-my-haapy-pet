@@ -5,7 +5,7 @@
 	if(!isset($_SESSION)){
 		session_start();
 	}
-	if (!isset($_SESSION['idFuncionario']) && $_SESSION['cargo'] != 'Veterinário' || $_SESSION['cargo'] != 'Tosador') {
+	if (!isset($_SESSION['idFuncionario']) || ($_SESSION['cargo'] != 'Veterinário' && $_SESSION['cargo'] != 'Tosador')) {
 		header('Location:login.php');
 	}
 

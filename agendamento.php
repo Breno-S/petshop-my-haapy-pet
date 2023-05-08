@@ -9,7 +9,7 @@
 	}
 
     $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios");
-    $pega_funcionarios = mysqli_fetch_assoc($funcionarios);
+    // $pega_funcionarios = mysqli_fetch_assoc($funcionarios);
     $num_funcionarios = mysqli_query($conn, "SELECT COUNT(idFuncionario) AS qtFunc FROM funcionarios");
     $qt_funcionarios = mysqli_fetch_assoc($num_funcionarios);
 
@@ -327,13 +327,15 @@
 											<label for="funcionarios" id="cor_agenda">Funcionário:</label>
 													<select id="funcionarios" name="funcionarios" oninput="libera_servico(this.value)">
 														<option value='' selected>Escolha o profissional</option>
-														<?php for ($i=1; $i <= $qt_funcionarios['qtFunc']; $i++) { 
-															$funcionario = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = $i AND (cargo = 'veterinario' OR cargo = 'tosador')");
+														<?php 
+														while ($row_funcionario = mysqli_fetch_assoc($funcionarios)) {
+															$funcionario = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = ". $row_funcionario['idFuncionario'] ." AND (cargo = 'veterinario' OR cargo = 'tosador')");
 															$pega_funcionario = mysqli_fetch_assoc($funcionario);
 															if (isset($pega_funcionario['nome_funcionario'])) {
 																echo("<option value='". $pega_funcionario['cargo'] ." ". $pega_funcionario['idFuncionario'] ."'>". $pega_funcionario['nome_funcionario'] ." - ". $pega_funcionario['cargo'] ."</option>");
 															}
-														}  ?>
+														}
+														  ?>
 													</select>
                                             </div>
                                         </div>

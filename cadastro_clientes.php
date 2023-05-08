@@ -344,11 +344,11 @@
 									<div class="">
 
 									</div>
-									<h1 style="font-weight: 600;">Seu Cadastro</h1><br>
+									<h1 style="font-weight: 600;">Cadastro</h1><br>
 										<div class="form-row">
 										<div class="form-group col-md-10">
 											<label for="usuario">Nome</label>
-											<input required type="text" name="nome" id="nome" class="form-control" placeholder="Seu nome" autofocus>
+											<input required type="text" name="nome" id="nome" class="form-control" placeholder="Nome" autofocus>
 											<div class="invalid-feedback">
 											Nome completo válido
 											</div>
@@ -358,7 +358,7 @@
 										<div class="form-row"> 
 										<div class="form-group col-md-5">
 											<label for="cpf">CPF </label>
-											<input required type="text" name="cpf" id="cpf" class="form-control" placeholder="000.000.000-00" autofocus>
+											<input required type="text" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" id="cpf" class="form-control" placeholder="000.000.000-00" autofocus>
 											<div class="invalid-feedback">
 											CPF válido
 											</div>
@@ -452,7 +452,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-10">
 											<label for="password">Senha</label>
-											<input required type="text" name="senha" id="senha" placeholder="Crie uma senha	" class="form-control" data-eye>
+											<input required type="password" name="senha" id="senha" placeholder="Crie uma senha" class="form-control" data-eye>
 											<div class="invalid-feedback">
 												Senha é requerida
 											</div>

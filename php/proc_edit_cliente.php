@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once("petshop.php"); //ESTÁ LINKANDO O ARQUIVO COM O BANCO
+    include_once("conexao.php"); //ESTÁ LINKANDO O ARQUIVO COM O BANCO
 
     // funções de validação reescritas de atividades anteriores em python
     $valido2 = true;
@@ -8,9 +8,18 @@
     // ID do cliente
     $id = $_SESSION['idCliente'];
 
+     // dados pessoais
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    $sobrenome = filter_input(INPUT_POST, 'sobrenome', FILTER_SANITIZE_STRING);
-    $data_nasc = filter_input(INPUT_POST, 'data_nasc');
+    $array = explode(' ', $nome, 2);
+    $nome = $array[0];
+ 
+     // checa se tem um sobrenome (evita mensagem de erro)
+    if (sizeof($array) == 2) {
+         $sobrenome = $array[1];
+    }else {
+         $sobrenome = "";
+    }
+  
     $logradouro = filter_input(INPUT_POST, 'logradouro', FILTER_SANITIZE_STRING);
     $celular = filter_input(INPUT_POST, 'celular', FILTER_SANITIZE_NUMBER_INT);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -28,14 +37,14 @@
     $id_endereco = $resultado['id_endereco'];
 
     // se algum desses estiver errado, cadastro inválido
-    if (strlen($cep) != 8 || strlen($estado) != 2 ||  strlen($numero) > 5  || (strlen($celular) != 11 && strlen($celular) != 13)) {
+    if (strlen($cep) != 8 || strlen($estado) != 2 ||  strlen($numero) > 5  || strlen($celular) != 11) {
         $valido2 = false;
     }
 
     if($valido2){
 
         // Inserindo dados na tabela CLIENTE
-        $insert1 = "UPDATE cliente SET nome = '$nome', sobrenome = '$sobrenome', data_nasc = '$data_nasc' WHERE idCliente = '$id'";
+        $insert1 = "UPDATE cliente SET nome = '$nome', sobrenome = '$sobrenome' WHERE idCliente = '$id'";
         $query1 = mysqli_query($conn, $insert1);
         if(mysqli_affected_rows($conn)){
             $v1 = 1;
@@ -64,15 +73,15 @@
 
         if(($v1 + $v2 + $v3) >= 1){
             $_SESSION["msg"] = "<p style='color: blue;'>Usuário Editado com sucesso.</p>";
-            header("Location: dados_cliente.php");
+            header("Location: ../editar_dados.php");
         }else {
             $_SESSION["msg"] = "<p style='color: red;'>Usuário não foi editado com sucesso.</p>";
-            header("Location: dados_cliente.php");
+            header("Location: ../editar_dados.php");
         }
 
     }else {
         $_SESSION["msg"] = "<p style='color: red;'>Usuário não foi editado com sucesso</p>";
-        header("Location: dados_cliente.php");
+        header("Location: ../editar_dados.php");
     }
 
     

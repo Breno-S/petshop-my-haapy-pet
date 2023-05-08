@@ -23,20 +23,16 @@
 
     // dados pessoais
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    $_SESSION['nome'] = $nome;
     $array = explode(' ', $nome, 2);
     $nome = $array[0];
-
-    
-    echo $_SESSION['nome'];
 
     // checa se tem um sobrenome (evita mensagem de erro)
     if (sizeof($array) == 2) {
         $sobrenome = $array[1];
-    }
-    else {
+    }else {
         $sobrenome = "";
     }
+    
     // retira formatação e valida cpf
     $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_NUMBER_INT);
     $_SESSION['cpf'] = $cpf;
@@ -82,23 +78,6 @@
     $datetime = new DateTime($myvalue);
     $data_cad = $datetime->format('Y-m-d');
 
-    ///// inserção da imagem do funcionario
-    if (isset($_FILES['imagecliente'])) {
-        // seleção do diretório
-        $dir = "../images/imgCliente/";
-        // pega dados da imagem (nome, nome temporário, tipo do arquivo)
-        $image = $_FILES['imagecliente'];
-        $tmp_name = $image['tmp_name'];
-        $name = basename($image["name"]);
-        $fileType = strtolower(pathinfo($name, PATHINFO_EXTENSION)); 
-        // cria um id único pro arquivo (evita arquivos com nome repetido se substituirem) e cria o caminho onde vai armazenar o arquivo
-        $name = uniqid();
-        $path = $dir . $name . "." . $fileType;
-        // caso seja png, jpg ou jpeg, move o arquivo para a pasta images/imgCliente com o nome dele
-        $allowTypes = array('jpg','png','jpeg');
-    }
-
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///// validação de dados
     // checa se já está cadastrado
@@ -106,17 +85,16 @@
     $checa_cadastrado = mysqli_query($conn, $chec_cadastrado);
     $cadastros = mysqli_fetch_assoc($checa_cadastrado);
 
-    // checa se endereço já está cadastrado
-    $chec_cadastrado_end = "SELECT COUNT(idEndereco) AS cadastros FROM endereco WHERE logradouro = '$logradouro' AND numero = $numero AND cep = '$cep';";
-    $checa_cadastrado_end = mysqli_query($conn, $chec_cadastrado_end);
-    $cadastros_end = mysqli_fetch_assoc($checa_cadastrado_end);
+    $chec_rg = "SELECT COUNT(idCliente) AS rg FROM cliente WHERE rg = '$rg'";
+    $checa_rg = mysqli_query($conn, $chec_rg);
+    $rgcheck = mysqli_fetch_assoc($checa_rg);
 
     // se algum desses estiver errado, cadastro inválido
     if (strlen($cep) != 8 || strlen($numero) > 5  || (strlen($celular) != 11 && strlen($celular) != 13)) {
         $valido2 = false;
     }
     // caso tudo esteja válido, cadastra
-    if ($valido && $valido2 && $rgvalido && $cadastros['cadastros'] == 0 && in_array($fileType, $allowTypes) && $image['size'] <= 2097152) {
+    if ($valido && $valido2 && $rgvalido && $cadastros['cadastros'] == 0 && $rgcheck['rg'] == 0) {
         // inserção dados endereço (caso não exista o mesmo cadastrado)
         if ($cadastros_end['cadastros'] == 0) {
             $result_cadastro_end = "INSERT INTO endereco (cep, estado, municipio, bairro, logradouro, numero) VALUES ('$cep', '$estado', '$municipio', '$bairro', '$logradouro', $numero);";
@@ -138,7 +116,7 @@
         $id_cliente = $pega_id_cliente['idCliente'];
     
         // inserção dados cadastro
-        $result_cadastro_cad = "INSERT INTO cadastro_cliente (id_cliente, data_cad, email, celular, senha) VALUES ($id_cliente, '$data_cad', '$email', '$celular', '$senhaCrip');";
+        $result_cadastro_cad = "INSERT INTO cadastro_cliente (id_cliente, data_cad, email, celular, senha) VALUES ($id_cliente, NOW(), '$email', '$celular', '$senhaCrip');";
         $resultado_cadastro_cad = mysqli_query($conn, $result_cadastro_cad);
 
         // pega id do cadastro do cliente
@@ -146,32 +124,75 @@
         $pega_id_cad = mysqli_fetch_assoc($pega_cad);
         $id_cad = $pega_id_cad['idCadastro'];
 
-        //upload do caminho da imagem no banco upload da imagem em um diretório
-        move_uploaded_file($tmp_name, $path);
-        $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente(id_cadastro, dir_img_cliente, criado) VALUES ($id_cad , '$path', NOW());");
+        if (isset($_FILES['imagecliente'])) {
+            // seleção do diretório
+            $dir = "../images/imgCliente/";
+            // pega dados da imagem (nome, nome temporário, tipo do arquivo)
+            $image = $_FILES['imagecliente'];
+            $tmp_name = $image['tmp_name'];
+            $name = basename($image["name"]);
+            $fileType = strtolower(pathinfo($name, PATHINFO_EXTENSION)); 
+            // cria um id único pro arquivo (evita arquivos com nome repetido se substituirem) e cria o caminho onde vai armazenar o arquivo
+            $name = uniqid();
+            $path = $dir . $name . "." . $fileType;
+            // caso seja png, jpg ou jpeg, move o arquivo para a pasta images/imgCliente com o nome dele
+            $allowTypes = array('jpg','png','jpeg');
 
 
-        $_SESSION['msg'] = "<center><span style='color:blue;'>Cadastrado com Sucesso</span></center>";
-        
-        header('Location: ../login.php');
+            if(in_array($fileType, $allowTypes) && $image['size'] <= 2097152){
 
-    }
+                //upload do caminho da imagem no banco upload da imagem em um diretório
+                move_uploaded_file($tmp_name, $path);
+                $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente(id_cadastro, dir_img_cliente, criado) VALUES ($id_cad , '$path', NOW());");
 
+                // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
 
-    else {
-        if (!$valido || !$valido2 || !$rgvalido) {
+                $_SESSION['msg'] = "<center><span style='color:blue;'>Usuario cadastrado com sucesso!</span></center>";
+            }
+            else{
+                if($image['size'] > 2097152){   
+                    $_SESSION['msg'] = "<center><span style='color:blue;'>Usuario cadastrado. Tamanho de imagem não aceita. Máx 2MB.</span></center>";
+                } 
+                else {
+                    $_SESSION['msg'] = "<center><span style='color:blue;'>Usuario cadastrado. Nenhuma imagem foi salvada.</span></center>";         
+                }
+
+            }
+        }
+
+        if (!isset($_SESSION['idFuncionario'])) {
+            header('Location: ../login.php');
+        }else{
+            header('Location: ../cadastro_clientes.php');
+        }
+        $_SESSION['cls'] = "<script>localStorage.clear()</script>";
+
+    }else {
+        if (!$valido || !$valido2 || !$rgvalido || $rgcheck != 0 || $cadastros['cadastros'] != 0) {
             if(!$valido){
                 $_SESSION['msg'] = "<center><span style='color:red;'>Cpf Inválido</span></center>";
             }else if(!$valido2){
                 $_SESSION['msg'] = "<center><span style='color:red;'>Celular Inválido</span></center>";
             }else if(!$rgvalido){
                 $_SESSION['msg'] = "<center><span style='color:red;'>Rg Inválido</span></center>";
+            }else if($rgcheck['rg'] != 0){
+                $_SESSION['msg'] = "<center><span style='color:red;'>Rg já cadastrado</span></center>";
+            }else if($cadastros['cadastros'] != 0){
+                $_SESSION['msg'] = "<center><span style='color:red;'>Cpf já cadastrado</span></center>";
             }
-            header('Location: ../cadastro.php');
+            if (!isset($_SESSION['idFuncionario'])) {
+                header('Location: ../cadastro.php');
+            }else{
+                header('Location: ../cadastro_clientes.php');
+            }    
         }
         else {
             $_SESSION['msg'] = "<center><span style='color:red;'>Usuário já cadastrado</span></center>";
-            header('Location: ../cadastro.php');
+            if (!isset($_SESSION['idFuncionario'])) {
+                header('Location: ../cadastro.php');
+            }else{
+                header('Location: ../cadastro_clientes.php');
+            } 
         }
     }
 ?>

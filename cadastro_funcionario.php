@@ -1,10 +1,21 @@
+
 <?php
-session_start();
-?> 
+	include_once('php/conexao.php');
+
+	if(!isset($_SESSION)){
+		session_start();
+	}
+	if (!isset($_SESSION['idFuncionario']) && $_SESSION['cargo'] != 'Administrador') {
+		header('Location:login.php');
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<title>Cadastrar funcionário</title>
+	<title>Cadastrar Funcionários</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -36,320 +47,294 @@ session_start();
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/joao.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 <!--===============================================================================================-->
+
+<!-- Biblioteca de Animações CSS | START -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<!-- Biblioteca de Animações CSS | END -->
+
+<!-- Arquivos CSS | START -->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
+<link rel="stylesheet" href="./css/style.css" />
+<!-- Arquivos CSS | END -->
+
 </head>
 <body class="animsition">
 	
 	<!-- Header -->
 	<header>
-		<!-- Header desktop -->
-		<div class="container-menu-desktop">
-			<!-- Topbar -->
-			<div class="top-bar">
-				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
-						Frete grátis para pedidos padrão acima de R$50
-					</div>
-
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Ajuda & FAQs
-						</a>
-
-						<a href="checa_login.php" class="flex-c-m trans-04 p-lr-25">
-							Minha conta
-						</a>
-					</div>
+	<!-- Header desktop -->
+	<div class="container-menu-desktop">
+		<!-- Topbar -->
+		<div class="top-bar">
+			<div class="content-topbar flex-sb-m h-full container">
+				<div class="left-top-bar">
+					Frete grátis para pedidos padrão acima de R$50
 				</div>
-			</div>
 
-			<div class="wrap-menu-desktop">
-				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
-					<a href="#" class="logo">
-						<img src="images/icons/logo.png" alt="IMG-LOGO">
+				<div class="right-top-bar flex-w h-full">
+					<a href="ajuda.html" class="flex-c-m trans-04 p-lr-25">
+						Ajuda & FAQs
 					</a>
 
-					<!-- Menu desktop -->
-					<div class="menu-desktop">
-						<ul class="main-menu">
-							<li>
-								<a href="index.html">Home</a>
-							</li>
-			
-							<li>
-								<a href="sobre.html">Sobre</a>
-							</li>
-			
-							<li>
-								<a href="servicos.html">Serviços</a>
-							</li>
-			
-							<li>
-								<a href="agendamento.php">Agendamento</a>
-							</li>
-			
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-			
-							<li>
-								<a href="contato.html">Contato</a>
-							</li>
-						</ul>
-					</div>	
-
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
-							<i class="zmdi zmdi-favorite-outline"></i>
-						</a>
-					</div>
-				</nav>
-			</div>	
-		</div>
-
-		<!-- Header Mobile -->
-		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
-			<div class="logo-mobile">
-				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
-			</div>
-
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
-					<i class="zmdi zmdi-favorite-outline"></i>
-				</a>
-			</div>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
-		</div>
-
-
-		<!-- Menu Mobile -->
-		<div class="menu-mobile">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">
-						Frete grátis para pedidos padrão acima de R$50
-					</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Ajuda & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Minha Conta
-						</a>
-					</div>
-				</li>
-			</ul>
-
-			<ul class="main-menu-m">
-				<li>
-					<a href="index.html">Home</a>
-				</li>
-
-				<li>
-					<a href="sobre.html">Sobre</a>
-				</li>
-
-				<li>
-					<a href="servicos.html">Seriços</a>
-				</li>
-
-				<li>
-					<a href="carrinho.html">Carrinho</a>
-				</li>
-
-				<li>
-					<a href="blog.html">Blog</a>
-				</li>
-
-				<li>
-					<a href="contato.html">Contato</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- Modal Search -->
-		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Procurar...">
-				</form>
-			</div>
-		</div>
-	</header>
-
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Seu carrinho
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
+					<a href="php/checa_login.php" class="flex-c-m trans-04 p-lr-25">
+						Minha conta
+					</a>
 				</div>
 			</div>
-			
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
-						</div>
+		</div>
 
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $19.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
-				</ul>
+		<div class="wrap-menu-desktop">
+			<nav class="limiter-menu-desktop container">
 				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: $75.00
-					</div>
+				<!-- Logo desktop -->		
+				<a href="index.html" class="logo">
+					<img src="images/icons/logo.png" alt="IMG-LOGO">
+				</a>
 
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="carrinho.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Carrinho
-						</a>
-					</div>
+				<!-- Menu desktop -->
+				<div class="menu-desktop">
+					<ul class="main-menu">
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+
+						<li class="active-menu">
+							<a href="sobre.html">Sobre</a>
+						</li>
+
+						<li>
+							<a href="comprar.html">Comprar</a>
+						</li>
+
+						<li>
+							<a href="carrinho.html">Carrinho</a>
+						</li>
+
+						<li>
+							<a href="agendamento.php">Agendamento</a>
+						</li>
+
+
+						<li>
+							<a href="blog.html">Blog</a>
+						</li>
+
+						<li>
+							<a href="contato.html">Contato</a>
+						</li>
+					</ul>
+				</div>	
+
+			</nav>
+		</div>	
+	</div>
+
+	<!-- Header Mobile -->
+	<div class="wrap-header-mobile">
+		<!-- Logo moblie -->		
+		<div class="logo-mobile">
+			<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+		</div>
+
+		<!-- Icon header -->
+		<div class="wrap-icon-header flex-w flex-r-m m-r-15">
+			<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+				<i class="zmdi zmdi-search"></i>
+			</div>
+
+			<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="0">
+				<i class="zmdi zmdi-shopping-cart"></i>
+			</div>
+
+			<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+				<i class="zmdi zmdi-favorite-outline"></i>
+			</a>
+		</div>
+
+		<!-- Button show menu -->
+		<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</div>
+	</div>
+
+
+	<!-- Menu Mobile -->
+	<div class="menu-mobile">
+		<ul class="topbar-mobile">
+			<li>
+				<div class="left-top-bar">
+					Frete grátis para pedidos padrão acima de R$50
+				</div>
+			</li>
+
+			<li>
+				<div class="right-top-bar flex-w h-full">
+					<a href="ajuda.html" class="flex-c-m p-lr-10 trans-04">
+						Ajuda & FAQs
+					</a>
+
+					<a href="php/checa_login.php" class="flex-c-m p-lr-10 trans-04">
+						Minha Conta
+					</a>
+				</div>
+			</li>
+		</ul>
+
+		<ul class="main-menu-m">
+			<li class="active-menu">
+				<a href="index.html">Home</a>
+			</li>
+
+			<li>
+				<a href="sobre.html">Sobre</a>
+			</li>
+
+			<li>
+				<a href="comprar.html">Comprar</a>
+			</li>
+
+			<li>
+				<a href="carrinho.html">Carrinho</a>
+			</li>
+
+			<li>
+				<a href="agendamento.php">Agendamento</a>
+			</li>
+
+
+			<li>
+				<a href="blog.html">Blog</a>
+			</li>
+
+			<li>
+				<a href="contato.html">Contato</a>
+			</li>
+		</ul>
+	</div>
+
+</header>
+
+<!-- Cart -->
+<div class="wrap-header-cart js-panel-cart">
+	<div class="s-full js-hide-cart"></div>
+
+	<div class="header-cart flex-col-l p-l-65 p-r-25">
+		<div class="header-cart-title flex-w flex-sb-m p-b-8">
+			<span class="mtext-103 cl2">
+				Seu carrinho
+			</span>
+
+			<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+				<i class="zmdi zmdi-close"></i>
+			</div>
+		</div>
+		
+		
+			
+			<div class="w-full">
+				<div class="header-cart-total w-full p-tb-40">
+					Total: R$ 00.00
+				</div>
+
+				<div class="header-cart-buttons flex-w w-full">
+					<a href="carrinho.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						Carrinho
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
+</div><br><br><br>
+
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-120" style="background-image: url('images/bg-01.jpg');">
+	<h2 class="ltext-105 cl0 txt-center">
+		Cadastrar Funcionários
+	</h2>
+</section>	
+
+ <!-- ======= Header ======= -->
+<div class="wrapper d-flex align-items-stretch">
+	<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
+			<div class="custom-menu">
+				<button type="button" id="sidebarCollapse" class="btn btn-primary">
+			</button>
+		</div>
+
+		<div class="">
+			<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
+				<ul class="list-unstyled components mb-5">
+					<?php
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinário'){
+							echo '<li class="active">
+							<a href="horario.php"><span class="fa fa-clock-o mr-3"></span> Horários</a>
+							</li>';
+							echo '<li class="active">
+							<a href="ve_horarios_func.php"><span class="fa fa-user mr-3"></span> Atendimentos</a>
+							</li>';
+						}
+					?>
+					<li>
+						<a href="relatorio.php"><span class="fa fa-book mr-3"></span>Relatórios</a>
+					</li>
+					<li>
+						<a href="pesquisa.php"><span class="fa fa-search mr-3"></span>Pesquisa</a>
+					</li>
+					<?php
+
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretária' || $_SESSION['cargo'] == 'Administrador'){
+							echo '<li class="active">
+							<a href="cadastro_clientes.php"><span class="fa fa-user mr-3"></span> Cadastrar clientes</a>
+							</li>';
+							echo '<li class="active">
+							<a href="cadastro_pets.php"><span class="fa fa-user mr-3"></span> Cadastrar pets</a>
+							</li>';
+						}
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Administrador'){
+							echo '<li class="active">
+								<a href="cadastro_funcionario.php"><span class="fa fa-user mr-3"></span> Cadastrar funcionários</a>
+								</li>';
+
+						}
+
+						?>
+
+				</ul>
+
+				<div class="mb-5 px-4">
+					<a href="php/proc_logout.php" class="subscribe-form">
+						<h3 class="h6 mb-3">Sair</h3>
+					</a>
+				</div>
+		</div>
+
+	</nav><br><br><br>
 
 		
-
-	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg'); margin-top: 0%;">
-		<h2 class="ltext-105 cl0 txt-center">
-			Cadastrar Funcionário
-		</h2>
-	</section>	
-
-
-	 <!-- ======= Header ======= -->
-	 <header id="header" class="header d-flex align-items-center fixed-top">
-		<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-		  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-		  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-	
-		</div>
-	  </header><!-- End Header -->
-	  <!-- End Header -->
-	  
-	  <main id="main">
-	
-		<!-- ======= Breadcrumbs ======= -->
-		<div class="breadcrumbs">
-		  <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/banner_secundario.avif');">
-			<div class="container position-relative">
-			  <div class="row d-flex justify-content-center">
-			  </div>
-			</div>
-		  </div>
-		</div><!-- End Breadcrumbs -->
-		<br><br>
-	<body class="my-login-page">
-		<section class="h-100">
-			<div class="container h-100">
-				<?php 
-				if(isset($_SESSION['msg'])){
-					echo $_SESSION['msg'];
-					unset($_SESSION['msg']);
-				}					
-				?>
-				<div class="row justify-content-md-center h-100">
-					<div class="card-wrapper">
-						
-						<div class="card fat">
-							<div class="card-body">
-								
-								<form method="POST" action="proc_cad_funcionario.php" enctype="multipart/form-data" class="my-login-validation">
+		<div class="wrapper"><br><br>
+			
+			<section class="h-100">
+				<div class="container h-100">
+					<div class="row justify-content-md-center h-100">
+						<div class="card-wrapper">
+							
+							<div class="card fat">
+								<div class="card-body">
+									<?php
+										if(isset($_SESSION['msg_cad_func'])){
+											echo $_SESSION['msg_cad_func'];
+											unset($_SESSION['msg_cad_func']);
+											}					
+									?>
+								<form method="POST" action="php/proc_cad_funcionario.php" enctype="multipart/form-data" class="my-login-validation">
 									<div class="form-group">
 										<label for="nome">Nome do funcionário</label>
-										<input id="nome" type="text" class="form-control" name="nome" value="" required autofocus>
+										<input id="nome" type="text" class="form-control" name="nome" required autofocus>
 										<div class="invalid-feedback">
 											Nome completo válido
 										</div>
@@ -357,7 +342,7 @@ session_start();
 
 									<div class="form-group">
 										<label for="cpf">CPF do funcionário</label>
-										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus>
+										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 											CPF válido
 										</div>
@@ -376,7 +361,7 @@ session_start();
 											<select id="cargo" type="text" class="form-control" name="cargo" required data-eye>
 												<option value="">Selecione um cargo</option>
 												<option value="Veterinário">Veterinário</option>
-												<option value="Secretário">Secretário</option>
+												<option value="Secretária">Secretária</option>
 												<option value="Tosador">Tosador</option>
 											</select>
 										</label>
@@ -387,7 +372,7 @@ session_start();
 
 									<div class="form-group">
 										<label for="image">Foto do funcionário</label>
-										<input id="image" type="file" class="form-control" name="imagefunc" required data-eye>
+										<input id="image" type="file" class="form-control" name="imagefunc" data-eye>
 										<div class="invalid-feedback">
 											Imagem requerida
 										</div>
@@ -399,14 +384,15 @@ session_start();
 										</button>
 									</div>
 								</form>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div><br><br>
-	
-		</section>
-	
+				</div><br><br>
+			</section>
+		</div>
+	</div>
+		
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
@@ -512,7 +498,7 @@ session_start();
 
 						<div class="p-t-18">
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Increva-se
+								Inscreva-se
 							</button>
 						</div>
 					</form>
@@ -560,7 +546,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 	</div>
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->	
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -595,13 +582,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 			})
 		});
 	</script>
-<!--===============================================================================================-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-	<script src="js/map-custom.js"></script>
 
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="js/cep.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+	
 
 </body>
 </html>

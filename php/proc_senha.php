@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include_once("petshop.php");
+    include_once("conexao.php");
 
     // Inputs da Senha Atual, e dois inputs de nova senha
     $senhaAtual = filter_input(INPUT_POST, 'senhaAtual');
@@ -24,20 +24,28 @@
             $query2 = "UPDATE cadastro_cliente SET senha = '$novaSenha1' WHERE idCadastro = '$id'";
             $result2 = mysqli_query($conn, $query2);
             if(mysqli_affected_rows($conn)){
-                $_SESSION['msg'] = "<p style = 'color:green;'>SENHA EDITADA COM SUCESSO</p>";
-                header("Location: editar_senha.php");
+            
+                $_SESSION['msg'] = "<p style = 'color:blue;'>SENHA EDITADA COM SUCESSO.</p>";
+                header("Location: ../senha_seguranca.php");
             }else {
-                $_SESSION['msg'] = 'Senha Incorreta';
-                header("Location: editar_senha.php");
+                $_SESSION['msg'] =  "<p style = 'color:red;'>SENHA INCORRETA.</p>";
+                header("Location: ../senha_seguranca.php");
             }
+            // if (strlen($novaSenha1) >= 7 && preg_match('/[A-Za-z]/', $novaSenha1) && preg_match('/[!@#$%^&*()\-_=+{};:,<.>§~]/', $novaSenha1) && preg_match('/[0-9]/', $novaSenha1)) {
+                
+            // }else{
+            //     $_SESSION['msg'] = "<p style = 'color:red;'>SENHA NÃO ATENDE OS REQUISITOS MINIMOS.</p>";
+            //     header("Location: ../senha_seguranca.php");
+            // }
         } else{
-            $_SESSION['msg'] = 'Senha Incorreta';
-            header("Location: editar_senha.php");
+            $_SESSION['msg'] =  "<p style = 'color:red;'>NOVA SENHA NÃO CONFERE.</p>";
+            header("Location: ../senha_seguranca.php");
         }
     } else {
-        $_SESSION['msg'] = 'senha Incorreta';
-        header('Location: editar_senha.php');
+        $_SESSION['msg'] =  "<p style = 'color:red;'>SENHA INCORRETA.</p>";
+        header('Location: ../senha_seguranca.php');
     }
 
 
 ?>
+

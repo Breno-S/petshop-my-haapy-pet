@@ -1,1 +1,0 @@
-# petshop-my-haapy-pet

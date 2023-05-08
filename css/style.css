@@ -4,7 +4,6 @@ body {
 
 .wrapper {
 	display: grid;
-	place-items: center;
 	background-color: #012348;
 	
 }

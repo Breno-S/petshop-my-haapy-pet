@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/05/2023 às 15:26
+-- Tempo de geração: 08/05/2023 às 21:41
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "-03:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -75,7 +75,15 @@ INSERT INTO `cadastro_cliente` (`idCadastro`, `id_cliente`, `data_cad`, `email`,
 (2, 2, '2023-05-05 13:58:37', 'silva_robson@gmail.com', '11987654321', '202cb962ac59075b964b07152d234b70'),
 (3, 3, '2023-05-06 18:26:19', 'mare.araujo@gmail.com', '11987645321', '202cb962ac59075b964b07152d234b70'),
 (4, 4, '2023-05-08 09:18:10', 'cmj@gmail.com', '11930284521', '202cb962ac59075b964b07152d234b70'),
-(5, 5, '2023-05-08 09:20:18', 'ant@outlook.com', '11940283741', '202cb962ac59075b964b07152d234b70');
+(5, 5, '2023-05-08 09:20:18', 'ant@outlook.com', '11940283741', '202cb962ac59075b964b07152d234b70'),
+(6, 6, '2023-05-08 14:47:32', 'jr@gmail.com', '11987654321', '202cb962ac59075b964b07152d234b70'),
+(7, 7, '2023-05-08 15:40:44', 'jose-moreira89@fingrs.com.br', '91998661539', '202cb962ac59075b964b07152d234b70'),
+(8, 8, '2023-05-08 15:41:32', 'catarina-assis92@tintasvalecores.com.br', '89996821839', '202cb962ac59075b964b07152d234b70'),
+(9, 9, '2023-05-08 15:42:27', 'sebastiao-carvalho93@bcconsult.com.br', '86987497882', '202cb962ac59075b964b07152d234b70'),
+(10, 10, '2023-05-08 15:43:36', 'catarinamarianefreitas@iclud.com', '86987497882', '202cb962ac59075b964b07152d234b70'),
+(11, 11, '2023-05-08 15:44:18', 'otaviolorenzobernardes@realweb.com.br', '31981501745', '202cb962ac59075b964b07152d234b70'),
+(12, 12, '2023-05-08 16:10:12', 'victor-figueiredo78@ogn.com.br', '98997834420', '202cb962ac59075b964b07152d234b70'),
+(13, 13, '2023-05-08 16:11:04', 'bernardo.renato.goncalves@a-qualitybrasil.com.br', '98985826925', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -105,8 +113,8 @@ INSERT INTO `cadastro_pet` (`idPet`, `id_cliente`, `nome_pet`, `raca`, `sexo_pet
 (3, 1, 'Bolha', 'Cachorro', 'Macho', 'Preto', '2021-04-01', 12.00, '2023-04-29 17:11:52'),
 (4, 1, 'Bolinha', 'Cachorro', 'Fêmea', 'Preto', '2021-04-01', 12.00, '2023-04-29 17:11:52'),
 (5, 1, 'Pimpão', 'Gato', 'Macho', 'Laranja', '2022-02-01', 4.00, '2023-05-06 19:34:36'),
-(6, 2, 'Dfgdfj', 'Cachorro', 'Fêmea', 'Branco', '2023-03-07', 12.00, '2023-05-08 01:44:43'),
-(7, 2, 'Aaaaa', 'Gato', 'Macho', 'Marrom', '2023-05-08', 1.00, '2023-05-08 01:45:31'),
+(6, 2, 'Maia', 'Cachorro', 'Fêmea', 'Branco', '2023-03-07', 12.00, '2023-05-08 01:44:43'),
+(7, 2, 'Jade', 'Gato', 'Macho', 'Marrom', '2023-05-08', 1.00, '2023-05-08 01:45:31'),
 (8, 3, 'Pipoca', 'Gato', 'Fêmea', 'Branco', '2019-05-09', 4.00, '2023-05-08 09:14:12'),
 (9, 5, 'Koiso', 'Pássaro', 'Macho', 'Preto', '2022-06-14', 5.00, '2023-05-08 09:21:55'),
 (10, 5, 'Lopi', 'Cachorro', 'Macho', 'Marrom', '2019-02-28', 20.00, '2023-05-08 09:24:03'),
@@ -153,7 +161,15 @@ INSERT INTO `cliente` (`idCliente`, `id_endereco`, `nome`, `sobrenome`, `cpf`, `
 (2, 2, 'Robson', 'Silva', '19615500089', '267181024', '0000-00-00'),
 (3, 3, 'Marcos', 'Renato de Araújo', '50072096004', '345860111', '2023-05-03'),
 (4, 4, 'Carla', 'Maria de Jesus', '29255250086', '256269610', '1996-11-06'),
-(5, 5, 'Antonieta', 'Barros', '69048713005', '136462169', '2001-06-06');
+(5, 5, 'Antonieta', 'Barros Batista', '69048713005', '136462169', '2001-06-06'),
+(6, 6, 'Joana', 'Rodrigues', '55750058018', '259326951', '2023-05-01'),
+(7, 7, 'José', 'Manuel Leonardo Moreira', '00575448245', '163478764', '2000-08-20'),
+(8, 8, 'Catarina', 'Vanessa Assis', '15257584549', '116246054', '2010-09-20'),
+(9, 9, 'Sebastião', 'Henrique Carvalho', '28732962592', '380915194', '1990-09-10'),
+(10, 10, 'Catarina', 'Mariane Freitas', '86928252553', '298310429', '1990-09-10'),
+(11, 11, 'Otávio', 'Lorenzo Bernardes', '16336530051', '195170271', '2012-09-20'),
+(12, 12, 'Victor', 'Geraldo Raimundo Figueiredo', '53752861142', '412267846', '1998-09-20'),
+(13, 13, 'Bernardo', 'Renato Manoel Gonçalves', '78060647610', '116064626', '1997-01-20');
 
 -- --------------------------------------------------------
 
@@ -180,7 +196,15 @@ INSERT INTO `endereco` (`idEndereco`, `estado`, `municipio`, `bairro`, `logradou
 (2, 'SP', 'São Paulo', 'Jardim Dom Bosco', 'Rua Bento Branco de Andrade Filho', 123, '04757000'),
 (3, 'SP', 'Diadema', 'Canhema', 'Rua Guatemala', 52, '09941140'),
 (4, 'SP', 'São Paulo', 'Parque Lagoa Rica', 'Estrada da Lagoa Rica', 13, '04893140'),
-(5, 'SP', 'São Paulo', 'Jardim das Fontes', 'Rua Mabel Normando', 23, '04894450');
+(5, 'SP', 'São Paulo', 'Jardim das Fontes', 'Rua Mabel Normando', 23, '04894450'),
+(6, 'SP', 'São Paulo', 'Jardim dos Álamos', 'Rua José Vila Busquets', 123, '04883090'),
+(7, 'PA', 'Belém', 'São Clemente', 'Passagem São Jorge', 123, '66643165'),
+(8, 'PI', 'Picos', 'Catavento', 'Rua Nair Barros Dantas', 45, '64607225'),
+(9, 'PI', 'Teresina', 'Mocambinho', 'Rua Cantor Hélio da Graça', 42, '64010813'),
+(10, 'AM', 'Manaus', 'Petrópolis', 'Beco Senador Fábio Lucena', 41, '69067234'),
+(11, 'MG', 'Betim', 'Nova Baden', 'Rua Javaneza', 423, '32676162'),
+(12, 'MA', 'Imperatriz', 'Bacuri', 'Rua Beta', 4542, '65916100'),
+(13, 'MA', 'São Luís', 'Calhau', 'Rua Quarenta', 674, '65071570');
 
 -- --------------------------------------------------------
 
@@ -217,7 +241,8 @@ INSERT INTO `funcionarios` (`idFuncionario`, `cpf_funcionario`, `nome_funcionari
 (3, '27481500070', 'Mika Muramasa', '202cb962ac59075b964b07152d234b70', 'Veterinário'),
 (5, '57132702033', 'Camilo Malandro', '202cb962ac59075b964b07152d234b70', 'Administrador'),
 (6, '77484551040', 'Amando Batista', '202cb962ac59075b964b07152d234b70', 'Secretária'),
-(7, '66959460000', 'Karla Jucelina', '202cb962ac59075b964b07152d234b70', 'Veterinário');
+(7, '66959460000', 'Karla Jucelina', '202cb962ac59075b964b07152d234b70', 'Veterinário'),
+(8, '61753182000', 'Carlos Marinho', '202cb962ac59075b964b07152d234b70', 'Tosador');
 
 -- --------------------------------------------------------
 
@@ -252,7 +277,8 @@ INSERT INTO `horarios_disponiveis` (`idHorario`, `id_funcionario`, `data`, `hora
 (11, 7, '2023-05-30', '18:00:00', 1, 'Consulta'),
 (12, 2, '2023-05-20', '10:05:00', 1, 'Banho'),
 (13, 2, '2023-05-15', '08:25:00', 0, 'Tosa'),
-(14, 2, '2023-05-31', '00:10:00', 1, 'Hotel');
+(14, 2, '2023-05-31', '00:10:00', 1, 'Hotel'),
+(15, 2, '2023-05-30', '18:00:00', 0, 'Banho');
 
 -- --------------------------------------------------------
 
@@ -272,9 +298,9 @@ CREATE TABLE `imagem_cliente` (
 --
 
 INSERT INTO `imagem_cliente` (`idImgCli`, `id_cadastro`, `dir_img_cliente`, `criado`) VALUES
-(1, 3, '../images/imgCliente/6456c5fb20c78.png', '2023-05-06 18:26:19'),
-(2, 4, '../images/imgCliente/6458e8826f4c4.png', '2023-05-08 09:18:10'),
-(3, 5, '../images/imgCliente/6458e9027a3a2.jpg', '2023-05-08 09:20:18');
+(1, 3, 'images/imgCliente/6456c5fb20c78.png', '2023-05-06 18:26:19'),
+(2, 4, 'images/imgCliente/6458e8826f4c4.png', '2023-05-08 09:18:10'),
+(3, 5, 'images/imgCliente/6458e9027a3a2.jpg', '2023-05-08 09:20:18');
 
 -- --------------------------------------------------------
 
@@ -307,7 +333,7 @@ CREATE TABLE `imagem_pet` (
 --
 
 INSERT INTO `imagem_pet` (`idImgPet`, `id_pet`, `dir_img_pet`, `criado`) VALUES
-(1, 5, 'images/imgPet/6456d5fc0cd3f.png', '2023-05-06 19:34:36'),
+(1, 5, 'images/imgPet/6456d5fc0cd3f.jpg', '2023-05-06 19:34:36'),
 (2, 6, 'images/imgPet/64587e3b5b038.jpg', '2023-05-08 01:44:43'),
 (3, 7, 'images/imgPet/64587e6bf1045.jpg', '2023-05-08 01:45:31'),
 (4, 8, 'images/imgPet/6458e794dcf8c.jpg', '2023-05-08 09:14:12'),
@@ -522,7 +548,7 @@ ALTER TABLE `agendamento`
 -- AUTO_INCREMENT de tabela `cadastro_cliente`
 --
 ALTER TABLE `cadastro_cliente`
-  MODIFY `idCadastro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idCadastro` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `cadastro_pet`
@@ -540,13 +566,13 @@ ALTER TABLE `cartao`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `idEndereco` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idEndereco` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `estoque`
@@ -558,13 +584,13 @@ ALTER TABLE `estoque`
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `idFuncionario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idFuncionario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `horarios_disponiveis`
 --
 ALTER TABLE `horarios_disponiveis`
-  MODIFY `idHorario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idHorario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `imagem_cliente`

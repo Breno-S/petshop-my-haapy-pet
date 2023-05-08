@@ -615,18 +615,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 					document.getElementById("servico").innerHTML= 
 					`
 					<option value=''>Escolha o serviço</option>
-					<option value="consulta">Consulta</option>
-					<option value="cirurgia">Cirurgia</option>
-					<option value="especialidade">Especialidade</option>
+					<option value="Consulta">Consulta</option>
+					<option value="Cirurgia">Cirurgia</option>
+					<option value="Especialidade">Especialidade</option>
 					`
 				}
 				else if (cargo[0] == "Tosador") {
 					document.getElementById("servico").innerHTML= 
 					`
 					<option value=''>Escolha o serviço</option>
-					<option value="banho">Banho</option>
-					<option value="tosa">Tosa</option>
-					<option value="hotel">Hotel</option>
+					<option value="Banho">Banho</option>
+					<option value="Tosa">Tosa</option>
+					<option value="Hotel">Hotel</option>
 					`
 				}
 			}

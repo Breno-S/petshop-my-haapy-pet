@@ -19,6 +19,7 @@
     $cliente = $_SESSION['idCliente'];
     $servico = $_POST['servico'];
     $pet = $_POST['animal'];
+	
 
     $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = ". intval($funcionario[1]));
     $pega_funcionarios = mysqli_fetch_assoc($funcionarios);

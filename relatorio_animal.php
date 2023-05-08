@@ -323,6 +323,10 @@
 							
 							<div class="card fat">
 								<div class="card-body">
+									<?php if (isset($_SESSION['msg'])) {
+										echo($_SESSION['msg']);
+										unset($_SESSION['msg']);
+									} ?>
 									<form method="POST" action="php/proc_relatorio_animal.php" class="my-login-validation" >
 										<div class="container">
 											<div class="row">

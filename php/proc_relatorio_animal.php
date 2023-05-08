@@ -16,8 +16,8 @@
     $id = $row_usuario['idCliente'];
 
     if($row_usuario == 0){
-        $_SESSION['msg'] = "<p style = 'color:red;'>PET NÃO ENCONTRADO</p>";
-                header("Location: relatorio_animal.php");
+        $_SESSION['msg'] = "<p style = 'color:red;'>Cliente não encontrado</p>";
+                header("Location: ../relatorio_animal.php");
     }else{
         //busca a data de cadastro do pet
         $result_usuario1 = "SELECT * FROM cadastro_pet WHERE id_cliente = '$id' and nome_pet LIKE '$nome'";
@@ -26,12 +26,16 @@
         
 
         //conta quantos atendimentos esse animal fez
+        if (!isset($row_usuario1['idPet'])) {
+            $_SESSION['msg'] = "<p style = 'color:red;'>Animal não encontrado</p>";
+            header('Location: ../relatorio_animal.php');
+        }
         $result_usuario2 = "SELECT COUNT(idAgendamento) as quantidade FROM agendamento WHERE id_animal =". $row_usuario1['idPet'];
         $resultado_usuario2 = mysqli_query($conn, $result_usuario2);
         $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 
         if($row_usuario1 == 0 or $row_usuario2 == 0 ){
-            $_SESSION['msg'] = "<p style = 'color:red;'>Não encontrado</p>";
+            $_SESSION['msg'] = "<p style = 'color:red;'>Animal não encontrado</p>";
                 
         }else{
             echo "Data de Cadastro do Pet: ".$row_usuario1['data_cad_pet'];

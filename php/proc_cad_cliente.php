@@ -127,6 +127,7 @@
         if (isset($_FILES['imagecliente'])) {
             // seleção do diretório
             $dir = "../images/imgCliente/";
+            $dirBcd = "images/imgCliente/";
             // pega dados da imagem (nome, nome temporário, tipo do arquivo)
             $image = $_FILES['imagecliente'];
             $tmp_name = $image['tmp_name'];
@@ -135,6 +136,7 @@
             // cria um id único pro arquivo (evita arquivos com nome repetido se substituirem) e cria o caminho onde vai armazenar o arquivo
             $name = uniqid();
             $path = $dir . $name . "." . $fileType;
+            $pathBcd = $dirBcd . $name . "." . $fileType;
             // caso seja png, jpg ou jpeg, move o arquivo para a pasta images/imgCliente com o nome dele
             $allowTypes = array('jpg','png','jpeg');
 
@@ -143,7 +145,7 @@
 
                 //upload do caminho da imagem no banco upload da imagem em um diretório
                 move_uploaded_file($tmp_name, $path);
-                $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente(id_cadastro, dir_img_cliente, criado) VALUES ($id_cad , '$path', NOW());");
+                $insereImagem = mysqli_query($conn, "INSERT INTO imagem_cliente(id_cadastro, dir_img_cliente, criado) VALUES ($id_cad , '$pathBcd', NOW());");
 
                 // inserção de imagem por @zerobugs-tutorial em https://youtu.be/ae83c8Zpoxo (acesso em 13/04/2023)
 

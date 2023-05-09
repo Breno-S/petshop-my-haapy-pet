@@ -64,6 +64,9 @@
 <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
 <link rel="stylesheet" href="./css/style.css" />
 <!-- Arquivos CSS | END -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.collapse/1.6.0/jquery.collapse.js"></script>
+
 
 </head>
 <body class="animsition">
@@ -340,14 +343,15 @@
 
 				echo "<h2 id= agend>Agendamentos Hoje:</h2><br>";
 				echo "<table class='table-responsive'>
-				
-					<tr>
-						<th>Data</th>
-						<th>Horário</th>
-						<th>Serviço</th>
-						<th>Cliente</th>
-						<th>Animal</th>
-					</tr>
+					<thead>
+						<tr>
+							<th>Data</th>
+							<th>Horário</th>
+							<th>Serviço</th>
+							<th>Cliente</th>
+							<th>Animal</th>
+						</tr>
+					</thead>	
 				";
 				while ($row_hoje = mysqli_fetch_assoc($pega_hora_hoj)) {
 					$data_hoje = date_create($row_hoje['data']);
@@ -361,6 +365,7 @@
 						$cliente_agend_hoje = mysqli_fetch_assoc($cliente_agend_hoj);
 						// echo ("<p>Cliente ".$cliente_agend_hoje['nome']." agendou ".$row_hoje['servico']." para ".$pet_agend_hoje['nome_pet']." às ".$row_hoje['horario']."</p>");
 						echo('
+						<tbody>
 							<tr>
 								<td>'. $data_hoje .'</td>
 								<td>'. $row_hoje["horario"] .'</td>
@@ -368,16 +373,20 @@
 								<td>'. $cliente_agend_hoje["nome"] .'</td>
 								<td>'. $pet_agend_hoje["nome_pet"] .'</td>
 							</tr>
+						</tbody>
 							');
 					}
 				};
-				echo "</table><br><br>";
+				echo "</table>
+				<br><br>";
 				echo "<hr>";
+
+
 
 
 				echo "<h2 id= agend>Agendamentos Futuros:</h2><br>";
 				echo "<table class='table-responsive'>
-				
+				<thead>
 					<tr>
 						<th>Data</th>
 						<th>Horário</th>
@@ -385,6 +394,7 @@
 						<th>Cliente</th>
 						<th>Animal</th>
 					</tr>
+				</thead>
 				";
 				while ($row_depois = mysqli_fetch_assoc($pega_hora_dep)) {
 					$data_depois = date_create($row_depois['data']);
@@ -398,6 +408,7 @@
 						$cliente_agend_depois = mysqli_fetch_assoc($cliente_agend_dep);
 						// echo "<p>Cliente ".$cliente_agend_depois['nome']." agendou ".$row_depois['servico']." para ".$pet_agend_depois['nome_pet']." em ".$data_depois." às ".$row_depois['horario']."</p>";
 						echo('
+						<tbody>
 							<tr>
 								<td>'. $data_depois .'</td>
 								<td>'. $row_depois["horario"] .'</td>
@@ -405,14 +416,20 @@
 								<td>'. $cliente_agend_depois["nome"] .'</td>
 								<td>'. $pet_agend_depois["nome_pet"] .'</td>
 							</tr>
+						</tbody>
 							');
 					}
 				}
-				echo "</table><br><br>";
+				echo "</table>
+				<br><br>";
+				echo "<hr>";
+
+
+
 
 					echo "<h2 id= agend>Agendamentos Passados:</h2><br>";
 					echo "<table class='table-responsive'>
-					
+					<thead>
 						<tr>
 							<th>Data</th>
 							<th>Horário</th>
@@ -420,6 +437,7 @@
 							<th>Cliente</th>
 							<th>Animal</th>
 						</tr>
+					</thead>
 					";
 					
 					while ($row_antes = mysqli_fetch_assoc($pega_hora_ant)) {
@@ -434,6 +452,7 @@
 							$cliente_agend_antes = mysqli_fetch_assoc($cliente_agend_ant);
 							// echo ("<p>Cliente ".$cliente_agend_antes['nome']." agendou ".$row_antes['servico']." para ".$pet_agend_antes['nome_pet']." em ".$data_antes." às ".$row_antes['horario']."</p>");
 							echo('
+							<tbody>
 								<tr>
 									<td>'. $data_antes .'</td>
 									<td>'. $row_antes["horario"] .'</td>
@@ -441,12 +460,12 @@
 									<td>'. $cliente_agend_antes["nome"] .'</td>
 									<td>'. $pet_agend_antes["nome_pet"] .'</td>
 								</tr>
+							</tbody>
 								');
 						}
 					};
 					echo "</table>
 					<br><br>";
-					echo "<hr>";
 
 				echo("</div>");
 				?>
@@ -641,11 +660,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 			})
 		});
 	</script>
+
+
+
+<!-- Aqui é pra comprimir e aumentar -->
+</script>
+
+
 <!--===============================================================================================-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
 	<script src="js/map-custom.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.collapse/1.6.0/jquery.collapse.js"></script>
+</head>
+
 
 </body>
 </html>

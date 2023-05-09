@@ -344,14 +344,15 @@
 				echo "<h2 id= agend>Agendamentos Hoje:</h2><br>";
 				echo "<table class='table-responsive'>
 					<thead>
-						<tr>
+						<tr class='accordion'>
 							<th>Data</th>
 							<th>Horário</th>
 							<th>Serviço</th>
 							<th>Cliente</th>
 							<th>Animal</th>
+							<th class='toggle-arrow'>▼</th>
 						</tr>
-					</thead>	
+				  </thead>	
 				";
 				while ($row_hoje = mysqli_fetch_assoc($pega_hora_hoj)) {
 					$data_hoje = date_create($row_hoje['data']);
@@ -365,7 +366,7 @@
 						$cliente_agend_hoje = mysqli_fetch_assoc($cliente_agend_hoj);
 						// echo ("<p>Cliente ".$cliente_agend_hoje['nome']." agendou ".$row_hoje['servico']." para ".$pet_agend_hoje['nome_pet']." às ".$row_hoje['horario']."</p>");
 						echo('
-						<tbody>
+						<tbody class="visible">
 							<tr>
 								<td>'. $data_hoje .'</td>
 								<td>'. $row_hoje["horario"] .'</td>
@@ -386,15 +387,16 @@
 
 				echo "<h2 id= agend>Agendamentos Futuros:</h2><br>";
 				echo "<table class='table-responsive'>
-				<thead>
-					<tr>
-						<th>Data</th>
-						<th>Horário</th>
-						<th>Serviço</th>
-						<th>Cliente</th>
-						<th>Animal</th>
-					</tr>
-				</thead>
+					<thead>
+						<tr class='accordion'>
+							<th>Data</th>
+							<th>Horário</th>
+							<th>Serviço</th>
+							<th>Cliente</th>
+							<th>Animal</th>
+							<th class='toggle-arrow'>▼</th>
+						</tr>
+				  	</thead>	
 				";
 				while ($row_depois = mysqli_fetch_assoc($pega_hora_dep)) {
 					$data_depois = date_create($row_depois['data']);
@@ -408,7 +410,7 @@
 						$cliente_agend_depois = mysqli_fetch_assoc($cliente_agend_dep);
 						// echo "<p>Cliente ".$cliente_agend_depois['nome']." agendou ".$row_depois['servico']." para ".$pet_agend_depois['nome_pet']." em ".$data_depois." às ".$row_depois['horario']."</p>";
 						echo('
-						<tbody>
+						<tbody class="visible">
 							<tr>
 								<td>'. $data_depois .'</td>
 								<td>'. $row_depois["horario"] .'</td>
@@ -429,16 +431,20 @@
 
 					echo "<h2 id= agend>Agendamentos Passados:</h2><br>";
 					echo "<table class='table-responsive'>
-					<thead>
-						<tr>
-							<th>Data</th>
-							<th>Horário</th>
-							<th>Serviço</th>
-							<th>Cliente</th>
-							<th>Animal</th>
-						</tr>
-					</thead>
+						<thead>
+							<tr class='accordion'>
+								<th>Data</th>
+								<th>Horário</th>
+								<th>Serviço</th>
+								<th>Cliente</th>
+								<th>Animal</th>
+								<th class='toggle-arrow'>▼</th>
+							</tr>
+						</thead>	
 					";
+					
+					
+
 					
 					while ($row_antes = mysqli_fetch_assoc($pega_hora_ant)) {
 						$data_antes = date_create($row_antes['data']);
@@ -452,7 +458,7 @@
 							$cliente_agend_antes = mysqli_fetch_assoc($cliente_agend_ant);
 							// echo ("<p>Cliente ".$cliente_agend_antes['nome']." agendou ".$row_antes['servico']." para ".$pet_agend_antes['nome_pet']." em ".$data_antes." às ".$row_antes['horario']."</p>");
 							echo('
-							<tbody>
+							<tbody class="visible">
 								<tr>
 									<td>'. $data_antes .'</td>
 									<td>'. $row_antes["horario"] .'</td>
@@ -664,7 +670,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 
 
 <!-- Aqui é pra comprimir e aumentar -->
+<script>
+    // seleciona todos os botões toggle-arrow
+    const toggleButtons = document.querySelectorAll(".toggle-arrow");
+    
+    // para cada botão, adiciona um ouvinte de evento para cliques
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            // seleciona o tbody correspondente usando o data-table personalizado
+            const tableBody = this.parentElement.parentElement.nextElementSibling;
+            
+            // alterna a classe .hidden no tbody para mostrar / ocultar
+            if (tableBody.classList.contains("hidden")) {
+                tableBody.classList.remove("hidden");
+                tableBody.classList.add("visible");
+            } else {
+                tableBody.classList.remove("visible");
+                tableBody.classList.add("hidden");
+            }
+        });
+    });
 </script>
+
 
 
 <!--===============================================================================================-->

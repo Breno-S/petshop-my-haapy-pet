@@ -18936,68 +18936,55 @@ input[type=radio]:not(:checked) {
 	background-color: #3e8e41;
 }
 
-/* ------------- Lista de agendados ------------- */
 
 
+
+
+
+
+/* ------------- Lista de agendados (ve_horarios_func.php)------------- */
 
 
 #div {
-
-	background-color: #85B4E7;
-
+	background-color: #2d89b9;
 	width: 50%;
-
 	border-radius: 10px;
-
-
-
-
+	background-size: cover;
 }
 
 table {
-
 	border-collapse: collapse;
-
 	text-align: center;
-
 	overflow-x: auto;
-
 	max-width: 100%;
-
 	margin: 0 auto;
-
 	padding-left: 5%;
-
+	table-layout: fixed;
 }
 
 
 
 
 td {
-
 	text-align: center;
-
 	padding: 10px;
-
 	border: 2px solid #ddd;
-
 	background-color: #f2f2f2;
-
+	text-align: left;
+    vertical-align: middle;
 }
 
 
 
 
 th {
-
 	text-align: center;
-
 	padding: 10px;
-
 	border: 2px solid #ddd;
-
 	background-color: #cccccc;
-
+	position: sticky;
+    top: 0;
+	z-index: 10;
 }
 
 
@@ -19005,18 +18992,16 @@ th {
 
 
 #agend {
-
 	font-weight: 700;
-
 	padding-left: 5%;
-
+	font-size: 200%;
+	color: #fff;
 }
 
 
 
 
 #finalizar {
-
 	background-color: #54be57;
 
 }
@@ -19029,23 +19014,16 @@ th {
 @media (min-width: 901px)and (max-width: 1060px) {
 
 	#div {
-
 		width: 50%;
-
 		margin-left: 30%;
 
 	}
 
 	table {
-
 		border-collapse: collapse;
-
 		text-align: center;
-
 		overflow-x: auto;
-
 		max-width: 100%;
-
 		margin: 0 auto;
 
 	}
@@ -19055,23 +19033,16 @@ th {
 @media (min-width:800px) and (max-width: 900px) {
 
 	#div {
-
 		width: 53%;
-
 		margin-left: 30%;
 
 	}
 
 	table {
-
 		border-collapse: collapse;
-
 		text-align: center;
-
 		overflow-x: auto;
-
 		max-width: 100%;
-
 		margin: 0 auto;
 
 	}
@@ -19081,23 +19052,16 @@ th {
 @media (min-width:680px) and (max-width: 799px) {
 
 	#div {
-
 		width: 60%;
-
 		margin-left: 25%;
 
 	}
 
 	table {
-
 		border-collapse: collapse;
-
 		text-align: center;
-
 		overflow-x: auto;
-
 		max-width: 100%;
-
 		margin: 0 auto;
 
 	}
@@ -19107,23 +19071,16 @@ th {
 @media (min-width:550px) and (max-width: 679px) {
 
 	#div {
-
 		width: 65%;
-
 		margin-left: 20%;
 
 	}
 
 	table {
-
 		border-collapse: collapse;
-
 		text-align: center;
-
 		overflow-x: auto;
-
 		max-width: 100%;
-
 		margin: 0 auto;
 
 	}
@@ -19133,28 +19090,55 @@ th {
 @media (min-width:400px) and (max-width: 549px) {
 
 	#div {
-
 		width: 85%;
-
 		margin-left: 13%;
 
 	}
 
 	table {
-
 		border-collapse: collapse;
-
 		text-align: center;
-
 		overflow-x: auto;
-
 		max-width: 100%;
-
 		margin: 0 auto;
 
 	}
 
 }
+ 
+.toggle-arrow {
+	cursor: pointer;
+  }
+  
+.toggle-arrow::before {
+	content: '';
+	display: inline-block;
+	margin-right: 5px;
+	width: 8px;
+	height: 8px;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	transform: rotate(45deg);
+	transition: transform 0.2s ease-in-out;
+  }
+  
+.toggle-arrow.expanded::before {
+	transform: rotate(-135deg);
+  }
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: table-row-group;
+}
+  
+
+
+
+
+
+
 
 /* ------------- Buscar Animal e Cliente ------------- */
 
@@ -19164,48 +19148,29 @@ th {
 .buscar {
 
 	background-color: #2d89b9;
-
 	width: 50%;
-
 	display: flex;
-
 	justify-content: center;
-
 	align-items: center;
-
 	flex-direction: column;
-
 	border-radius: 10px;
 
 }
 
 .buscar2 {
-
 	background-color: #f5f5f5;
-
 	padding: 20px;
-
 	border-radius: 5px;
-
 	margin-bottom: 20px;
 
 }
 
 .title_contato {
-
-
-
-
 	font-family: 'roboto';
-
 	font-weight: 600;
-
 	font-size: 4em;
-
 	color: #fff;
-
 	text-align: left;
-
 	margin-bottom: 20px;
 
 }
@@ -19218,26 +19183,15 @@ textarea:focus~label,
 input:valid~label,
 textarea:valid~label {
 
-
-
 	font-size: 0.8em;
-
 	color: #fff;
-
 	top: -11px;
-
 	-webkit-transition: all 0.225s ease;
-
 	transition: all 0.225s ease;
-
 	background: #00cfd5;
-
 	padding: 3px 8px;
-
 	left: 25px;
-
 	border-radius: 50px;
-
 	font-weight: bold;
 
 
@@ -19249,20 +19203,11 @@ textarea:valid~label {
 
 
 .style-form-input {
-
-
-
-
 	float: left;
-
 	width: 295px;
-
 	margin: 1em 0;
-
 	position: relative;
-
 	border-radius: 4px;
-
 }
 
 
@@ -19277,8 +19222,6 @@ textarea:valid~label {
 
 @media only screen and (max-width: 768px) {
 
-
-
 	.style-form-input {
 		width: 100%;
 	}
@@ -19289,24 +19232,14 @@ textarea:valid~label {
 }
 
 
-
-
 .style-form-input label {
-
 	color: #999;
-
 	padding: 1.3rem 30px 1rem 30px;
-
 	position: absolute;
-
 	top: 1px;
-
 	left: 0;
-
 	-webkit-transition: all 0.25s ease;
-
 	transition: all 0.25s ease;
-
 	pointer-events: none;
 
 }
@@ -19315,9 +19248,7 @@ textarea:valid~label {
 
 
 .style-form-input.full {
-
 	width: 650px;
-
 	max-width: 100%;
 
 }
@@ -19326,26 +19257,14 @@ textarea:valid~label {
 
 
 input,
-
 textarea {
-
-
-
-
 	width: 90%;
-
 	padding: 15px;
-
 	border: 0;
-
 	margin: 0 auto;
-
 	font-size: 130%;
-
 	background-color: #5bb3ff;
-
 	color: #fff;
-
 	border-radius: 50px;
 
 }
@@ -19354,7 +19273,6 @@ textarea {
 
 
 input:focus,
-
 textarea:focus {
 	outline: 0;
 }
@@ -19363,13 +19281,9 @@ textarea:focus {
 
 
 input:focus~span,
-
 textarea:focus~span {
-
 	width: 100%;
-
 	-webkit-transition: all 0.075s ease;
-
 	transition: all 0.075s ease;
 
 }
@@ -19378,9 +19292,7 @@ textarea:focus~span {
 
 
 textarea {
-
 	width: 100%;
-
 	min-height: 10em;
 
 }
@@ -19389,11 +19301,8 @@ textarea {
 
 
 .input-container {
-
 	width: 650px;
-
 	max-width: 100%;
-
 	margin: 20px auto 25px auto;
 
 }
@@ -19402,53 +19311,28 @@ textarea {
 
 
 .btn-submit {
-
-
-
-
 	width: 160px;
-
 	color: #fff;
-
 	font-size: 1.2em;
-
 	float: left;
-
 	border-radius: 60px;
-
 	display: inline-block;
-
 	background-color: #06bec6;
-
 	cursor: pointer;
-
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06), 0 2px 10px 0 rgba(0, 0, 0, 0.07);
-
 	-webkit-transition: all 300ms ease;
-
 	transition: all 300ms ease;
-
 	border: none;
-
 	margin-left: 5%;
-
 }
 
 
 
 
 .btn-submit:hover {
-
-
-
 	transform: translateY(1px);
-
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.10),
-
 		0 1px 1px 0 rgba(0, 0, 0, 0.09);
-
-
-
 
 }
 
@@ -19457,19 +19341,10 @@ textarea {
 
 @media (max-width: 768px) {
 
-
-
 	.btn-submit {
-
-
-
 		width: 100%;
-
 		float: none;
-
 		text-align: center;
-
-
 
 	}
 
@@ -19479,9 +19354,7 @@ textarea {
 
 
 input[type=checkbox]+label {
-
 	color: #ccc;
-
 	font-style: italic;
 
 }
@@ -19490,9 +19363,7 @@ input[type=checkbox]+label {
 
 
 input[type=checkbox]:checked+label {
-
 	color: #f00;
-
 	font-style: normal;
 
 }
@@ -19501,15 +19372,10 @@ input[type=checkbox]:checked+label {
 
 
 .buscar2 h1 {
-
 	font-size: 28px;
-
 	font-weight: bold;
-
 	margin-bottom: 10px;
-
 	color: #333;
-
 	text-transform: uppercase;
 
 }
@@ -19518,12 +19384,8 @@ input[type=checkbox]:checked+label {
 
 
 .buscar2 p {
-
 	font-size: 18px;
-
 	color: #333;
-
-
 
 }
 
@@ -19532,29 +19394,22 @@ input[type=checkbox]:checked+label {
 
 
 .pet-info p {
-
 	border-top: 1px solid #ddd;
-
 	border-bottom: 1px solid #ddd;
-
 	padding: 10px;
-
 	margin: 0;
 
 }
 
 
-
 .pet-info p:first-child {
-
 	border-top: none;
 
 }
 
 
-
 .pet-info p:last-child {
-
 	border-bottom: none;
 
 }
+

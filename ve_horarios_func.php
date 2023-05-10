@@ -339,7 +339,7 @@
 					$pega_hora_hoj = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE data = '$data' AND horario >= '$hora' AND id_funcionario = ".$_SESSION['idFuncionario']." ORDER BY data ASC;");
 					$pega_hora_dep = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE data > '$data' AND id_funcionario = ".$_SESSION['idFuncionario']." ORDER BY data ASC;");
 
-				echo("<div id='div' style='width: 480px !important; margin-left: 0% !important'><br>");
+				echo("<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>");
 
 				echo "<h2 id= agend>Agendamentos Hoje:</h2><br>";
 				echo "<table class='table-responsive'>
@@ -671,6 +671,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 
 <!-- Aqui é pra comprimir e aumentar -->
 <script>
+
+
+$(document).on('click', '.toggle-arrow', function() {
+var table = $(this).closest('table');
+var tbody = table.find('tbody');
+tbody.toggleClass('hidden');
+$(this).toggleClass('rotate');
+});
+
     // seleciona todos os botões toggle-arrow
     const toggleButtons = document.querySelectorAll(".toggle-arrow");
     

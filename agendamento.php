@@ -325,8 +325,8 @@
                                         <div class="form-row">
                                             <div class="form-group col">
 											<label for="funcionarios" id="cor_agenda">Funcionário:</label>
-													<select id="funcionarios" name="funcionarios" oninput="libera_servico(this.value)">
-														<option value='' selected>Escolha o profissional</option>
+													<select id="funcionarios" name="funcionarios" oninput="libera_servico(this.value)" onload="libera_servico(this.value)">
+														<option value=''>Escolha o profissional</option>
 														<?php 
 														while ($row_funcionario = mysqli_fetch_assoc($funcionarios)) {
 															$funcionario = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = ". $row_funcionario['idFuncionario'] ." AND (cargo = 'veterinario' OR cargo = 'tosador')");
@@ -359,7 +359,7 @@
 													echo('
 													<div class="d-flex align-items-center">
 														<label class="btn btn-outline-secondary pet-option mr-3">
-														<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">
+														<input type="radio" required name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">
 														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img" style="vertical-align: middle; display: inline-block;">
 														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
 														</label>
@@ -367,7 +367,7 @@
 													} else {
 													echo('
 													<label class="btn btn-outline-secondary pet-option mr-3">
-														<input type="radio" name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">
+														<input type="radio" required name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">
 														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img flex-fill" style="display: inline-block;">
 														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
 													</label>');
@@ -631,6 +631,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 				}
 			}
 		}
+		
 	</script>
 
 </body>

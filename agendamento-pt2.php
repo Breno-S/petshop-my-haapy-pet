@@ -31,7 +31,7 @@
 
 	$animais_cliente = mysqli_query($conn, "SELECT * FROM cadastro_pet WHERE idPet = ". intval($pet));
 
-    $horarios = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE id_funcionario = ". intval($funcionario[1]) ." AND data >= NOW() AND reservado = 0 AND servico LIKE '$servico'");
+    $horarios = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE id_funcionario = ". intval($funcionario[1]) ." AND data >= NOW() AND reservado = 0 AND servico LIKE '$servico' ORDER BY data ASC;");
 
 	$qt_animais_total = 1;
 ?>
@@ -380,9 +380,21 @@
 											<label for="horario" id="cor_agenda">Horário:</label>
 													<select id="horario" name="horario" required>
                                                         <option value="" id="cor_agenda">Selecione o Horário</option>
-                                                        <?php while ($row = mysqli_fetch_assoc($horarios)) {
+                                                        <?php 
+														$myvalue = date('Y-m-d H:i:s');
+														$datetime = new DateTime($myvalue);
+														$data = $datetime->format('Y-m-d');
+														$hora = $datetime->format('H:i:s');
+														$pega_hora_hoj = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE data = '$data' AND servico LIKE '$servico' AND reservado = 0 AND horario >= '$hora' AND id_funcionario = ".intval($funcionario[1])." ORDER BY data ASC;");
+														while ($row_hoje = mysqli_fetch_assoc($pega_hora_hoj)) {
+															echo("<option value='". $row_hoje['idHorario'] ."'>". $row_hoje['servico'] ." em ". date_format(date_create($row_hoje['data']), 'd/m/Y') ." às ". $row_hoje['horario'] ."</option>");
+														}
+
+
+														while ($row = mysqli_fetch_assoc($horarios)) {
                                                             echo("<option value='". $row['idHorario'] ."'>". $row['servico'] ." em ". date_format(date_create($row['data']), 'd/m/Y') ." às ". $row['horario'] ."</option>");
-                                                        }?>
+                                                        }
+														?>
 													</select>
                                             </div>
                                         </div>

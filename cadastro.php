@@ -38,6 +38,7 @@ session_start();
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="css/joao.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -269,7 +270,7 @@ session_start();
 					<div class="card-wrapper">
 						
 						<div class="card fat">
-							<div class="card-body" style="padding: 15%;">
+							<div class="card-body">
 								
 							<form  method="POST" action="php/proc_cad_cliente.php" enctype="multipart/form-data" class="my-login-validation"  onsubmit="submeter();">
 								<?php
@@ -401,12 +402,13 @@ session_start();
 										<input id="imagecliente" type="file" class="form-control" name="imagecliente" data-eye>
 									</div>
 								</div>
-	
+								<div class="form-row">
 									<div class="form-group col-md-10">
 										<button type="submit" class="btn btn-primary btn-block">
 											Cadastrar
 										</button>
 									</div>
+								</div>
 								</form>
 							</div>
 						</div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/05/2023 às 21:41
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 11-Maio-2023 às 14:11
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `agendamento`
+-- Estrutura da tabela `agendamento`
 --
 
 CREATE TABLE `agendamento` (
@@ -32,10 +32,10 @@ CREATE TABLE `agendamento` (
   `id_cliente` int(10) DEFAULT NULL,
   `id_animal` int(10) DEFAULT NULL,
   `id_horario` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `agendamento`
+-- Extraindo dados da tabela `agendamento`
 --
 
 INSERT INTO `agendamento` (`idAgendamento`, `id_cliente`, `id_animal`, `id_horario`) VALUES
@@ -49,12 +49,13 @@ INSERT INTO `agendamento` (`idAgendamento`, `id_cliente`, `id_animal`, `id_horar
 (10, 4, 12, 8),
 (11, 3, 8, 14),
 (12, 3, 8, 11),
-(13, 5, 9, 7);
+(13, 5, 9, 7),
+(14, 1, 3, 16);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cadastro_cliente`
+-- Estrutura da tabela `cadastro_cliente`
 --
 
 CREATE TABLE `cadastro_cliente` (
@@ -64,10 +65,10 @@ CREATE TABLE `cadastro_cliente` (
   `email` varchar(50) DEFAULT NULL,
   `celular` char(11) DEFAULT NULL,
   `senha` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `cadastro_cliente`
+-- Extraindo dados da tabela `cadastro_cliente`
 --
 
 INSERT INTO `cadastro_cliente` (`idCadastro`, `id_cliente`, `data_cad`, `email`, `celular`, `senha`) VALUES
@@ -88,7 +89,7 @@ INSERT INTO `cadastro_cliente` (`idCadastro`, `id_cliente`, `data_cad`, `email`,
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cadastro_pet`
+-- Estrutura da tabela `cadastro_pet`
 --
 
 CREATE TABLE `cadastro_pet` (
@@ -101,10 +102,10 @@ CREATE TABLE `cadastro_pet` (
   `data_nasc_pet` date DEFAULT NULL,
   `peso_pet` float(4,2) DEFAULT NULL,
   `data_cad_pet` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `cadastro_pet`
+-- Extraindo dados da tabela `cadastro_pet`
 --
 
 INSERT INTO `cadastro_pet` (`idPet`, `id_cliente`, `nome_pet`, `raca`, `sexo_pet`, `cor_pet`, `data_nasc_pet`, `peso_pet`, `data_cad_pet`) VALUES
@@ -124,7 +125,7 @@ INSERT INTO `cadastro_pet` (`idPet`, `id_cliente`, `nome_pet`, `raca`, `sexo_pet
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cartao`
+-- Estrutura da tabela `cartao`
 --
 
 CREATE TABLE `cartao` (
@@ -134,12 +135,12 @@ CREATE TABLE `cartao` (
   `numero_cartao` int(12) DEFAULT NULL,
   `data_validade` date DEFAULT NULL,
   `bandeira` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cliente`
+-- Estrutura da tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -150,15 +151,15 @@ CREATE TABLE `cliente` (
   `cpf` char(11) DEFAULT NULL,
   `rg` char(9) DEFAULT NULL,
   `data_nasc` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `cliente`
+-- Extraindo dados da tabela `cliente`
 --
 
 INSERT INTO `cliente` (`idCliente`, `id_endereco`, `nome`, `sobrenome`, `cpf`, `rg`, `data_nasc`) VALUES
 (1, 1, 'Roberto', 'Justos', '51976765072', '178912864', '2023-04-26'),
-(2, 2, 'Robson', 'Silva', '19615500089', '267181024', '0000-00-00'),
+(2, 2, 'Robson', 'Silva', '19615500089', '267181024', '2000-03-05'),
 (3, 3, 'Marcos', 'Renato de Araújo', '50072096004', '345860111', '2023-05-03'),
 (4, 4, 'Carla', 'Maria de Jesus', '29255250086', '256269610', '1996-11-06'),
 (5, 5, 'Antonieta', 'Barros Batista', '69048713005', '136462169', '2001-06-06'),
@@ -174,7 +175,7 @@ INSERT INTO `cliente` (`idCliente`, `id_endereco`, `nome`, `sobrenome`, `cpf`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `endereco`
+-- Estrutura da tabela `endereco`
 --
 
 CREATE TABLE `endereco` (
@@ -185,10 +186,10 @@ CREATE TABLE `endereco` (
   `logradouro` varchar(100) DEFAULT NULL,
   `numero` int(5) DEFAULT NULL,
   `cep` char(8) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `endereco`
+-- Extraindo dados da tabela `endereco`
 --
 
 INSERT INTO `endereco` (`idEndereco`, `estado`, `municipio`, `bairro`, `logradouro`, `numero`, `cep`) VALUES
@@ -209,19 +210,19 @@ INSERT INTO `endereco` (`idEndereco`, `estado`, `municipio`, `bairro`, `logradou
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `estoque`
+-- Estrutura da tabela `estoque`
 --
 
 CREATE TABLE `estoque` (
   `idEstoque` int(10) NOT NULL,
   `id_produto` int(10) DEFAULT NULL,
   `unidades` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `funcionarios`
+-- Estrutura da tabela `funcionarios`
 --
 
 CREATE TABLE `funcionarios` (
@@ -230,10 +231,10 @@ CREATE TABLE `funcionarios` (
   `nome_funcionario` varchar(100) DEFAULT NULL,
   `senha_funcionario` varchar(250) DEFAULT NULL,
   `cargo` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `funcionarios`
+-- Extraindo dados da tabela `funcionarios`
 --
 
 INSERT INTO `funcionarios` (`idFuncionario`, `cpf_funcionario`, `nome_funcionario`, `senha_funcionario`, `cargo`) VALUES
@@ -247,7 +248,7 @@ INSERT INTO `funcionarios` (`idFuncionario`, `cpf_funcionario`, `nome_funcionari
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `horarios_disponiveis`
+-- Estrutura da tabela `horarios_disponiveis`
 --
 
 CREATE TABLE `horarios_disponiveis` (
@@ -257,10 +258,10 @@ CREATE TABLE `horarios_disponiveis` (
   `horario` time DEFAULT NULL,
   `reservado` tinyint(1) DEFAULT NULL,
   `servico` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `horarios_disponiveis`
+-- Extraindo dados da tabela `horarios_disponiveis`
 --
 
 INSERT INTO `horarios_disponiveis` (`idHorario`, `id_funcionario`, `data`, `horario`, `reservado`, `servico`) VALUES
@@ -278,12 +279,13 @@ INSERT INTO `horarios_disponiveis` (`idHorario`, `id_funcionario`, `data`, `hora
 (12, 2, '2023-05-20', '10:05:00', 1, 'Banho'),
 (13, 2, '2023-05-15', '08:25:00', 0, 'Tosa'),
 (14, 2, '2023-05-31', '00:10:00', 1, 'Hotel'),
-(15, 2, '2023-05-30', '18:00:00', 0, 'Banho');
+(15, 2, '2023-05-30', '18:00:00', 0, 'Banho'),
+(16, 2, '2023-05-11', '18:00:00', 1, 'Hotel');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imagem_cliente`
+-- Estrutura da tabela `imagem_cliente`
 --
 
 CREATE TABLE `imagem_cliente` (
@@ -291,10 +293,10 @@ CREATE TABLE `imagem_cliente` (
   `id_cadastro` int(10) DEFAULT NULL,
   `dir_img_cliente` varchar(250) DEFAULT NULL,
   `criado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `imagem_cliente`
+-- Extraindo dados da tabela `imagem_cliente`
 --
 
 INSERT INTO `imagem_cliente` (`idImgCli`, `id_cadastro`, `dir_img_cliente`, `criado`) VALUES
@@ -305,7 +307,7 @@ INSERT INTO `imagem_cliente` (`idImgCli`, `id_cadastro`, `dir_img_cliente`, `cri
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imagem_func`
+-- Estrutura da tabela `imagem_func`
 --
 
 CREATE TABLE `imagem_func` (
@@ -313,12 +315,12 @@ CREATE TABLE `imagem_func` (
   `id_funcionario` int(10) DEFAULT NULL,
   `dir_img_funcionario` varchar(250) DEFAULT NULL,
   `criado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imagem_pet`
+-- Estrutura da tabela `imagem_pet`
 --
 
 CREATE TABLE `imagem_pet` (
@@ -326,10 +328,10 @@ CREATE TABLE `imagem_pet` (
   `id_pet` int(10) DEFAULT NULL,
   `dir_img_pet` varchar(250) DEFAULT NULL,
   `criado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `imagem_pet`
+-- Extraindo dados da tabela `imagem_pet`
 --
 
 INSERT INTO `imagem_pet` (`idImgPet`, `id_pet`, `dir_img_pet`, `criado`) VALUES
@@ -344,7 +346,7 @@ INSERT INTO `imagem_pet` (`idImgPet`, `id_pet`, `dir_img_pet`, `criado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `imagem_produto`
+-- Estrutura da tabela `imagem_produto`
 --
 
 CREATE TABLE `imagem_produto` (
@@ -352,12 +354,12 @@ CREATE TABLE `imagem_produto` (
   `id_produto` int(10) DEFAULT NULL,
   `dir_img_produto` varchar(250) DEFAULT NULL,
   `criado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `itens_compra`
+-- Estrutura da tabela `itens_compra`
 --
 
 CREATE TABLE `itens_compra` (
@@ -365,12 +367,12 @@ CREATE TABLE `itens_compra` (
   `id_pedido` int(10) DEFAULT NULL,
   `id_produto` int(10) DEFAULT NULL,
   `quantidade` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pagamento`
+-- Estrutura da tabela `pagamento`
 --
 
 CREATE TABLE `pagamento` (
@@ -380,12 +382,12 @@ CREATE TABLE `pagamento` (
   `data_pag` datetime DEFAULT NULL,
   `valor_pag` float(5,2) DEFAULT NULL,
   `tipo_pag` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pedidos`
+-- Estrutura da tabela `pedidos`
 --
 
 CREATE TABLE `pedidos` (
@@ -394,12 +396,12 @@ CREATE TABLE `pedidos` (
   `data_pedido` datetime DEFAULT NULL,
   `status_pedido` varchar(20) DEFAULT NULL,
   `valor_pedido` float(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produtos`
+-- Estrutura da tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -408,14 +410,14 @@ CREATE TABLE `produtos` (
   `preco_produto` float(5,2) DEFAULT NULL,
   `marca_produto` varchar(20) DEFAULT NULL,
   `tipo_produto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `agendamento`
+-- Índices para tabela `agendamento`
 --
 ALTER TABLE `agendamento`
   ADD PRIMARY KEY (`idAgendamento`),
@@ -424,89 +426,89 @@ ALTER TABLE `agendamento`
   ADD KEY `id_horario` (`id_horario`);
 
 --
--- Índices de tabela `cadastro_cliente`
+-- Índices para tabela `cadastro_cliente`
 --
 ALTER TABLE `cadastro_cliente`
   ADD PRIMARY KEY (`idCadastro`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices de tabela `cadastro_pet`
+-- Índices para tabela `cadastro_pet`
 --
 ALTER TABLE `cadastro_pet`
   ADD PRIMARY KEY (`idPet`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices de tabela `cartao`
+-- Índices para tabela `cartao`
 --
 ALTER TABLE `cartao`
   ADD PRIMARY KEY (`idCartao`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices de tabela `cliente`
+-- Índices para tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`idCliente`),
   ADD KEY `id_endereco` (`id_endereco`);
 
 --
--- Índices de tabela `endereco`
+-- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`idEndereco`);
 
 --
--- Índices de tabela `estoque`
+-- Índices para tabela `estoque`
 --
 ALTER TABLE `estoque`
   ADD PRIMARY KEY (`idEstoque`),
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Índices de tabela `funcionarios`
+-- Índices para tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
   ADD PRIMARY KEY (`idFuncionario`);
 
 --
--- Índices de tabela `horarios_disponiveis`
+-- Índices para tabela `horarios_disponiveis`
 --
 ALTER TABLE `horarios_disponiveis`
   ADD PRIMARY KEY (`idHorario`),
   ADD KEY `id_funcionario` (`id_funcionario`);
 
 --
--- Índices de tabela `imagem_cliente`
+-- Índices para tabela `imagem_cliente`
 --
 ALTER TABLE `imagem_cliente`
   ADD PRIMARY KEY (`idImgCli`),
   ADD KEY `id_cadastro` (`id_cadastro`);
 
 --
--- Índices de tabela `imagem_func`
+-- Índices para tabela `imagem_func`
 --
 ALTER TABLE `imagem_func`
   ADD PRIMARY KEY (`idImgFunc`),
   ADD KEY `id_funcionario` (`id_funcionario`);
 
 --
--- Índices de tabela `imagem_pet`
+-- Índices para tabela `imagem_pet`
 --
 ALTER TABLE `imagem_pet`
   ADD PRIMARY KEY (`idImgPet`),
   ADD KEY `id_pet` (`id_pet`);
 
 --
--- Índices de tabela `imagem_produto`
+-- Índices para tabela `imagem_produto`
 --
 ALTER TABLE `imagem_produto`
   ADD PRIMARY KEY (`idImgProd`),
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Índices de tabela `itens_compra`
+-- Índices para tabela `itens_compra`
 --
 ALTER TABLE `itens_compra`
   ADD PRIMARY KEY (`idItem`),
@@ -514,7 +516,7 @@ ALTER TABLE `itens_compra`
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Índices de tabela `pagamento`
+-- Índices para tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD PRIMARY KEY (`idPagamento`),
@@ -522,27 +524,27 @@ ALTER TABLE `pagamento`
   ADD KEY `id_cartao` (`id_cartao`);
 
 --
--- Índices de tabela `pedidos`
+-- Índices para tabela `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`idPedido`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Índices de tabela `produtos`
+-- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`idProduto`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  MODIFY `idAgendamento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idAgendamento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `cadastro_cliente`
@@ -590,7 +592,7 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `horarios_disponiveis`
 --
 ALTER TABLE `horarios_disponiveis`
-  MODIFY `idHorario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idHorario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `imagem_cliente`
@@ -641,11 +643,11 @@ ALTER TABLE `produtos`
   MODIFY `idProduto` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `agendamento`
+-- Limitadores para a tabela `agendamento`
 --
 ALTER TABLE `agendamento`
   ADD CONSTRAINT `agendamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`),
@@ -653,81 +655,81 @@ ALTER TABLE `agendamento`
   ADD CONSTRAINT `agendamento_ibfk_3` FOREIGN KEY (`id_horario`) REFERENCES `horarios_disponiveis` (`idHorario`);
 
 --
--- Restrições para tabelas `cadastro_cliente`
+-- Limitadores para a tabela `cadastro_cliente`
 --
 ALTER TABLE `cadastro_cliente`
   ADD CONSTRAINT `cadastro_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`);
 
 --
--- Restrições para tabelas `cadastro_pet`
+-- Limitadores para a tabela `cadastro_pet`
 --
 ALTER TABLE `cadastro_pet`
   ADD CONSTRAINT `cadastro_pet_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`);
 
 --
--- Restrições para tabelas `cartao`
+-- Limitadores para a tabela `cartao`
 --
 ALTER TABLE `cartao`
   ADD CONSTRAINT `cartao_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`);
 
 --
--- Restrições para tabelas `cliente`
+-- Limitadores para a tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_endereco`) REFERENCES `endereco` (`idEndereco`);
 
 --
--- Restrições para tabelas `estoque`
+-- Limitadores para a tabela `estoque`
 --
 ALTER TABLE `estoque`
   ADD CONSTRAINT `estoque_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`idProduto`);
 
 --
--- Restrições para tabelas `horarios_disponiveis`
+-- Limitadores para a tabela `horarios_disponiveis`
 --
 ALTER TABLE `horarios_disponiveis`
   ADD CONSTRAINT `horarios_disponiveis_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`idFuncionario`);
 
 --
--- Restrições para tabelas `imagem_cliente`
+-- Limitadores para a tabela `imagem_cliente`
 --
 ALTER TABLE `imagem_cliente`
   ADD CONSTRAINT `imagem_cliente_ibfk_1` FOREIGN KEY (`id_cadastro`) REFERENCES `cadastro_cliente` (`idCadastro`);
 
 --
--- Restrições para tabelas `imagem_func`
+-- Limitadores para a tabela `imagem_func`
 --
 ALTER TABLE `imagem_func`
   ADD CONSTRAINT `imagem_func_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`idFuncionario`);
 
 --
--- Restrições para tabelas `imagem_pet`
+-- Limitadores para a tabela `imagem_pet`
 --
 ALTER TABLE `imagem_pet`
   ADD CONSTRAINT `imagem_pet_ibfk_1` FOREIGN KEY (`id_pet`) REFERENCES `cadastro_pet` (`idPet`);
 
 --
--- Restrições para tabelas `imagem_produto`
+-- Limitadores para a tabela `imagem_produto`
 --
 ALTER TABLE `imagem_produto`
   ADD CONSTRAINT `imagem_produto_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`idProduto`);
 
 --
--- Restrições para tabelas `itens_compra`
+-- Limitadores para a tabela `itens_compra`
 --
 ALTER TABLE `itens_compra`
   ADD CONSTRAINT `itens_compra_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`idPedido`),
   ADD CONSTRAINT `itens_compra_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`idProduto`);
 
 --
--- Restrições para tabelas `pagamento`
+-- Limitadores para a tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD CONSTRAINT `pagamento_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`idPedido`),
   ADD CONSTRAINT `pagamento_ibfk_2` FOREIGN KEY (`id_cartao`) REFERENCES `cartao` (`idCartao`);
 
 --
--- Restrições para tabelas `pedidos`
+-- Limitadores para a tabela `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`idCliente`);

@@ -52,7 +52,8 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/joao.css">
 <!--===============================================================================================-->
 
 <!-- Biblioteca de Animações CSS | START -->
@@ -253,12 +254,12 @@
 			</div>
 		</div>
 	</div>
-</div><br><br><br>
+</div>
 
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-120" style="background-image: url('images/bg-01.jpg');">
 	<h2 class="ltext-105 cl0 txt-center">
-		Cadastrar Clientes
+		Cadastrar Pets
 	</h2>
 </section>	
 
@@ -317,7 +318,7 @@
 				</div>
 		</div>
 
-	</nav><br><br><br>
+	</nav>
 
 		
 		<div class="wrapper"><br><br>
@@ -336,7 +337,7 @@
 								}					
 								?>
                                     
-									<form action="php/proc_cad_pet_func.php" method="post" class="row" enctype="multipart/form-data">
+									<form action="php/proc_cad_pet_func.php" method="post" class="row my-login-validation" enctype="multipart/form-data">
                                         <div class="col-md-12">
                                            
                                                 <h1>Cadastro do Pet</h1><br><br>

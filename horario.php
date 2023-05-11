@@ -251,7 +251,7 @@
 			</div>
 		</div>
 	</div>
-</div><br><br><br>
+</div>
 
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-120" style="background-image: url('images/bg-01.jpg');">

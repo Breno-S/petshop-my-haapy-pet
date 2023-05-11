@@ -53,6 +53,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="css/joao.css">
 <!--===============================================================================================-->
 
 <!-- Biblioteca de Animações CSS | START -->
@@ -253,7 +254,7 @@
 			</div>
 		</div>
 	</div>
-</div><br><br><br>
+</div>
 
 <!-- Title page -->
 <section class="bg-img1 txt-center p-lr-15 p-tb-120" style="background-image: url('images/bg-01.jpg');">

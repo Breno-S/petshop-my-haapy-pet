@@ -267,7 +267,6 @@ if (!isset($_SESSION['idCliente'])) {
 			</div>
 		  </div>
 		</div><!-- End Breadcrumbs -->
-		<br><br>
 		<body class="my-login-page">
 			<section class="h-90">
 				<div class="container h-100">
@@ -282,7 +281,7 @@ if (!isset($_SESSION['idCliente'])) {
 								}
 								?>
 									
-									<form action="php/proc_cad_pet.php" method="post" class="row" enctype="multipart/form-data">
+									<form action="php/proc_cad_pet.php" method="post" class="row my-login-validation" enctype="multipart/form-data">
 										<div class="col-md-12">
 										   
 												<h1>Cadastro do Pet</h1><br><br>

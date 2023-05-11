@@ -39,6 +39,7 @@ session_start();
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/joao.css">
 	<!--===============================================================================================-->
 </head>
@@ -265,9 +266,6 @@ session_start();
 				</div>
 			</div>
 		</div><!-- End Breadcrumbs -->
-		<br><br>
-
-
 
 		<body class="my-login-page" onload="carregar();">
 			<section class="h-100">

@@ -19411,3 +19411,7 @@ input[type=checkbox]:checked+label {
 
 }
 
+
+.form-row{
+	justify-content: center !important;
+}

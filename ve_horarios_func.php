@@ -373,6 +373,7 @@
 								<td>'. $row_hoje["servico"] .'</td>
 								<td>'. $cliente_agend_hoje["nome"] .'</td>
 								<td>'. $pet_agend_hoje["nome_pet"] .'</td>
+								<td></td>
 							</tr>
 						</tbody>
 							');
@@ -396,7 +397,7 @@
 							<th>Animal</th>
 							<th class='toggle-arrow'>▼</th>
 						</tr>
-				  	</thead>	
+				  	</thead>
 				";
 				while ($row_depois = mysqli_fetch_assoc($pega_hora_dep)) {
 					$data_depois = date_create($row_depois['data']);
@@ -417,6 +418,7 @@
 								<td>'. $row_depois["servico"] .'</td>
 								<td>'. $cliente_agend_depois["nome"] .'</td>
 								<td>'. $pet_agend_depois["nome_pet"] .'</td>
+								<td></td>
 							</tr>
 						</tbody>
 							');
@@ -465,6 +467,7 @@
 									<td>'. $row_antes["servico"] .'</td>
 									<td>'. $cliente_agend_antes["nome"] .'</td>
 									<td>'. $pet_agend_antes["nome_pet"] .'</td>
+									<td></td>
 								</tr>
 							</tbody>
 								');
@@ -687,7 +690,7 @@ $(this).toggleClass('rotate');
     toggleButtons.forEach(button => {
         button.addEventListener("click", function() {
             // seleciona o tbody correspondente usando o data-table personalizado
-            const tableBody = this.parentElement.parentElement.nextElementSibling;
+            const tableBody = this.parentElement.nextElementSibling;
             
             // alterna a classe .hidden no tbody para mostrar / ocultar
             if (tableBody.classList.contains("hidden")) {

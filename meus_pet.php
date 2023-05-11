@@ -392,7 +392,7 @@ $qt_pet = 0;
 										} else {
 											?>
 										</div>
-										<div class="d-flex flex-wrap ">
+										<div class="d-flex flex-wrap justify-content-center">
 											<div class="pet-container">
 												<img src="
 				<?php

@@ -472,7 +472,7 @@ if (!isset($_SESSION['idCliente'])) {
 															`
 														} else if (animal == "Pássaro"){
 															document.getElementById("cor").innerHTML = `
-															<option value="Branco">Lilás</option>
+															<option value="Branco">lilas</option>
 															<option value="Preto">Preto</option>
 															<option value="Amarelo">Amarelo</option>
 															<option value="Azul">Azul</option>
@@ -695,7 +695,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 		inputPeso.addEventListener("input", function() { // Adiciona um ouvinte de eventos para capturar mudanças na entrada de peso
 		  const pesoEmKg = parseFloat(this.value); // Obtém o valor inserido pelo usuário como um número
 		  if (!isNaN(pesoEmKg)) { // Verifica se o valor inserido é um número válido
-			pesoLabel.innerHTML = "Peso: " + pesoEmKg.toFixed(2) + " kg"; // Exibe o peso em kg com duas casas decimais
+			pesoLabel.innerHTML = "Peso: * " + pesoEmKg.toFixed(2) + " kg"; // Exibe o peso em kg com duas casas decimais
 		  }
 		});
 	  </script>

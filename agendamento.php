@@ -395,7 +395,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-8">
-                                            Não cadastrou um pet? <a href="cadastropet.html">Cadastre agora</a>
+                                            Não cadastrou um pet? <a href="cadastropet.php">Cadastre agora</a>
                                         </div>
                                     </div>
                                 </form>

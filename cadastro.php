@@ -410,7 +410,7 @@ session_start();
 										<div class="form-row">
 											<div class="form-group col-md-10">
 												<label for="password">Senha *</label>
-												<input required type="text" name="senha" id="senha"
+												<input required type="password" name="senha" id="senha"
 													placeholder="Crie uma senha	" class="form-control" data-eye>
 												<div class="invalid-feedback">
 													Senha é requerida

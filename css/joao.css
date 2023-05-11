@@ -19415,3 +19415,7 @@ input[type=checkbox]:checked+label {
 .form-row{
 	justify-content: center !important;
 }
+
+select.form-control:not([size]):not([multiple]) {
+    height: auto;
+}

@@ -472,7 +472,7 @@ if (!isset($_SESSION['idCliente'])) {
 															`
 														} else if (animal == "Pássaro"){
 															document.getElementById("cor").innerHTML = `
-															<option value="Branco">lilas</option>
+															<option value="Branco">Lilás</option>
 															<option value="Preto">Preto</option>
 															<option value="Amarelo">Amarelo</option>
 															<option value="Azul">Azul</option>

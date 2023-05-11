@@ -416,7 +416,7 @@
 												</select>
                                             </div>
 											<div class="col-md-5 form-group">
-												<label id="peso-label" for="peso">CPF *</label>
+												<label for="cpf">CPF *</label>
 												<input type="text" id="cpf" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" class="form-control" placeholder="000.000.000-00"required oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(\..*)\./g, '$1');">
 											</div>
                                         </div>

@@ -319,7 +319,7 @@
 	</nav><br><br><br>
 
 		
-		    <div class="wrapper"><br><br>
+		    <div class="wrapper d-flex justify-content-center"><br><br>
                 <form class="buscar"action="php/proc_busca_animal.php" method="post">
                     <h1 class="title_contato">Buscar Animal</h1>
                     <div class="style-form-input full">

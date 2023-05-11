@@ -91,14 +91,14 @@ $qt_pet = 0;
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="index.html" class="logo">
 						<img src="images/icons/logo.png" alt="IMG-LOGO">
 					</a>
 
-						<!-- Menu desktop -->
-						<div class="menu-desktop">
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
 								<a href="index.html">Home</a>
@@ -129,15 +129,15 @@ $qt_pet = 0;
 								<a href="contato.html">Contato</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
@@ -148,11 +148,13 @@ $qt_pet = 0;
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="0">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+					data-notify="0">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+					data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
 			</div>
@@ -236,70 +238,71 @@ $qt_pet = 0;
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
-			
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: R$ 00.00
-					</div>
 
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="carrinho.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Carrinho
-						</a>
-					</div>
+
+
+			<div class="w-full">
+				<div class="header-cart-total w-full p-tb-40">
+					Total: R$ 00.00
+				</div>
+
+				<div class="header-cart-buttons flex-w w-full">
+					<a href="carrinho.html"
+						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						Carrinho
+					</a>
 				</div>
 			</div>
 		</div>
-	</div><br><br><br>
+	</div>
+	</div>
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Minha Conta
 		</h2>
-	</section>	
+	</section>
 
 
-	 <!-- ======= Header ======= -->
+	<!-- ======= Header ======= -->
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+			<div class="custom-menu">
+				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 				</button>
 			</div>
-	
+
 			<div class="">
 				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
-					<ul class="list-unstyled components mb-5">
-						<li class="active">
-							<a href="meus_dados.php"><span class="fa fa-user mr-3"></span> Meus Dados</a>
-						</li>
-						<li>
-							<a href="editar_dados.php"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
-						</li>
-						<li>
+				<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a href="meus_dados.php"><span class="fa fa-user mr-3"></span> Meus Dados</a>
+					</li>
+					<li>
+						<a href="editar_dados.php"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
+					</li>
+					<li>
 						<a href="meus_pet.php"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
-						</li>
-						<li>
+					</li>
+					<li>
 						<a href="senha_seguranca.php"><span class="fa fa-lock mr-3"></span> Senha e Segurança</a>
-						</li>
-						<li>
+					</li>
+					<li>
 						<a href="cartao.php"><span class="fa fa-credit-card mr-3"></span>Metodo de Pagamento</a>
-						</li>
-						<li>
-							<a href="agendamento.php"><span class="fa fa-server mr-3"></span>Agendar</a>
-						</li>
-					</ul>
+					</li>
+					<li>
+						<a href="agendamento.php"><span class="fa fa-server mr-3"></span>Agendar</a>
+					</li>
+				</ul>
 
-					<div class="mb-5 px-4">
-								<a href="php/proc_logout.php" class="subscribe-form">
-									<h3 class="h6 mb-3">Sair</h3>
-								</a>
-							</div>
+				<div class="mb-5 px-4">
+					<a href="php/proc_logout.php" class="subscribe-form">
+						<h3 class="h6 mb-3">Sair</h3>
+					</a>
+				</div>
 
-					</div>
+			</div>
 
 		</nav><br><br><br>
 
@@ -310,10 +313,10 @@ $qt_pet = 0;
 				<div class="container h-100">
 					<div class="row justify-content-md-center h-100">
 						<div class="card-wrapper">
-					
+
 							<div class="card fat">
 								<h1 id="meuspet" class="txt-center ltext-103 cl10">Meus Pets</h1>
-								
+
 								<div class="d-flex flex-wrap justify-content-center align-items-center">
 									<?php
 									if (isset($_SESSION['msg_cad_pet'])) {
@@ -322,7 +325,7 @@ $qt_pet = 0;
 									}
 									// echo "<span style='color:blue;'>Pet cadastrado com sucesso!</span> ";
 									?>
-										
+
 									<?php
 
 									$idCliente = $_SESSION['idCliente'];
@@ -336,17 +339,18 @@ $qt_pet = 0;
 										$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet =" . $row_pet['idPet']);
 										$imagem_pet = mysqli_fetch_assoc($img_pet);
 										if ($qt_pet % 3 != 0) {
-									?>
+											?>
 											<div class="pet-container">
 												<img src="
 												<?php
-													if (isset($imagem_pet['dir_img_pet'])) {
-														echo $imagem_pet['dir_img_pet'];
-													} else {
-														echo ('images/imgPet/placeholder_pet.png');
-													}
+												if (isset($imagem_pet['dir_img_pet'])) {
+													echo $imagem_pet['dir_img_pet'];
+												} else {
+													echo ('images/imgPet/placeholder_pet.png');
+												}
 												?>
-												" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>" class="img-thumbnail img-pet">
+												" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>"
+													class="img-thumbnail img-pet">
 											</div>
 
 											<!-- Modal -->
@@ -356,79 +360,98 @@ $qt_pet = 0;
 														<!-- cabeçalho do Modal -->
 														<div class="modal-header">
 															<h4 class="modal-title">Informações do Pet</h4>
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															<button type="button" class="close"
+																data-dismiss="modal">&times;</button>
 														</div>
 														<!-- Adicione o corpo do Modal -->
 														<div class="modal-body">
 															<p>
-																Nome: <?php echo $row_pet['nome_pet']; ?> <br>
-																Raça: <?php echo $row_pet['raca']; ?> <br>
-																Cor: <?php echo $row_pet['cor_pet']; ?> <br>
-																Nascimento: <?php echo(date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?> <br>
-																Peso: <?php echo $row_pet['peso_pet']; ?>
+																Nome:
+																<?php echo $row_pet['nome_pet']; ?> <br>
+																Raça:
+																<?php echo $row_pet['raca']; ?> <br>
+																Cor:
+																<?php echo $row_pet['cor_pet']; ?> <br>
+																Nascimento:
+																<?php echo (date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?>
+																<br>
+																Peso:
+																<?php echo $row_pet['peso_pet']; ?>
 															</p>
 														</div>
 														<!-- Adicione o rodapé do Modal -->
 														<div class="modal-footer">
-															<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+															<button type="button" class="btn btn-danger"
+																data-dismiss="modal">Fechar</button>
 														</div>
 													</div>
 												</div>
 											</div>
 
-										<?php
+											<?php
 										} else {
-										?>
-								</div>
-								<div class="d-flex flex-wrap ">
-									<div class="pet-container">
-										<img src="
+											?>
+										</div>
+										<div class="d-flex flex-wrap ">
+											<div class="pet-container">
+												<img src="
 				<?php
-											if (isset($imagem_pet['dir_img_pet'])) {
-												echo $imagem_pet['dir_img_pet'];
-											} else {
-												echo ('images/imgPet/placeholder_pet.png');
-											}
+				if (isset($imagem_pet['dir_img_pet'])) {
+					echo $imagem_pet['dir_img_pet'];
+				} else {
+					echo ('images/imgPet/placeholder_pet.png');
+				}
 				?>
-				" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>" class="img-thumbnail img-pet">
-									</div>
+				" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>"
+													class="img-thumbnail img-pet">
+											</div>
 
-									<!-- Modal -->
-									<div class="modal fade" id="myModal<?php echo ($row_pet['nome_pet']); ?>">
-										<div class="modal-dialog modal-dialog-centered" role="document">
-											<div class="modal-content">
-												<!-- cabeçalho do Modal -->
-												<div class="modal-header">
-													<h4 class="modal-title">Informações do Pet</h4>
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-												</div>
-												<!-- Adicione o corpo do Modal -->
-												<div class="modal-body">
-													<p>
-														Nome: <?php echo $row_pet['nome_pet']; ?> <br>
-														Raça: <?php echo $row_pet['raca']; ?> <br>
-														Cor: <?php echo $row_pet['cor_pet']; ?> <br>
-														Nascimento: <?php echo(date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?> <br>
-														Peso: <?php echo $row_pet['peso_pet']; ?>
-													</p>
-												</div>
-												<!-- Adicione o rodapé do Modal -->
-												<div class="modal-footer">
-													<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+											<!-- Modal -->
+											<div class="modal fade" id="myModal<?php echo ($row_pet['nome_pet']); ?>">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<!-- cabeçalho do Modal -->
+														<div class="modal-header">
+															<h4 class="modal-title">Informações do Pet</h4>
+															<button type="button" class="close"
+																data-dismiss="modal">&times;</button>
+														</div>
+														<!-- Adicione o corpo do Modal -->
+														<div class="modal-body">
+															<p>
+																Nome:
+																<?php echo $row_pet['nome_pet']; ?> <br>
+																Raça:
+																<?php echo $row_pet['raca']; ?> <br>
+																Cor:
+																<?php echo $row_pet['cor_pet']; ?> <br>
+																Nascimento:
+																<?php echo (date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?>
+																<br>
+																Peso:
+																<?php echo $row_pet['peso_pet']; ?>
+															</p>
+														</div>
+														<!-- Adicione o rodapé do Modal -->
+														<div class="modal-footer">
+															<button type="button" class="btn btn-danger"
+																data-dismiss="modal">Fechar</button>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-							<?php
+											<?php
 										}
 										$qt_pet++;
 									}
-							?>
+									?>
 
 								</div>
 
 								<div class="d-flex flex-wrap justify-content-center align-items-center">
-									<a id="texto" href="cadastropet.php?id_cliente=<?php echo $idCliente ?>" style="width: 259px; font-size:20px;" class="justify-content-center text-center mtext-102 cl9">
+									<a id="texto" href="cadastropet.php?id_cliente=<?php echo $idCliente ?>"
+										style="width: 259px; font-size:20px;"
+										class="justify-content-center text-center mtext-102 cl9">
 										<img src="images/pluspaw.png" class='img-pet' style="opacity:30%;">
 										Adicionar novo pet
 									</a>
@@ -544,7 +567,8 @@ $qt_pet = 0;
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
+								placeholder="email@example.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
@@ -612,7 +636,7 @@ $qt_pet = 0;
 	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script>
-		$(".js-select2").each(function() {
+		$(".js-select2").each(function () {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
@@ -624,7 +648,7 @@ $qt_pet = 0;
 	<!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function() {
+		$('.js-pscroll').each(function () {
 			$(this).css('position', 'relative');
 			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
@@ -633,7 +657,7 @@ $qt_pet = 0;
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function() {
+			$(window).on('resize', function () {
 				ps.update();
 			})
 		});

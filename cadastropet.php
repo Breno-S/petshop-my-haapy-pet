@@ -1,7 +1,7 @@
 <?php
 include_once('php/conexao.php');
 
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
 	session_start();
 }
 if (!isset($_SESSION['idCliente'])) {
@@ -235,7 +235,7 @@ if (!isset($_SESSION['idCliente'])) {
 				</div>
 			</div>
 		</div>
-	</div><br><br><br>
+	</div>
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
@@ -269,27 +269,27 @@ if (!isset($_SESSION['idCliente'])) {
 		</div><!-- End Breadcrumbs -->
 		<br><br>
 		<body class="my-login-page">
-            <section class="h-90">
-                <div class="container h-100">
-                    <div class="row justify-content-md-center h-100">
-                        <div class="card-wrapper">
-                            <div class="card fat">
-                                <div class="card-body" >
-								<?php 
-								if(isset($_SESSION['msg_cad_pet'])){
+			<section class="h-90">
+				<div class="container h-100">
+					<div class="row justify-content-md-center h-100">
+						<div class="card-wrapper">
+							<div class="card fat">
+								<div class="card-body" >
+								<?php
+								if (isset($_SESSION['msg_cad_pet'])) {
 									echo $_SESSION['msg_cad_pet'];
 									unset($_SESSION['msg_cad_pet']);
-								}					
+								}
 								?>
-                                    
+									
 									<form action="php/proc_cad_pet.php" method="post" class="row" enctype="multipart/form-data">
-                                        <div class="col-md-12">
-                                           
-                                                <h1>Cadastro do Pet</h1><br><br>
-                                                <label id="name" for="nome">Nome:</label>
-                                                <input type="text" id="nome" name="nome" class="form-control" required>
-                                            
-                                        </div><br>
+										<div class="col-md-12">
+										   
+												<h1>Cadastro do Pet</h1><br><br>
+												<label id="name" for="nome">Nome:</label>
+												<input type="text" id="nome" name="nome" class="form-control" required>
+											
+										</div><br>
 										<div class="col-md-6">
 											<div class="form-group">
 											  <label for="especie">Espécie:</label>
@@ -338,37 +338,37 @@ if (!isset($_SESSION['idCliente'])) {
 										  
 										  
 
-                                        
+										
 										<div class="col-md-6">
-                                           
+										   
 											<div class="form-group">
 												<label id="idade" for="nascimento">Data de nascimento:</label>
 												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required>
 											</div>
 											
 											
-                                                <div class="form-group">
-                                                    <label for="sexo">Sexo:</label>
-                                                    <select name="sexo" id="sexo" class="form-control">
+												<div class="form-group">
+													<label for="sexo">Sexo:</label>
+													<select name="sexo" id="sexo" class="form-control">
 														<option value="">Selecione o sexo</option>
 														<option value="Macho">Macho</option>
 														<option value="Fêmea">Fêmea</option>
 													</select>
-                                                </div>
+												</div>
 											
-                                        </div>
+										</div>
 										<div class="col-md-12"> 
 										
-                                                <div class="form-group">
-                                                    <label for="foto">Foto:</label>
-                                                    <input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
-                                                </div>
-											               
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-                                                </div>
+												<div class="form-group">
+													<label for="foto">Foto:</label>
+													<input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
+												</div>
+														   
+												<div class="form-group">
+													<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+												</div>
 											 
-                                        </div>
+										</div>
 										
 
 										
@@ -491,12 +491,12 @@ if (!isset($_SESSION['idCliente'])) {
 														
 													}
 												</script>
-                                       </div>
+									   </div>
 									</form>
-                            	</div>
-                            </div>
-                        </div>
-                    </section>    
+								</div>
+							</div>
+						</div>
+					</section>    
 		
 	
 <!-- Footer -->

@@ -1,7 +1,7 @@
 <?php
 include_once('php/conexao.php');
 
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
 	session_start();
 }
 if (!isset($_SESSION['idCliente'])) {
@@ -11,64 +11,66 @@ if (!isset($_SESSION['idCliente'])) {
 ?>
 
 <?php
-    $id = $_SESSION['idCliente'];
-    $dados = "SELECT * FROM cliente INNER JOIN endereco ON id_endereco = idEndereco INNER JOIN cadastro_cliente ON idCliente = id_cliente  WHERE idCliente = '$id'";
-    $query = mysqli_query($conn, $dados);
-    $resultados = mysqli_fetch_assoc($query);
+$id = $_SESSION['idCliente'];
+$dados = "SELECT * FROM cliente INNER JOIN endereco ON id_endereco = idEndereco INNER JOIN cadastro_cliente ON idCliente = id_cliente  WHERE idCliente = '$id'";
+$query = mysqli_query($conn, $dados);
+$resultados = mysqli_fetch_assoc($query);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 	<title>Usuário</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
-<!--===============================================================================================-->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!--===============================================================================================-->
 
-<!-- Biblioteca de Animações CSS | START -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<!-- Biblioteca de Animações CSS | END -->
+	<!-- Biblioteca de Animações CSS | START -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<!-- Biblioteca de Animações CSS | END -->
 
-<!-- Arquivos CSS | START -->
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
-<link rel="stylesheet" href="./css/style.css" />
-<!-- Arquivos CSS | END -->
+	<!-- Arquivos CSS | START -->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/boot.css" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<!-- Arquivos CSS | END -->
 
 </head>
+
 <body class="animsition">
-	
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -94,14 +96,14 @@ if (!isset($_SESSION['idCliente'])) {
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="index.html" class="logo">
 						<img src="images/icons/logo.png" alt="IMG-LOGO">
 					</a>
 
-						<!-- Menu desktop -->
-						<div class="menu-desktop">
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
 								<a href="index.html">Home</a>
@@ -132,15 +134,15 @@ if (!isset($_SESSION['idCliente'])) {
 								<a href="contato.html">Contato</a>
 							</li>
 						</ul>
-					</div>	
+					</div>
 
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
@@ -151,11 +153,13 @@ if (!isset($_SESSION['idCliente'])) {
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="0">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+					data-notify="0">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</div>
 
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+					data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
 			</div>
@@ -239,104 +243,112 @@ if (!isset($_SESSION['idCliente'])) {
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
-			
-				
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">
-						Total: R$ 00.00
-					</div>
 
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="carrinho.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							Carrinho
-						</a>
-					</div>
+
+
+			<div class="w-full">
+				<div class="header-cart-total w-full p-tb-40">
+					Total: R$ 00.00
+				</div>
+
+				<div class="header-cart-buttons flex-w w-full">
+					<a href="carrinho.html"
+						class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						Carrinho
+					</a>
 				</div>
 			</div>
 		</div>
-	</div><br><br><br>
+	</div>
+	</div>
 
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
 			Minha Conta
 		</h2>
-	</section>	
+	</section>
 
 
-	 <!-- ======= Header ======= -->
+	<!-- ======= Header ======= -->
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
-				<div class="custom-menu">
-					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+			<div class="custom-menu">
+				<button type="button" id="sidebarCollapse" class="btn btn-primary">
 				</button>
 			</div>
-	
+
 			<div class="">
 				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
-					<ul class="list-unstyled components mb-5">
-						<li class="active">
-							<a href="meus_dados.php"><span class="fa fa-user mr-3"></span> Meus Dados</a>
-						</li>
-						<li>
-							<a href="editar_dados.php"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
-						</li>
-						<li>
+				<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a href="meus_dados.php"><span class="fa fa-user mr-3"></span> Meus Dados</a>
+					</li>
+					<li>
+						<a href="editar_dados.php"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
+					</li>
+					<li>
 						<a href="meus_pet.php"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
-						</li>
-						<li>
+					</li>
+					<li>
 						<a href="senha_seguranca.php"><span class="fa fa-lock mr-3"></span> Senha e Segurança</a>
-						</li>
-						<li>
+					</li>
+					<li>
 						<a href="cartao.php"><span class="fa fa-credit-card mr-3"></span>Metodo de Pagamento</a>
-						</li>
-						<li>
-							<a href="agendamento.php"><span class="fa fa-server mr-3"></span>Agendar</a>
-						</li>
-					</ul>
+					</li>
+					<li>
+						<a href="agendamento.php"><span class="fa fa-server mr-3"></span>Agendar</a>
+					</li>
+				</ul>
 
-					<div class="mb-5 px-4">
-								<a href="php/proc_logout.php" class="subscribe-form">
-									<h3 class="h6 mb-3">Sair</h3>
-								</a>
-							</div>
+				<div class="mb-5 px-4">
+					<a href="php/proc_logout.php" class="subscribe-form">
+						<h3 class="h6 mb-3">Sair</h3>
+					</a>
+				</div>
 
-					</div>
+			</div>
 
 		</nav><br><br><br>
 
-		
+
 		<div class="wrapper"><br><br>
-			
+
 			<section class="h-100">
 				<div class="container h-100">
 					<div class="row justify-content-md-center h-100">
 						<div class="card-wrapper">
-							
+
 							<div class="card fat">
 								<div class="card-body">
-									<form method="POST" action="php/proc_edit_cliente.php" class="my-login-validation" >
+									<form method="POST" action="php/proc_edit_cliente.php" class="my-login-validation">
 										<div class="container">
 											<div class="row">
 												<div class="col-md-6">
 													<?php
-														if(isset($_SESSION['msg'])){
-															echo $_SESSION['msg'];
-															unset($_SESSION['msg']);
-														}
+													if (isset($_SESSION['msg'])) {
+														echo $_SESSION['msg'];
+														unset($_SESSION['msg']);
+													}
 													?>
-												<h1 style="font-weight: 600; font-size: 200%;">Informações da Conta</h1><br>
+													<h1 style="font-weight: 600; font-size: 200%;">Informações da Conta
+													</h1><br>
 													<div class="form-group">
 														<label for="nomeCompleto">Nome completo</label>
-														<input id="nomeCompleto" type="text" class="form-control" name="nome" placeholder="Nome completo" value="<?php echo $resultados['nome'] . " " . $resultados['sobrenome'];  ?>" required autofocus >
+														<input id="nomeCompleto" type="text" class="form-control"
+															name="nome" placeholder="Nome completo"
+															value="<?php echo $resultados['nome'] . " " . $resultados['sobrenome']; ?>"
+															required autofocus>
 														<div class="invalid-feedback">
 															Nome completo válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="email">E-mail</label>
-														<input id="email" type="email" class="form-control" name="email" placeholder="E-mail completo" value="<?php echo $resultados['email']; ?>" required autofocus >
+														<input id="email" type="email" class="form-control" name="email"
+															placeholder="E-mail completo"
+															value="<?php echo $resultados['email']; ?>" required
+															autofocus>
 														<div class="invalid-feedback">
 															E-mail válido
 														</div>
@@ -344,28 +356,40 @@ if (!isset($_SESSION['idCliente'])) {
 													<div class="col-md-6"></div>
 													<div class="form-group">
 														<label for="cpf">CPF</label>
-														<input id="cpf" type="text" value="<?php echo $resultados['cpf']; ?>" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus readonly>
+														<input id="cpf" type="text"
+															value="<?php echo $resultados['cpf']; ?>"
+															class="form-control" name="cpf" placeholder="000.000.000-00"
+															required autofocus readonly>
 														<div class="invalid-feedback">
 															CPF válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="rg">RG</label>
-														<input id="rg" type="text" value="<?php echo $resultados['rg']; ?>" class="form-control" name="rg" placeholder="00.000.000-0" required autofocus readonly>
+														<input id="rg" type="text"
+															value="<?php echo $resultados['rg']; ?>"
+															class="form-control" name="rg" placeholder="00.000.000-0"
+															required autofocus readonly>
 														<div class="invalid-feedback">
 															RG válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="date">Data de Nascimento</label>
-														<input id="date" type="date"  value="<?php echo $resultados['data_nasc']; ?>" class="form-control" name="date" required autofocus readonly>
+														<input id="date" type="date"
+															value="<?php echo $resultados['data_nasc']; ?>"
+															class="form-control" name="date" required autofocus
+															readonly>
 														<div class="invalid-feedback">
 															Data de Nascimento válida
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="celular">Celular</label>
-														<input id="celular" type="tel" value="<?php echo $resultados['celular']; ?>" class="form-control" name="celular" placeholder="(00) 00000-0000" required autofocus >
+														<input id="celular" type="tel"
+															value="<?php echo $resultados['celular']; ?>"
+															class="form-control" name="celular"
+															placeholder="(00) 00000-0000" required autofocus>
 														<div class="invalid-feedback">
 															Celular válido
 														</div>
@@ -375,42 +399,56 @@ if (!isset($_SESSION['idCliente'])) {
 													<h1 style="font-weight: 600; font-size: 200%;">Endereço</h1><br>
 													<div class="form-group">
 														<label for="cep">CEP</label>
-														<input id="cep" type="text"  value="<?php echo $resultados['cep']; ?>" class="form-control" name="cep"  required autofocus onblur="pesquisacep(this.value);">
+														<input id="cep" type="text"
+															value="<?php echo $resultados['cep']; ?>"
+															class="form-control" name="cep" required autofocus
+															onblur="pesquisacep(this.value);">
 														<div class="invalid-feedback">
 															CEP válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="rua">Rua</label>
-														<input id="logradouro" type="text" value="<?php echo $resultados['logradouro']; ?>" class="form-control" name="logradouro" required autofocus  >
+														<input id="logradouro" type="text"
+															value="<?php echo $resultados['logradouro']; ?>"
+															class="form-control" name="logradouro" required autofocus>
 														<div class="invalid-feedback">
 															Rua válida
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="numero">Número</label>
-														<input id="numero" type="text" value="<?php echo $resultados['numero']; ?>" class="form-control" name="numero" required autofocus >
+														<input id="numero" type="text"
+															value="<?php echo $resultados['numero']; ?>"
+															class="form-control" name="numero" required autofocus>
 														<div class="invalid-feedback">
 															Número válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="bairro">Bairro</label>
-														<input id="bairro" type="text" value="<?php echo $resultados['bairro']; ?>" class="form-control" name="bairro" required autofocus >
+														<input id="bairro" type="text"
+															value="<?php echo $resultados['bairro']; ?>"
+															class="form-control" name="bairro" required autofocus>
 														<div class="invalid-feedback">
 															Bairro válido
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="cidade">Cidade</label>
-														<input id="municipio" type="text"class="form-control" name="municipio" value="<?php echo $resultados['municipio']; ?>" required autofocus >
+														<input id="municipio" type="text" class="form-control"
+															name="municipio"
+															value="<?php echo $resultados['municipio']; ?>" required
+															autofocus>
 														<div class="invalid-feedback">
 															Cidade válida
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="estado">Estado</label>
-														<input id="estado" type="text" class="form-control" name="estado" value="<?php echo $resultados['estado']; ?>" required autofocus >
+														<input id="estado" type="text" class="form-control"
+															name="estado" value="<?php echo $resultados['estado']; ?>"
+															required autofocus>
 														<div class="invalid-feedback">
 															Estado válido
 														</div>
@@ -418,7 +456,7 @@ if (!isset($_SESSION['idCliente'])) {
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<button type="submit" class="btn btn-primary btn-lg btn-block" >
+														<button type="submit" class="btn btn-primary btn-lg btn-block">
 															Alterar
 														</button>
 													</div>
@@ -434,7 +472,7 @@ if (!isset($_SESSION['idCliente'])) {
 			</section>
 		</div>
 	</div>
-		
+
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
@@ -509,7 +547,8 @@ if (!isset($_SESSION['idCliente'])) {
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
-						Alguma Pergunta? Informe-nos na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para +55 11 9808 04532
+						Alguma Pergunta? Informe-nos na Av. Santo Amaro, 6829 - Santo Amaro, São Paulo, SP ou ligue para
+						+55 11 9808 04532
 					</p>
 
 					<div class="p-t-27">
@@ -534,7 +573,8 @@ if (!isset($_SESSION['idCliente'])) {
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
+								placeholder="email@example.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
 
@@ -572,8 +612,10 @@ if (!isset($_SESSION['idCliente'])) {
 
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os Direitos Reservados | by Myhappypet</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script>document.write(new Date().getFullYear());</script> Todos os Direitos Reservados | by
+					Myhappypet</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
 				</p>
 			</div>
@@ -587,54 +629,55 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 		</span>
 	</div>
 
-<!--===============================================================================================-->	
-<!--===============================================================================================-->	
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/bootstrap/js/popper.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
 	<script>
-		$(".js-select2").each(function(){
+		$(".js-select2").each(function () {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
 				wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function(){
+			$(window).on('resize', function () {
 				ps.update();
 			})
 		});
 	</script>
 
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-    <script src="js/script.js"></script>
+	<script src="js/script.js"></script>
 	<script src="js/cep.js"></script>
 
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
+	<script src="assets/js/popper.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/main.js"></script>
 
-	
+
 
 </body>
+
 </html>

@@ -385,7 +385,7 @@ if (!isset($_SESSION['idCliente'])) {
 										<span class="icon"><img src="./assets/contact-less-payment.svg" /></span>
 									</div>
 
-									<div class="card-body">
+									<div class="card-body" style="padding: 1.25rem;">
 										<div id="card-user-number" class="number-card">•••• •••• •••• ••••</div>
 
 										<div class="name-and-date">

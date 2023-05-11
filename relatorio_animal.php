@@ -334,7 +334,7 @@
 													<h1 style="font-weight: 600; font-size: 200%;">Relatorio do Animal</h1><br>
 													
 													<div class="form-group">
-														<label for="cpf">CPF </label>
+														<label for="cpf">CPF *</label>
 														<input id="cpf" type="text" class="form-control" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');"
  placeholder="000.000.000-00" required autofocus>
 														<div class="invalid-feedback">

@@ -285,13 +285,13 @@ if (!isset($_SESSION['idCliente'])) {
 										<div class="col-md-12">
 										   
 												<h1>Cadastro do Pet</h1><br><br>
-												<label id="name" for="nome">Nome:</label>
+												<label id="name" for="nome">Nome: *</label>
 												<input type="text" id="nome" name="nome" class="form-control" required>
 											
 										</div><br>
 										<div class="col-md-6">
 											<div class="form-group">
-											  <label for="especie">Espécie:</label>
+											  <label for="especie">Espécie: *</label>
 											  <select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)" required>
 												<option value="">Selecione seu animal</option>
 												<option value="Cachorro">Cachorro</option>
@@ -300,7 +300,7 @@ if (!isset($_SESSION['idCliente'])) {
 											  </select>
 											</div>
 											<div class="form-group">
-											  <label for="cor">Cor:</label>
+											  <label for="cor">Cor: *</label>
 											  <select type="text" id="cor" name="cor" class="form-control" disabled>
 												<option value="">Selecione a cor</option>
 												<!-- Opções de cor para Cachorro -->
@@ -330,7 +330,7 @@ if (!isset($_SESSION['idCliente'])) {
 											  </select>
 											</div>
 											<div class="form-group">
-												<label id="peso-label" for="peso">Peso:</label>
+												<label id="peso-label" for="peso">Peso: *</label>
 												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg"required>
 											  </div>
 										</div>
@@ -341,13 +341,13 @@ if (!isset($_SESSION['idCliente'])) {
 										<div class="col-md-6">
 										   
 											<div class="form-group">
-												<label id="idade" for="nascimento">Data de nascimento:</label>
+												<label id="idade" for="nascimento">Data de nascimento: *</label>
 												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required>
 											</div>
 											
 											
 												<div class="form-group">
-													<label for="sexo">Sexo:</label>
+													<label for="sexo">Sexo: *</label>
 													<select name="sexo" id="sexo" class="form-control">
 														<option value="">Selecione o sexo</option>
 														<option value="Macho">Macho</option>

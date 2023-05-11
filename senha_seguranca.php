@@ -324,7 +324,7 @@ if (!isset($_SESSION['idCliente'])) {
 
 								<div class="form-row">
 									<div class="form-group col-md-10">
-										<label for="password">Senha Atual:</label>
+										<label for="password">Senha * Atual:</label>
 										<input id="password" type="password" class="form-control" name="senhaAtual"
 											required data-eye>
 										<div class="invalid-feedback">

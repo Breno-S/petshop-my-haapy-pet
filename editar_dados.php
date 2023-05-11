@@ -334,7 +334,7 @@ $resultados = mysqli_fetch_assoc($query);
 													<h1 style="font-weight: 600; font-size: 200%;">Informações da Conta
 													</h1><br>
 													<div class="form-group">
-														<label for="nomeCompleto">Nome completo</label>
+														<label for="nomeCompleto">Nome completo *</label>
 														<input id="nomeCompleto" type="text" class="form-control"
 															name="nome" placeholder="Nome completo"
 															value="<?php echo $resultados['nome'] . " " . $resultados['sobrenome']; ?>"
@@ -344,7 +344,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="email">E-mail</label>
+														<label for="email">E-mail *</label>
 														<input id="email" type="email" class="form-control" name="email"
 															placeholder="E-mail completo"
 															value="<?php echo $resultados['email']; ?>" required
@@ -385,7 +385,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="celular">Celular</label>
+														<label for="celular">Celular *</label>
 														<input id="celular" type="tel"
 															value="<?php echo $resultados['celular']; ?>"
 															class="form-control" name="celular"
@@ -398,7 +398,7 @@ $resultados = mysqli_fetch_assoc($query);
 												<div class="col-md-6">
 													<h1 style="font-weight: 600; font-size: 200%;">Endereço</h1><br>
 													<div class="form-group">
-														<label for="cep">CEP</label>
+														<label for="cep">CEP *</label>
 														<input id="cep" type="text"
 															value="<?php echo $resultados['cep']; ?>"
 															class="form-control" name="cep" required autofocus
@@ -408,7 +408,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="rua">Rua</label>
+														<label for="rua">Rua *</label>
 														<input id="logradouro" type="text"
 															value="<?php echo $resultados['logradouro']; ?>"
 															class="form-control" name="logradouro" required autofocus>
@@ -417,7 +417,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="numero">Número</label>
+														<label for="numero">Número *</label>
 														<input id="numero" type="text"
 															value="<?php echo $resultados['numero']; ?>"
 															class="form-control" name="numero" required autofocus>
@@ -426,7 +426,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="bairro">Bairro</label>
+														<label for="bairro">Bairro *</label>
 														<input id="bairro" type="text"
 															value="<?php echo $resultados['bairro']; ?>"
 															class="form-control" name="bairro" required autofocus>
@@ -435,7 +435,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="cidade">Cidade</label>
+														<label for="cidade">Cidade *</label>
 														<input id="municipio" type="text" class="form-control"
 															name="municipio"
 															value="<?php echo $resultados['municipio']; ?>" required
@@ -445,7 +445,7 @@ $resultados = mysqli_fetch_assoc($query);
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="estado">Estado</label>
+														<label for="estado">Estado *</label>
 														<input id="estado" type="text" class="form-control"
 															name="estado" value="<?php echo $resultados['estado']; ?>"
 															required autofocus>

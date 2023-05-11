@@ -341,7 +341,7 @@
 									</div>
 
 									<div class="form-group">
-										<label for="cpf">CPF do funcionário</label>
+										<label for="cpf">CPF *do funcionário</label>
 										<input id="cpf" type="text" class="form-control" name="cpf" placeholder="000.000.000-00" required autofocus oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
 										<div class="invalid-feedback">
 											CPF válido
@@ -349,7 +349,7 @@
 									</div>
 
 									<div class="form-group">
-										<label for="password">Senha</label>
+										<label for="password">Senha *</label>
 										<input id="password" type="password" class="form-control" name="senha" required data-eye>
 										<div class="invalid-feedback">
 											Senha é requerida

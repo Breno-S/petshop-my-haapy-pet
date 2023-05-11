@@ -356,7 +356,7 @@
 										<div class="form-row">
 										<div class="form-group col-md-10">
                                             <input type="hidden" name="idCliente" value="<?php echo($pega_cliente_edit['idCliente']);?>">
-											<label for="usuario">Nome</label>
+											<label for="usuario">Nome *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['nome'] . ' ' . $pega_cliente_edit['sobrenome']); ?>" name="nome" id="nome" class="form-control" placeholder="Seu nome" autofocus>
 											<div class="invalid-feedback">
 											Nome completo válido
@@ -366,7 +366,7 @@
 									
 										<div class="form-row"> 
 										<div class="form-group col-md-5">
-											<label for="cpf">CPF </label>
+											<label for="cpf">CPF *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['cpf']); ?>" readonly name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" id="cpf" class="form-control" placeholder="000.000.000-00" autofocus>
 											<div class="invalid-feedback">
 											CPF válido
@@ -374,7 +374,7 @@
 										</div>
 									
 										<div class="form-group col-md-5">
-										<label for="rg">RG </label>
+										<label for="rg">RG *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['rg']); ?>" readonly name="rg" id="rg" class="form-control" placeholder="00.000.000-0" autofocus>
 											<div class="invalid-feedback">
 											RG válido
@@ -392,14 +392,14 @@
 										</div>
 										
 										<div class="form-group col-md-5">
-												<label for="celular">Celular</label>
+												<label for="celular">Celular *</label>
 												<input required type="text" value="<?php echo($pega_cliente_edit['celular']); ?>" name="celular" id="celular" class="form-control" placeholder="(00) 00000-0000" autofocus>
 												<div class="invalid-feedback">
 												Celular válido
 												</div>
 											</div>
 										<div class="form-group col-md-10">
-											<label for="email">E-mail</label>
+											<label for="email">E-mail *</label>
 											<input id="email" type="email" value="<?php echo($pega_cliente_edit['email']); ?>" data-js="E-Mail" class="form-control" name="email" placeholder="seuemail@..." required autofocus>
 											<div class="invalid-feedback">
 											E-mail válido
@@ -409,7 +409,7 @@
 									
 										<div class="form-row">
 										<div class="form-group col-md-6">
-											<label for="cep">CEP</label>
+											<label for="cep">CEP *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['cep']); ?>" placeholder="00000-000" name="cep" id="cep" onblur="pesquisacep(this.value);" size="10" maxlength="9" class="form-control" autofocus>
 											<div class="invalid-feedback">
 											CEP válido
@@ -417,7 +417,7 @@
 										</div>
 									
 										<div class="form-group col-md-4">
-											<label for="uf">UF</label>
+											<label for="uf">UF *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['estado']); ?>" name="estado" placeholder="UF" id="estado" size="2" class="form-control" required autofocus>
 											<div class="invalid-feedback">
 											UF válido
@@ -426,7 +426,7 @@
 									</div>
 										<div class="form-row">
 											<div class="form-group col-md-5">
-													<label for="municipio">Município</label>
+													<label for="municipio">Município *</label>
 													<input required type="text" value="<?php echo($pega_cliente_edit['municipio']); ?>" name="municipio" placeholder="Município" id="municipio" class="form-control" autofocus>
 													<div class="invalid-feedback">
 													Município válido
@@ -443,14 +443,14 @@
 										
 										<div class="form-row">
 										<div class="form-group col-md-6">
-											<label for="logradouro">Logradouro</label>
+											<label for="logradouro">Logradouro *</label>
 											<input required type="text" value="<?php echo($pega_cliente_edit['logradouro']); ?>" name="logradouro" id="logradouro" placeholder="Rua" class="form-control" autofocus>
 										<div class="invalid-feedback">
 											Logradouro válido
 										</div>
 									</div>
 									<div class="form-group col-md-4">
-											<label for="numero">Número</label>
+											<label for="numero">Número *</label>
 											<input required type="number" value="<?php echo($pega_cliente_edit['numero']); ?>" name="numero" id="numero" placeholder="Número" class="form-control" autofocus>
 											<div class="invalid-feedback">
 											Logradouro válido

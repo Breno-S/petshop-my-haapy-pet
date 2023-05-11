@@ -289,7 +289,7 @@ session_start();
 										<h1 style="font-weight: 600;">Seu Cadastro</h1><br>
 										<div class="form-row">
 											<div class="form-group col-md-10">
-												<label for="usuario">Nome</label>
+												<label for="usuario">Nome *</label>
 												<input required type="text" name="nome" id="nome" class="form-control"
 													placeholder="Seu nome" autofocus>
 												<div class="invalid-feedback">
@@ -300,7 +300,7 @@ session_start();
 
 										<div class="form-row">
 											<div class="form-group col-md-5">
-												<label for="cpf">CPF </label>
+												<label for="cpf">CPF *</label>
 												<input required type="text" name="cpf" id="cpf" class="form-control"
 													placeholder="000.000.000-00" autofocus
 													oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
@@ -310,7 +310,7 @@ session_start();
 											</div>
 
 											<div class="form-group col-md-5">
-												<label for="rg">RG </label>
+												<label for="rg">RG *</label>
 												<input required type="text" name="rg" id="rg" class="form-control"
 													placeholder="00.000.000-0" autofocus
 													oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');">
@@ -322,7 +322,7 @@ session_start();
 
 										<div class="form-row">
 											<div class="form-group col-md-5">
-												<label for="date">Data de Nascimento </label>
+												<label for="date">Data de Nascimento *</label>
 												<input required type="date" name="data_nasc" id="data_nasc"
 													class="form-control" value="" autofocus
 													max="<?php echo date("Y-m-d"); ?>">
@@ -332,7 +332,7 @@ session_start();
 											</div>
 
 											<div class="form-group col-md-5">
-												<label for="celular">Celular</label>
+												<label for="celular">Celular *</label>
 												<input required type="text" name="celular" id="celular"
 													class="form-control" placeholder="(00) 00000-0000" autofocus>
 												<div class="invalid-feedback">
@@ -340,7 +340,7 @@ session_start();
 												</div>
 											</div>
 											<div class="form-group col-md-10">
-												<label for="email">E-mail</label>
+												<label for="email">E-mail *</label>
 												<input id="email" type="email" data-js="E-Mail" class="form-control"
 													name="email" placeholder="seuemail@..." required autofocus>
 												<div class="invalid-feedback">
@@ -351,7 +351,7 @@ session_start();
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label for="cep">CEP</label>
+												<label for="cep">CEP *</label>
 												<input required type="text" placeholder="00000-000" name="cep" id="cep"
 													onblur="pesquisacep(this.value);" size="10" maxlength="9"
 													class="form-control" autofocus>
@@ -361,7 +361,7 @@ session_start();
 											</div>
 
 											<div class="form-group col-md-4">
-												<label for="uf">UF</label>
+												<label for="uf">UF *</label>
 												<input required type="text" name="estado" placeholder="UF" id="estado"
 													size="2" class="form-control" required autofocus>
 												<div class="invalid-feedback">
@@ -371,7 +371,7 @@ session_start();
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-5">
-												<label for="municipio">Município</label>
+												<label for="municipio">Município *</label>
 												<input required type="text" name="municipio" placeholder="Município"
 													id="municipio" class="form-control" autofocus>
 												<div class="invalid-feedback">
@@ -390,7 +390,7 @@ session_start();
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label for="logradouro">Logradouro</label>
+												<label for="logradouro">Logradouro *</label>
 												<input required type="text" name="logradouro" id="logradouro"
 													placeholder="Rua" class="form-control" autofocus>
 												<div class="invalid-feedback">
@@ -398,7 +398,7 @@ session_start();
 												</div>
 											</div>
 											<div class="form-group col-md-4">
-												<label for="numero">Número</label>
+												<label for="numero">Número *</label>
 												<input required type="number" name="numero" id="numero"
 													placeholder="Número" class="form-control" autofocus>
 												<div class="invalid-feedback">
@@ -409,7 +409,7 @@ session_start();
 
 										<div class="form-row">
 											<div class="form-group col-md-10">
-												<label for="password">Senha</label>
+												<label for="password">Senha *</label>
 												<input required type="text" name="senha" id="senha"
 													placeholder="Crie uma senha	" class="form-control" data-eye>
 												<div class="invalid-feedback">

@@ -337,96 +337,99 @@
 								}					
 								?>
                                     
-									<form action="php/proc_cad_pet_func.php" method="post" class="row my-login-validation" enctype="multipart/form-data">
-                                        <div class="col-md-12">
-                                           
-                                                <h1>Cadastro do Pet</h1><br><br>
-                                                <label id="name" for="nome">Nome:</label>
-                                                <input type="text" id="nome" name="nome" class="form-control" required>
-                                            
-                                        </div><br>
-										<div class="col-md-6">
-											<div class="form-group">
-											  <label for="especie">Espécie:</label>
-											  <select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)" required>
-												<option value="">Selecione seu animal</option>
-												<option value="Cachorro">Cachorro</option>
-												<option value="Gato">Gato</option>
-												<option value="Pássaro">Pássaro</option>
-											  </select>
-											</div>
-											<div class="form-group">
-											  <label for="cor">Cor:</label>
-											  <select type="text" id="cor" name="cor" class="form-control" disabled>
-												<option value="">Selecione a cor</option>
-												<!-- Opções de cor para Cachorro -->
-												<!-- <optgroup id="cachorroColors" label="Cores para Cachorro" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="marrom">Marrom</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-												<!-- Opções de cor para Gato -->
-												<!-- <optgroup id="gatoColors" label="Cores para Gato" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="marrom">Marrom</option>
-												  <option value="cinza">Cinza</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-												<!-- Opções de cor para Pássaro -->
-												<!-- <optgroup id="passaroColors" label="Cores para Pássaro" style="display:none;">
-												  <option value="branco">Branco</option>
-												  <option value="preto">Preto</option>
-												  <option value="azul">Azul</option>
-												  <option value="amarelo">Amarelo</option>
-												  <option value="cinza">Cinza</option>
-												  <option value="mesclado">Mesclado</option>
-												</optgroup> -->
-											  </select>
-											</div>
-											<div class="form-group">
-												<label id="peso-label" for="peso">Peso:</label>
-												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg"required>
+									<form action="php/proc_cad_pet_func.php" method="post" class="my-login-validation" enctype="multipart/form-data">
+										<div class="form-row">
+											<div class="form-group col-md-10">
+												<h1>Cadastro do Pet</h1>
 											</div>
 										</div>
-										  
-										  
-
-                                        
-										<div class="col-md-6">
-                                           
-											<div class="form-group">
-												<label id="idade" for="nascimento">Data de nascimento:</label>
-												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required max="<?php echo date("Y-m-d");?>">
+										<div class="form-row">
+											<div class="form-group col-md-10">
+												<label id="name" for="nome">Nome *</label>
+												<input type="text" id="nome" name="nome" class="form-control" required>
+											</div>
+										</div>
+										
+										<div class="form-row">
+											<div class="col-md-5 form-group">
+												<label for="especie">Espécie *</label>
+												<select type="text" id="especie" name="especie" class="form-control" oninput="cores(this.value)" required>
+													<option value="">Selecione seu animal</option>
+													<option value="Cachorro">Cachorro</option>
+													<option value="Gato">Gato</option>
+													<option value="Pássaro">Pássaro</option>
+											  	</select>
+											</div>
+											<div class="col-md-5  form-group">
+											  	<label for="cor">Cor *</label>
+											  	<select type="text" id="cor" name="cor" class="form-control" disabled>
+													<option value="">Selecione a cor</option>
+													<!-- Opções de cor para Cachorro -->
+													<!-- <optgroup id="cachorroColors" label="Cores para Cachorro" style="display:none;">
+													<option value="branco">Branco</option>
+													<option value="preto">Preto</option>
+													<option value="marrom">Marrom</option>
+													<option value="mesclado">Mesclado</option>
+													</optgroup> -->
+													<!-- Opções de cor para Gato -->
+													<!-- <optgroup id="gatoColors" label="Cores para Gato" style="display:none;">
+													<option value="branco">Branco</option>
+													<option value="preto">Preto</option>
+													<option value="marrom">Marrom</option>
+													<option value="cinza">Cinza</option>
+													<option value="mesclado">Mesclado</option>
+													</optgroup> -->
+													<!-- Opções de cor para Pássaro -->
+													<!-- <optgroup id="passaroColors" label="Cores para Pássaro" style="display:none;">
+													<option value="branco">Branco</option>
+													<option value="preto">Preto</option>
+													<option value="azul">Azul</option>
+													<option value="amarelo">Amarelo</option>
+													<option value="cinza">Cinza</option>
+													<option value="mesclado">Mesclado</option>
+													</optgroup> -->
+											  	</select>
 											</div>
 											
+										</div>
+
+										<div class="form-row">
+											<div class="col-md-5 form-group">
+												<label id="peso-label" for="peso">Peso *</label>
+												<input type="text" id="peso" name="peso" class="form-control" placeholder="Exemplo: 70.5kg"required>
+											</div>
+											<div class="col-md-5 form-group">
+												<label id="idade" for="nascimento">Data de nascimento *</label>
+												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required max="<?php echo date("Y-m-d");?>">
+											</div>
+										</div>
+
+										<div class="form-row">
 											
-                                                <div class="form-group">
-                                                    <label for="sexo">Sexo:</label>
-                                                    <select name="sexo" id="sexo" class="form-control">
-														<option value="">Selecione o sexo</option>
-														<option value="Macho">Macho</option>
-														<option value="Fêmea">Fêmea</option>
-													</select>
-                                                </div>
-												<div class="form-group">
-													<label id="peso-label" for="peso">CPF:</label>
-													<input type="text" id="cpf" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" class="form-control" placeholder="000.000.000-00"required oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(\..*)\./g, '$1');">
-												</div>
 											
+                                            <div class="col-md-5 form-group">
+                                                <label for="sexo">Sexo *</label>
+                                                <select name="sexo" id="sexo" class="form-control">
+													<option value="">Selecione o sexo</option>
+													<option value="Macho">Macho</option>
+													<option value="Fêmea">Fêmea</option>
+												</select>
+                                            </div>
+											<div class="col-md-5 form-group">
+												<label id="peso-label" for="peso">CPF *</label>
+												<input type="text" id="cpf" name="cpf" oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(.*)/g, '$1');" class="form-control" placeholder="000.000.000-00"required oninput="this.value = this.value.replace(/[^0-9\.-]/g, '').replace(/(\..*)\./g, '$1');">
+											</div>
                                         </div>
-										<div class="col-md-12"> 
-										
-                                                <div class="form-group">
-                                                    <label for="foto">Foto:</label>
-                                                    <input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
-                                                </div>
-											               
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-                                                </div>
-											 
+										<div class="form-row"> 
+                                            <div class="col-md-10 form-group">
+                                                <label for="foto">Foto:</label>
+                                                <input type="file" class="form-control" id="foto" name="foto" class="form-control-file">
+                                            </div>
+										</div>
+										<div class="form-row">              
+                                            <div class="col-md-10 form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                                            </div>
                                         </div>
 										
 

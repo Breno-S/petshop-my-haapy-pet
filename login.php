@@ -291,7 +291,7 @@ session_start();
 										}
 										?>
 										<div class="form-group">
-											<label for="usuario">E-Mail / CPF </label>
+											<label for="usuario">E-Mail / CPF *</label>
 											<input id="usuario" type="text" class="form-control" name="usuario" value=""
 												required autofocus>
 											<div class="invalid-feedback">
@@ -300,7 +300,7 @@ session_start();
 										</div>
 
 										<div class="form-group">
-											<label for="password">Senha
+											<label for="password">Senha *
 
 											</label>
 											<input id="password" type="password" class="form-control" name="senha"

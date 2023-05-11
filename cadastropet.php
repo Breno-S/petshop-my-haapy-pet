@@ -342,7 +342,7 @@ if (!isset($_SESSION['idCliente'])) {
 										   
 											<div class="form-group">
 												<label id="idade" for="nascimento">Data de nascimento: *</label>
-												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000"required>
+												<input type="date" id="nascimento" name="nascimento" class="form-control" placeholder="00/00/0000" max="<?php echo date("Y-m-d");?>" required>
 											</div>
 											
 											

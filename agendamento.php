@@ -359,7 +359,7 @@
 													echo('
 													<div class="d-flex align-items-center">
 														<label class="btn btn-outline-secondary pet-option mr-3">
-														<input type="radio" required name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">
+														<input type="checkbox" name="animal' . $qt_animais_total . '"value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao1">
 														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img" style="vertical-align: middle; display: inline-block;">
 														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
 														</label>
@@ -367,7 +367,7 @@
 													} else {
 													echo('
 													<label class="btn btn-outline-secondary pet-option mr-3">
-														<input type="radio" required name="animal" value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">
+														<input type="checkbox" name="animal' . $qt_animais_total . '"value="'. $row_animal['idPet'] .'" autocomplete="off" class="opcao2">
 														<img src="'. ($pega_img_pet['dir_img_pet'] ?? 'images/imgPet/placeholder_pet.png') .'" alt="'. $row_animal['nome_pet'] .'" class="pet-img flex-fill" style="display: inline-block;">
 														<span class="pet-name">'. $row_animal['nome_pet'] .'</span>
 													</label>');

@@ -18,8 +18,23 @@ $funcionario = $_POST['funcionarios'];
 $funcionario = explode(" ", $funcionario);
 $cliente = $_SESSION['idCliente'];
 $servico = $_POST['servico'];
-$pet = $_POST['animal'];
 
+$pets = [];
+
+// pegar os animais selecionados pelo usuario no agendamento.php
+$str = "animal";
+$i = 1;
+while (true) {
+	$target = "$str$i";
+	if (empty($_POST["$target"])) {
+		break;
+	} else {
+		$pets[] = $_POST["$target"];
+	}
+	$i += 1;
+}
+// ARRUMAR SELEÇÃO DE ANIMAIS NÃO CONSECUTIVOS
+print_r($pets);
 
 $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = " . intval($funcionario[1]));
 $pega_funcionarios = mysqli_fetch_assoc($funcionarios);
@@ -29,7 +44,20 @@ $informacoes_cliente = mysqli_fetch_assoc($info_cliente);
 $info_cad_cliente = mysqli_query($conn, "SELECT * FROM cadastro_cliente WHERE id_cliente = " . intval($cliente));
 $informacoes_cadastro = mysqli_fetch_assoc($info_cad_cliente);
 
-$animais_cliente = mysqli_query($conn, "SELECT * FROM cadastro_pet WHERE idPet = " . intval($pet));
+$total_pets = count($pets);
+$query_animais = "SELECT * FROM cadastro_pet WHERE idPet IN (";
+
+for ($i=0; $i < $total_pets; $i++) {
+	if ($i == ($total_pets - 1) || $total_pets == 1) {
+		$query_animais = $query_animais . "$pets[$i])";
+	} else {
+		$query_animais = $query_animais . "$pets[$i], ";
+	}
+}
+
+// echo $query_animais;
+
+$animais_cliente = mysqli_query($conn, $query_animais);
 
 $horarios = mysqli_query($conn, "SELECT * FROM horarios_disponiveis WHERE id_funcionario = " . intval($funcionario[1]) . " AND data >= NOW() AND reservado = 0 AND servico LIKE '$servico' ORDER BY data ASC;");
 
@@ -430,7 +458,7 @@ $qt_animais_total = 1;
 															<div class="col-md-6">
 																<div class="pet-options d-flex pet-option-group">
 																<label class="btn btn-outline-secondary pet-option mr-3">
-																	<input checked type="radio" name="animal" value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1">');
+																	<input checked type="checkbox" name="animal" value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1">');
 														if (isset($pega_img_pet['dir_img_pet'])) {
 															echo ('
 																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
@@ -444,7 +472,7 @@ $qt_animais_total = 1;
 													} else {
 														echo ('
 															<label class="btn btn-outline-secondary pet-option mr-3">
-																<input checked type="radio" name="animal" value="opcao2" autocomplete="off" class="opcao2">');
+																<input checked type="checkbox" name="animal" value="opcao2" autocomplete="off" class="opcao2">');
 														if (isset($pega_img_pet['dir_img_pet'])) {
 															echo ('
 																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');

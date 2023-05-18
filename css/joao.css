@@ -18769,29 +18769,29 @@ iframe {
 
 /* ------------------Estilização do agendamento ----------------------*/
 
-input[type="radio"] {
+input[type="checkbox"] {
 
 	border-radius: 20px;
 
 }
 
-input[type="radio"]:checked+img {
+input[type="checkbox"]:checked+img {
 
 	background-color: green;
 	padding: 2px;
 
 }
 
-/*esconder o botão do radio quando estiver selecionado*/
+/*esconder o botão do checkbox quando estiver selecionado*/
 
-input[type=radio]:checked {
+input[type=checkbox]:checked {
 	display: none;
 
 }
 
-/*esconder o botão do radio quando não estiver selecionado*/
+/*esconder o botão do checkbox quando não estiver selecionado*/
 
-input[type=radio]:not(:checked) {
+input[type=checkbox]:not(:checked) {
 
 	display: none;
 
@@ -18811,7 +18811,7 @@ input[type=radio]:not(:checked) {
 
 }
 
-.pet-form .pet-option input[type="radio"] {
+.pet-form .pet-option input[type="checkbox"] {
 
 	display: none;
 }
@@ -18831,14 +18831,14 @@ input[type=radio]:not(:checked) {
 }
 
 
-.pet-form .pet-option input[type="radio"]:checked+img {
+.pet-form .pet-option input[type="checkbox"]:checked+img {
 
 	filter: grayscale(0);
 
 }
 
 
-.pet-form .pet-option input[type="radio"]:checked::after {
+.pet-form .pet-option input[type="checkbox"]:checked::after {
 
 	content: "";
 	position: absolute;
@@ -18875,7 +18875,7 @@ input[type=radio]:not(:checked) {
 }
 
 
-.pet-form .pet-option input[type="radio"] {
+.pet-form .pet-option input[type="checkbox"] {
 
 	display: none;
 

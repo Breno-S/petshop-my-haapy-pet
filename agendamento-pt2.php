@@ -1,6 +1,9 @@
 <?php
 include_once('php/conexao.php');
 
+print_r($_POST);
+echo count($_POST);
+
 if (!isset($_SESSION)) {
 	session_start();
 }
@@ -19,22 +22,30 @@ $funcionario = explode(" ", $funcionario);
 $cliente = $_SESSION['idCliente'];
 $servico = $_POST['servico'];
 
+// pegar os animais selecionados pelo usuario no agendamento.php
 $pets = [];
 
-// pegar os animais selecionados pelo usuario no agendamento.php
+$size_post = count($_POST);
+
+// offset do array para pegar a partir do primeiro animal
+$i = 6;
 $str = "animal";
-$i = 1;
-while (true) {
+
+for ($j=1; $j < ; $j++, $i++) { 
+
+
+}
 	$target = "$str$i";
 	if (empty($_POST["$target"])) {
-		break;
+		continue;
 	} else {
 		$pets[] = $_POST["$target"];
 	}
 	$i += 1;
 }
-// ARRUMAR SELEÇÃO DE ANIMAIS NÃO CONSECUTIVOS
-print_r($pets);
+
+// ARRUMAR SELEÇÃO DE ANIMAIS NÃO CONSECUTIVOS!!!!!!!!!!!
+// print_r($pets);
 
 $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = " . intval($funcionario[1]));
 $pega_funcionarios = mysqli_fetch_assoc($funcionarios);

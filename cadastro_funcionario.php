@@ -370,6 +370,7 @@
 												<option value="Veterinario">Veterinario</option>
 												<option value="Secretaria">Secretaria</option>
 												<option value="Tosador">Tosador</option>
+												<option value="Motorista">Motorista</option>
 											</select>
 										</label>
 										<div class="invalid-feedback">

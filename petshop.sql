@@ -239,10 +239,10 @@ CREATE TABLE `funcionarios` (
 
 INSERT INTO `funcionarios` (`idFuncionario`, `cpf_funcionario`, `nome_funcionario`, `senha_funcionario`, `cargo`) VALUES
 (2, '45215720061', 'Adalberto Pereira', '202cb962ac59075b964b07152d234b70', 'Tosador'),
-(3, '27481500070', 'Mika Muramasa', '202cb962ac59075b964b07152d234b70', 'Veterinário'),
+(3, '27481500070', 'Mika Muramasa', '202cb962ac59075b964b07152d234b70', 'Veterinario'),
 (5, '57132702033', 'Camilo Malandro', '202cb962ac59075b964b07152d234b70', 'Administrador'),
-(6, '77484551040', 'Amando Batista', '202cb962ac59075b964b07152d234b70', 'Secretária'),
-(7, '66959460000', 'Karla Jucelina', '202cb962ac59075b964b07152d234b70', 'Veterinário'),
+(6, '77484551040', 'Amando Batista', '202cb962ac59075b964b07152d234b70', 'Secretaria'),
+(7, '66959460000', 'Karla Jucelina', '202cb962ac59075b964b07152d234b70', 'Veterinario'),
 (8, '61753182000', 'Carlos Marinho', '202cb962ac59075b964b07152d234b70', 'Tosador');
 
 -- --------------------------------------------------------

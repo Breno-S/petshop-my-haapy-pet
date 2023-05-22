@@ -1,5 +1,4 @@
 <?php
-
 include_once('php/conexao.php');
 
 if (!isset($_SESSION)) {
@@ -14,7 +13,7 @@ if (!isset($_SESSION['idFuncionario'])) {
 <html lang="pt-br">
 
 <head>
-	<title>Relatórios</title>
+	<title>Agendamentos</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -47,6 +46,7 @@ if (!isset($_SESSION['idFuncionario'])) {
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/joao.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!--===============================================================================================-->
 
@@ -255,11 +255,12 @@ if (!isset($_SESSION['idFuncionario'])) {
 	</div>
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-120" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			Relatórios
+			Agendamentos
 		</h2>
 	</section>
+
 
 	<!-- ======= Header ======= -->
 	<div class="wrapper d-flex align-items-stretch">
@@ -272,48 +273,21 @@ if (!isset($_SESSION['idFuncionario'])) {
 			<div class="">
 				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
 				<ul class="list-unstyled components mb-5">
-					<?php
-					if (isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinario') {
-						echo '<li class="active">
-							<a href="horario.php"><span class="fa fa-clock-o mr-3"></span> Horários</a>
-							</li>';
-						echo '<li class="active">
-							<a href="ve_horarios_func.php"><span class="fa fa-user mr-3"></span> Atendimentos</a>
-							</li>';
-					}
-					?>
-					<li>
-						<a href="relatorio.php"><span class="fa fa-book mr-3"></span>Relatórios</a>
+					<li class="active">
+                        <a href="relatorio.php"><span class="fa fa-book mr-3"></span>Relatórios</a>
 					</li>
-					<?php
-						if (isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Administrador' || $_SESSION['cargo'] == 'Secretaria') {
-							echo '<li class="active">
-							<a href="visualizacao_agendamentos.php"><span class="fa fa-book mr-3"></span>Agendamentos</a>
-							</li>';
-						}
-					?>
-					<li>
-						<a href="pesquisa.php"><span class="fa fa-search mr-3"></span>Pesquisa</a>
+                    <li>
+                        <a href="visualizacao_agendamentos.php"><span class="fa fa-book mr-3"></span>Agendamentos</a>
 					</li>
-					<?php
-
-					if (isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretaria' || $_SESSION['cargo'] == 'Administrador') {
-						echo '<li class="active">
-							<a href="cadastro_clientes.php"><span class="fa fa-user mr-3"></span> Cadastrar clientes</a>
-							</li>';
-						echo '<li class="active">
-							<a href="cadastro_pets.php"><span class="fa fa-user mr-3"></span> Cadastrar pets</a>
-							</li>';
-					}
-					if (isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Administrador') {
-						echo '<li class="active">
-								<a href="cadastro_funcionario.php"><span class="fa fa-user mr-3"></span> Cadastrar funcionários</a>
-								</li>';
-
-					}
-
-					?>
-
+					<li>
+                        <a href="pesquisa.php"><span class="fa fa-search mr-3"></span>Pesquisa</a>
+					</li>
+					<li>
+                        <a href="cadastro_clientes.php"><span class="fa fa-user mr-3"></span> Cadastrar clientes</a>
+					</li>
+                    <li>
+                    <a href="cadastro_funcionario.php"><span class="fa fa-user mr-3"></span> Cadastrar funcionários</a>
+					</li>
 				</ul>
 
 				<div class="mb-5 px-4">
@@ -321,90 +295,117 @@ if (!isset($_SESSION['idFuncionario'])) {
 						<h3 class="h6 mb-3">Sair</h3>
 					</a>
 				</div>
+
 			</div>
 
 		</nav><br><br><br>
 
 
-		<div class="wrapper">
+		<div class="wrapper d-flex justify-content-center" style="padding: 25px">
+  
+      <?php
+        date_default_timezone_set('America/Sao_Paulo');
+        $data_atual = date("Y-m-d");
 
-			<br><br><br>
-			<!-- Banner -->
-			<div class="sec-banner bg0 p-t-80 p-b-50">
-				<div class="container">
-					<div class="row">
+        // AGENDAMENTOS QUE ESTÃO PARA ACONTECER
+        $select_agendamentos = "SELECT * FROM agendamento 
+        INNER JOIN cliente on id_cliente = idCliente
+        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN horarios_disponiveis on id_horario = idHorario
+        WHERE data >= CURDATE()
+        ORDER BY data ASC;";
 
-						<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-							<!-- Block1 -->
-							<div class="block1 wrap-pic-w">
-								<img src="images/banner-01.jpg" alt="IMG-BANNER">
+        $querry_agendamentos = mysqli_query($conn, $select_agendamentos);
 
-								<a href="relatorio_data.php"
-									class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-									<div class="block1-txt-child1 flex-col-l">
-										<span class="block1-name ltext-102 trans-04 p-b-8">
-											Dia
-										</span>
-									</div>
+        // AGENDAMENTOS QUE JÁ ACONTECERAM
 
-									<div class="block1-txt-child2 p-b-4 trans-05">
-										<div class="block1-link stext-101 cl0 trans-09">
-											Visualizar
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
+        $select_agendamentos_anterior = "SELECT * FROM agendamento 
+        INNER JOIN cliente on id_cliente = idCliente
+        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN horarios_disponiveis on id_horario = idHorario
+        WHERE data < CURDATE()
+        ORDER BY data DESC;";
 
-						<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-							<!-- Block1 -->
-							<div class="block1 wrap-pic-w">
-								<img src="images/banner-02.jpg" alt="IMG-BANNER">
+        $querry_agendamentos_anterior = mysqli_query($conn, $select_agendamentos_anterior);
 
-								<a href="relatorio_cliente.php"
-									class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-									<div class="block1-txt-child1 flex-col-l">
-										<span class="block1-name ltext-102 trans-04 p-b-8">
-											Cliente
-										</span>
-									</div>
 
-									<div class="block1-txt-child2 p-b-4 trans-05">
-										<div class="block1-link stext-101 cl0 trans-09">
-											Visualizar
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
 
-						<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-							<!-- Block1 -->
-							<div class="block1 wrap-pic-w">
-								<img src="images/banner-03.jpg" alt="IMG-BANNER">
+        if ($querry_agendamentos -> num_rows > 0){
+          echo "<div id='div' style='width: 630px !important; margin-left: 0% !important'><br>";
 
-								<a href="relatorio_animal.php"
-									class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-									<div class="block1-txt-child1 flex-col-l">
-										<span class="block1-name ltext-102 trans-04 p-b-8">
-											Animal
-										</span>
-									</div>
+          echo "<h2 id= agend>Agendamentos:</h2><br>";
+          echo "<table class='table-responsive'>
+            <thead>
+              <tr class='accordion'>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Cliente</th>
+                <th>Animal</th>
+                <th class='toggle-arrow'>▼</th>
+              </tr>
+            </thead>	
+          ";
+          while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
+            echo('
+            <tbody class="visible">
+              <tr>
+                <td>'. $row_agendamentos["data"] .'</td>
+                <td>'. $row_agendamentos["horario"] .'</td>
+                <td>'. $row_agendamentos["servico"] .'</td>
+                <td>'. $row_agendamentos["nome"] . ' ' . $row_agendamentos["sobrenome"] .'</td>
+                <td>'. $row_agendamentos["nome_pet"] .'</td>
+                <td></td>
+              </tr>
+            </tbody>
+              ');
+          }
+          echo "</table>
+          <br><br>";
+          echo "<hr>";
+          
 
-									<div class="block1-txt-child2 p-b-4 trans-05">
-										<div class="block1-link stext-101 cl0 trans-09">
-											Visualizar
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
+          echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
+          echo "<table class='table-responsive'>
+            <thead>
+              <tr class='accordion'>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Cliente</th>
+                <th>Animal</th>
+                <th class='toggle-arrow'>▼</th>
+              </tr>
+            </thead>	
+          ";
+
+          while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
+            echo('
+            <tbody class="visible">
+              <tr>
+                <td>'. $row_agendamentos_anterior["data"] .'</td>
+                <td>'. $row_agendamentos_anterior["horario"] .'</td>
+                <td>'. $row_agendamentos_anterior["servico"] .'</td>
+                <td>'. $row_agendamentos_anterior["nome"] . ' ' . $row_agendamentos_anterior["sobrenome"] .'</td>
+                <td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
+                <td></td>
+              </tr>
+            </tbody>
+              ');
+          }
+          echo "</table>
+          <br><br>";
+          echo "<hr>";
+          echo "</div>";
+
+        }
+        else{
+          echo "<h2 style='color: white;'>Nenhum agendamento encontrado.</h2>";
+        }
+      ?>
+
 				</div>
 			</div>
-
-		</div>
-	</div>
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -607,6 +608,39 @@ if (!isset($_SESSION['idFuncionario'])) {
 	<script src="assets/js/popper.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
+
+
+  <script>
+
+
+$(document).on('click', '.toggle-arrow', function() {
+var table = $(this).closest('table');
+var tbody = table.find('tbody');
+tbody.toggleClass('hidden');
+$(this).toggleClass('rotate');
+});
+
+    // seleciona todos os botões toggle-arrow
+    const toggleButtons = document.querySelectorAll(".toggle-arrow");
+    
+    // para cada botão, adiciona um ouvinte de evento para cliques
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            // seleciona o tbody correspondente usando o data-table personalizado
+            const tableBody = this.parentElement.nextElementSibling;
+            
+            // alterna a classe .hidden no tbody para mostrar / ocultar
+            if (tableBody.classList.contains("hidden")) {
+                tableBody.classList.remove("hidden");
+                tableBody.classList.add("visible");
+            } else {
+                tableBody.classList.remove("visible");
+                tableBody.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
 
 </body>
 

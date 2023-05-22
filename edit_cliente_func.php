@@ -8,7 +8,7 @@
 		header('Location:login.php');
 	}
 	else{
-		if($_SESSION['cargo'] != 'Secretária' && $_SESSION['cargo'] != 'Administrador'){
+		if($_SESSION['cargo'] != 'Secretaria' && $_SESSION['cargo'] != 'Administrador'){
 			header('Location:login.php');
 		}
 	}
@@ -282,7 +282,7 @@
 			<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<?php
-						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinário'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinario'){
 							echo '<li class="active">
 							<a href="horario.php"><span class="fa fa-clock-o mr-3"></span> Horários</a>
 							</li>';
@@ -299,7 +299,7 @@
 					</li>
 					<?php
 
-						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretária' || $_SESSION['cargo'] == 'Administrador'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretaria' || $_SESSION['cargo'] == 'Administrador'){
 							echo '<li class="active">
 							<a href="cadastro_clientes.php"><span class="fa fa-user mr-3"></span> Cadastrar clientes</a>
 							</li>';

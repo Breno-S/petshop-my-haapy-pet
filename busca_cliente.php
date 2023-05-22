@@ -285,7 +285,7 @@
 			<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
 				<ul class="list-unstyled components mb-5">
 					<?php
-						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinário'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Tosador' || $_SESSION['cargo'] == 'Veterinario'){
 							echo '<li class="active">
 							<a href="horario.php"><span class="fa fa-clock-o mr-3"></span> Horários</a>
 							</li>';
@@ -302,7 +302,7 @@
 					</li>
 					<?php
 
-						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretária' || $_SESSION['cargo'] == 'Administrador'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Secretaria' || $_SESSION['cargo'] == 'Administrador'){
 							echo '<li class="active">
 							<a href="cadastro_clientes.php"><span class="fa fa-user mr-3"></span> Cadastrar clientes</a>
 							</li>';
@@ -363,7 +363,7 @@
 										<p class="bairro_cliente">Bairro: '. $dados_cliente2['bairro'] .'</p>
 										<p class="logradouro_cliente">Logradouro: '. $dados_cliente2['logradouro'] .'</p>
 										<p class="numero_cliente">Número: '. $dados_cliente2['numero'] .'</p>'); 
-										if($_SESSION['cargo'] == 'Secretária' || $_SESSION['cargo'] == 'Administrador'){
+										if($_SESSION['cargo'] == 'Secretaria' || $_SESSION['cargo'] == 'Administrador'){
 											echo('
 											<button type="submit" class="btn btn-primary btn-block">
 												Editar

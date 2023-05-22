@@ -360,8 +360,8 @@
 										<label for="cargo">Cargo
 											<select id="cargo" type="text" class="form-control" name="cargo" required data-eye>
 												<option value="">Selecione um cargo</option>
-												<option value="Veterinario">Veterinario</option>
-												<option value="Secretaria">Secretaria</option>
+												<option value="Veterinario">Veterinário</option>
+												<option value="Secretaria">Secretária</option>
 												<option value="Tosador">Tosador</option>
 												<option value="Motorista">Motorista</option>
 											</select>

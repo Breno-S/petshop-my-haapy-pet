@@ -19366,8 +19366,32 @@ input[type=checkbox]:checked+label {
 
 }
 
+#checkbox{
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
 
+#cor{
+	background-color: transparent;
+	color: #000;
+	font-style: normal ;
+	font-size: 1.1rem;
+	margin: 0;
+}
 
+#teste{
+	display:flex;
+	 align-items: center;
+	 background-color: #e5e5e5;
+	 border-radius: 5px;
+	 
+}
+
+#formato_texto{
+	font-size:14px; 
+	margin-bottom:2%;
+}
 
 .buscar2 h1 {
 	font-size: 28px;

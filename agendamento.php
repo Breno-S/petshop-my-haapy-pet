@@ -343,10 +343,22 @@
                                             <div class="form-group col-md-6">
                                                 <label for="servico" id="cor_agenda">Serviço:</label>
                                                 <select id="servico" name="servico"  required disabled>
-                                                    <option value="" id="cor_agenda">Selecione o serviço</option>
+													<option value="" id="cor_agenda">Selecione o serviço</option>
                                                 </select>
+												
+												
                                             </div>
+											
                                         </div>
+										<!-- Checkbox feito para verificar se o cliente quer que busque e entregue novamente o animal -->
+										<div class="form-row">
+										<div class="form-group row " id="teste">
+											
+											<p>ㅤ</p><input type="checkbox" value="busca" id="checkbox" name="busca_animal">
+											<label for="checkbox" id="cor">Busca e entrega do animal</label>
+										</div>
+									</div>
+									<h6 class="form-row text-justify text-left" id="formato_texto">Caso queira que seja feita a busca e entrega do animal em sua residência</h6>
 										<div class="form-row pet-form">
 											<div class="form-group col-md-12">
 												<label class="cor-agenda">Escolha o(s) seu(s) pet(s):</label>
@@ -611,7 +623,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 			let cargo = funcionario.split(" ", 2)
 			if (cargo[0] != '') {
 				document.getElementById("servico").removeAttribute("disabled")
-				if (cargo[0] == "Veterinario") {
+				if (cargo[0] == "Veterinário") {
 					document.getElementById("servico").innerHTML= 
 					`
 					<option value=''>Escolha o serviço</option>

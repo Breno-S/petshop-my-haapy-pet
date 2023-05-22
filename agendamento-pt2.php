@@ -31,15 +31,13 @@ $size_post = count($_POST);
 $i = 6;
 $str = "animal";
 
-for ($j=1; $j < ; $j++, $i++) { 
-
-
-}
+for ($j = 1; $j < $size_post; $i++) { 
 	$target = "$str$i";
 	if (empty($_POST["$target"])) {
 		continue;
 	} else {
 		$pets[] = $_POST["$target"];
+		$j++;
 	}
 	$i += 1;
 }

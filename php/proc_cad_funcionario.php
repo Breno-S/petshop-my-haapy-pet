@@ -26,7 +26,7 @@
     $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
     $senhaCrip = md5($senha);
 
-    $cargo = filter_input(INPUT_POST,'cargo', FILTER_SANITIZE_STRING);
+    $cargo = filter_input(INPUT_POST,'cargo');
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///// validação de dados

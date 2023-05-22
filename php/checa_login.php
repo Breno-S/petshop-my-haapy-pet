@@ -11,11 +11,11 @@
                 header('Location: ../horario.php');
                 break;
             
-            case 'Veterinário':
+            case 'Veterinario':
                 header('Location: ../horario.php');
                 break;
             
-            case 'Secretária':
+            case 'Secretaria':
                 header('Location: ../relatorio.php');
                 break;
             

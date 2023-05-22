@@ -331,7 +331,7 @@
 										<div class="container">
 											<div class="row">
 												<div class="col-md-15">
-													<h1 style="font-weight: 600; font-size: 200%;">Antenção! : Disponibilizar Apenas Horarios que tenha certeza que poderá Atender</h1><br>
+													<h1 style="font-weight: 600; font-size: 200%;">Atenção! : Disponibilizar Apenas Horarios que tenha certeza que poderá Atender</h1><br>
 													
 													<div class="form-group">
 														<label for="servico">Serviço: </label>

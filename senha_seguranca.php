@@ -283,6 +283,9 @@ if (!isset($_SESSION['idCliente'])) {
 						<a href="meus_pet.php"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
 					</li>
 					<li>
+						<a href="meus_agendamentos.php"><span class="fa fa-user mr-3"></span> Meus Agendamentos</a>
+					</li>
+					<li>
 						<a href="senha_seguranca.php"><span class="fa fa-lock mr-3"></span> Senha e Segurança</a>
 					</li>
 					<li>

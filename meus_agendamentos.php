@@ -8,7 +8,14 @@ if (!isset($_SESSION['idCliente'])) {
 	header('Location:login.php');
 }
 
-$qt_pet = 0;
+?>
+
+
+<?php
+$id = $_SESSION['idCliente'];
+$dados = "SELECT * FROM cliente INNER JOIN endereco ON id_endereco = idEndereco INNER JOIN cadastro_cliente ON idCliente = id_cliente  WHERE idCliente = '$id'";
+$query = mysqli_query($conn, $dados);
+$resultados = mysqli_fetch_assoc($query);
 
 ?>
 
@@ -16,7 +23,7 @@ $qt_pet = 0;
 <html lang="pt-br">
 
 <head>
-	<title>Meus Pets</title>
+	<title>Meus Agendamentos</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -48,8 +55,8 @@ $qt_pet = 0;
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/joao.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/joao.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!--===============================================================================================-->
 
@@ -260,7 +267,7 @@ $qt_pet = 0;
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			Minha Conta
+			Meus Agendamentos
 		</h2>
 	</section>
 
@@ -285,7 +292,7 @@ $qt_pet = 0;
 					<li>
 						<a href="meus_pet.php"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
 					</li>
-					<li>
+          <li class="active">
 						<a href="meus_agendamentos.php"><span class="fa fa-user mr-3"></span> Meus Agendamentos</a>
 					</li>
 					<li>
@@ -310,165 +317,107 @@ $qt_pet = 0;
 		</nav><br><br><br>
 
 
-		<div class="wrapper">
+		<div class="wrapper d-flex justify-content-center" style="padding: 25px">
+  
+      <?php
+        date_default_timezone_set('America/Sao_Paulo');
+        $data_atual = date("Y-m-d");
 
-			<section class="h-100">
-				<div class="container h-100">
-					<div class="row justify-content-md-center h-100">
-						<div class="card-wrapper">
+        // AGENDAMENTOS QUE ESTÃO PARA ACONTECER
+        $select_agendamentos = "SELECT * FROM agendamento 
+        INNER JOIN cliente on id_cliente = idCliente
+        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN horarios_disponiveis on id_horario = idHorario
+        WHERE idCliente = $id AND data >= CURDATE()
+        ORDER BY data ASC;";
 
-							<div class="card fat">
-								<h1 id="meuspet" class="txt-center ltext-103 cl10">Meus Pets</h1>
+        $querry_agendamentos = mysqli_query($conn, $select_agendamentos);
 
-								<div class="d-flex flex-wrap justify-content-center align-items-center">
-									<?php
-									if (isset($_SESSION['msg_cad_pet'])) {
-										echo $_SESSION['msg_cad_pet'];
-										unset($_SESSION['msg_cad_pet']);
-									}
-									// echo "<span style='color:blue;'>Pet cadastrado com sucesso!</span> ";
-									?>
+        // AGENDAMENTOS QUE JÁ ACONTECERAM
 
-									<?php
+        $select_agendamentos_anterior = "SELECT * FROM agendamento 
+        INNER JOIN cliente on id_cliente = idCliente
+        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN horarios_disponiveis on id_horario = idHorario
+        WHERE idCliente = $id AND data < CURDATE()
+        ORDER BY data DESC;";
 
-									$idCliente = $_SESSION['idCliente'];
+        $querry_agendamentos_anterior = mysqli_query($conn, $select_agendamentos_anterior);
 
-									$result_pet = "SELECT * FROM cadastro_pet INNER JOIN cliente 
-									on cadastro_pet.id_cliente = cliente.idCliente WHERE idCliente= $idCliente;";
 
-									$resultado_pet = mysqli_query($conn, $result_pet);
 
-									while ($row_pet = mysqli_fetch_assoc($resultado_pet)) {
-										$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet =" . $row_pet['idPet']);
-										$imagem_pet = mysqli_fetch_assoc($img_pet);
-										if ($qt_pet % 3 != 0) {
-											?>
-											<div class="pet-container">
-												<img src="
-												<?php
-												if (isset($imagem_pet['dir_img_pet'])) {
-													echo $imagem_pet['dir_img_pet'];
-												} else {
-													echo ('images/imgPet/placeholder_pet.png');
-												}
-												?>
-												" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>"
-													class="img-thumbnail img-pet">
-											</div>
+        if ($querry_agendamentos -> num_rows > 0){
+          echo "<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>";
 
-											<!-- Modal -->
-											<div class="modal fade" id="myModal<?php echo ($row_pet['nome_pet']); ?>">
-												<div class="modal-dialog modal-dialog-centered" role="document">
-													<div class="modal-content">
-														<!-- cabeçalho do Modal -->
-														<div class="modal-header">
-															<h4 class="modal-title">Informações do Pet</h4>
-															<button type="button" class="close"
-																data-dismiss="modal">&times;</button>
-														</div>
-														<!-- Adicione o corpo do Modal -->
-														<div class="modal-body">
-															<p>
-																Nome:
-																<?php echo $row_pet['nome_pet']; ?> <br>
-																Raça:
-																<?php echo $row_pet['raca']; ?> <br>
-																Cor:
-																<?php echo $row_pet['cor_pet']; ?> <br>
-																Nascimento:
-																<?php echo (date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?>
-																<br>
-																Peso:
-																<?php echo $row_pet['peso_pet']; ?>
-															</p>
-														</div>
-														<!-- Adicione o rodapé do Modal -->
-														<div class="modal-footer">
-															<button type="button" class="btn btn-danger"
-																data-dismiss="modal">Fechar</button>
-														</div>
-													</div>
-												</div>
-											</div>
+          echo "<h2 id= agend>Meus Agendamentos:</h2><br>";
+          echo "<table class='table-responsive'>
+            <thead>
+              <tr class='accordion'>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Animal</th>
+                <th class='toggle-arrow'>▼</th>
+              </tr>
+            </thead>	
+          ";
+          while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
+            echo('
+            <tbody class="visible">
+              <tr>
+                <td>'. $row_agendamentos["data"] .'</td>
+                <td>'. $row_agendamentos["horario"] .'</td>
+                <td>'. $row_agendamentos["servico"] .'</td>
+                <td>'. $row_agendamentos["nome_pet"] .'</td>
+                <td></td>
+              </tr>
+            </tbody>
+              ');
+          }
+          echo "</table>
+          <br><br>";
+          echo "<hr>";
+          
 
-											<?php
-										} else {
-											?>
-										</div>
-										<div class="d-flex flex-wrap justify-content-center">
-											<div class="pet-container">
-												<img src="
-				<?php
-				if (isset($imagem_pet['dir_img_pet'])) {
-					echo $imagem_pet['dir_img_pet'];
-				} else {
-					echo ('images/imgPet/placeholder_pet.png');
-				}
-				?>
-				" alt="" id="imagem" data-toggle="modal" data-target="#myModal<?php echo ($row_pet['nome_pet']); ?>"
-													class="img-thumbnail img-pet">
-											</div>
+          echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
+          echo "<table class='table-responsive'>
+            <thead>
+              <tr class='accordion'>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Animal</th>
+                <th class='toggle-arrow'>▼</th>
+              </tr>
+            </thead>	
+          ";
 
-											<!-- Modal -->
-											<div class="modal fade" id="myModal<?php echo ($row_pet['nome_pet']); ?>">
-												<div class="modal-dialog modal-dialog-centered" role="document">
-													<div class="modal-content">
-														<!-- cabeçalho do Modal -->
-														<div class="modal-header">
-															<h4 class="modal-title">Informações do Pet</h4>
-															<button type="button" class="close"
-																data-dismiss="modal">&times;</button>
-														</div>
-														<!-- Adicione o corpo do Modal -->
-														<div class="modal-body">
-															<p>
-																Nome:
-																<?php echo $row_pet['nome_pet']; ?> <br>
-																Raça:
-																<?php echo $row_pet['raca']; ?> <br>
-																Cor:
-																<?php echo $row_pet['cor_pet']; ?> <br>
-																Nascimento:
-																<?php echo (date_format(date_create($row_pet['data_nasc_pet']), 'd/m/Y')); ?>
-																<br>
-																Peso:
-																<?php echo $row_pet['peso_pet']; ?>
-															</p>
-														</div>
-														<!-- Adicione o rodapé do Modal -->
-														<div class="modal-footer">
-															<button type="button" class="btn btn-danger"
-																data-dismiss="modal">Fechar</button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<?php
-										}
-										$qt_pet++;
-									}
-									?>
+          while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
+            echo('
+            <tbody class="visible">
+              <tr>
+                <td>'. $row_agendamentos_anterior["data"] .'</td>
+                <td>'. $row_agendamentos_anterior["horario"] .'</td>
+                <td>'. $row_agendamentos_anterior["servico"] .'</td>
+                <td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
+                <td></td>
+              </tr>
+            </tbody>
+              ');
+          }
+          echo "</table>
+          <br><br>";
+          echo "<hr>";
+          echo "</div>";
 
-								</div>
+        }
+        else{
+          echo "<h2 style='color: white;'>Nenhum agendamento encontrado.</h2>";
+        }
+      ?>
 
-								<div class="d-flex flex-wrap justify-content-center align-items-center">
-									<a id="texto" href="cadastropet.php?id_cliente=<?php echo $idCliente ?>"
-										style="width: 259px; font-size:20px;"
-										class="justify-content-center text-center mtext-102 cl9">
-										<img src="images/pluspaw.png" class='img-pet' style="opacity:30%;">
-										Adicionar novo pet
-									</a>
-								</div><br>
-
-							</div>
-						</div>
-					</div>
 				</div>
-		</div>
-	</div>
-	</section>
-	</div>
-	</div>
+			</div>
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
@@ -610,9 +559,7 @@ $qt_pet = 0;
 				<p class="stext-107 cl6 txt-center">
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script> Todos os Direitos Reservados | by
+					<script>document.write(new Date().getFullYear());</script> Todos os Direitos Reservados | by
 					Myhappypet</a>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
@@ -673,6 +620,39 @@ $qt_pet = 0;
 	<script src="assets/js/popper.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
+
+
+  <script>
+
+
+$(document).on('click', '.toggle-arrow', function() {
+var table = $(this).closest('table');
+var tbody = table.find('tbody');
+tbody.toggleClass('hidden');
+$(this).toggleClass('rotate');
+});
+
+    // seleciona todos os botões toggle-arrow
+    const toggleButtons = document.querySelectorAll(".toggle-arrow");
+    
+    // para cada botão, adiciona um ouvinte de evento para cliques
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            // seleciona o tbody correspondente usando o data-table personalizado
+            const tableBody = this.parentElement.nextElementSibling;
+            
+            // alterna a classe .hidden no tbody para mostrar / ocultar
+            if (tableBody.classList.contains("hidden")) {
+                tableBody.classList.remove("hidden");
+                tableBody.classList.add("visible");
+            } else {
+                tableBody.classList.remove("visible");
+                tableBody.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
 
 </body>
 

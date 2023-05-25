@@ -279,6 +279,9 @@ if (!isset($_SESSION['idFuncionario'])) {
                     <li>
                         <a href="visualizacao_agendamentos.php"><span class="fa fa-book mr-3"></span>Agendamentos</a>
 					</li>
+                    <li>
+                        <a href="visualizacao_transporte.php"><span class="fa fa-book mr-3"></span>Transportes</a>
+					</li>
 					<li>
                         <a href="pesquisa.php"><span class="fa fa-search mr-3"></span>Pesquisa</a>
 					</li>

@@ -291,6 +291,9 @@
 						if (isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'Administrador' || $_SESSION['cargo'] == 'Secretaria') {
 							echo '<li class="active">
 							<a href="visualizacao_agendamentos.php"><span class="fa fa-book mr-3"></span>Agendamentos</a>
+							</li>
+							<li>
+                        		<a href="visualizacao_transporte.php"><span class="fa fa-book mr-3"></span>Transportes</a>
 							</li>';
 						}
 					?>

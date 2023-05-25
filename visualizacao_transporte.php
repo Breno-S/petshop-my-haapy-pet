@@ -320,13 +320,14 @@ if (!isset($_SESSION['idFuncionario'])) {
 			INNER JOIN carro ON fk_carro = pk_carro
 			INNER JOIN funcionarios ON fk_funcionario = idFuncionario
 			INNER JOIN cadastro_pet ON fk_animal = idPet
-			INNER JOIN cliente ON fk_cliente = idCliente";
+			INNER JOIN cliente ON fk_cliente = idCliente
+			ORDER BY data_transporte DESC";
 
         $select_transporte = mysqli_query($conn, $query_transporte);
 
 
         if ($select_transporte -> num_rows > 0){
-          echo "<div id='div' style='width: 820px !important; margin-left: 0% !important; padding-right: 2.5% !important;'><br>";
+          echo "<div id='div' style='width: 820px !important; margin-left: 0% !important;'><br>";
 
           echo "<h2 id= agend>Transportes:</h2><br>";
           echo "<table class='table-responsive' style='width: 100%;'>

@@ -24,7 +24,7 @@
 
         for ($i=0; $i < count($array_id_pets); $i++) { 
             $id_animal = $array_id_pets[$i];
-            mysqli_query($conn, "INSERT INTO agendamento_animal (fk_agendamento, fk_animal) VALUES ($id_agendamento, $id_animal)");
+            mysqli_query($conn, "INSERT INTO rel_agendamento (fk_agendamento, fk_animal) VALUES ($id_agendamento, $id_animal)");
         }
 
         $horario_reservado = mysqli_query($conn, "UPDATE horarios_disponiveis SET reservado = 1 WHERE idHorario = $id_horario");

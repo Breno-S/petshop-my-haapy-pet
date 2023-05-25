@@ -362,7 +362,7 @@
 										<div class="form-row pet-form">
 											<div class="form-group col-md-12">
 												<label class="cor-agenda">Escolha o(s) seu(s) pet(s):</label>
-												<div class="row">
+												<div class="row" id="row-animais">
 												<?php
 												while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {
 													$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet = ". $row_animal['idPet']);

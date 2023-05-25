@@ -19444,3 +19444,9 @@ input[type=checkbox]:checked+label {
 select.form-control:not([size]):not([multiple]) {
     height: auto;
 }
+
+@media (max-width: 620px) {
+	#row-animais {
+		justify-content: center;
+	}
+}

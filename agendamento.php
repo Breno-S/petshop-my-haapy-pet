@@ -354,7 +354,7 @@
 										<div class="form-row">
 										<div class="form-group row " id="teste">
 											
-											<p>ㅤ</p><input type="checkbox" value="busca" id="checkbox" name="busca_animal">
+											<p>ㅤ</p><input type="checkbox" value="transporte" id="checkbox" name="transporte">
 											<label for="checkbox" id="cor">Busca e entrega do animal</label>
 										</div>
 									</div>

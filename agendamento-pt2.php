@@ -19,9 +19,18 @@ $funcionario = explode(" ", $funcionario);
 $cliente = $_SESSION['idCliente'];
 $servico = $_POST['servico'];
 
+// verifica se escolheu transporte dos animais
+if (isset($_POST["transporte"])) {
+	$_SESSION["transporte"] = true;
+	unset($_POST["transporte"]);
+} else {
+	$_SESSION["transporte"] = false;
+}
+
 // pegar os animais selecionados pelo usuario no agendamento.php
 $pets = array_slice($_POST, 6);
 $pets = array_values($pets);
+
 // print_r($pets);
 
 $funcionarios = mysqli_query($conn, "SELECT * FROM funcionarios WHERE idFuncionario = " . intval($funcionario[1]));
@@ -441,12 +450,12 @@ $qt_animais_total = 1;
 												while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {
 													$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet = " . $row_animal['idPet']);
 													$pega_img_pet = mysqli_fetch_assoc($img_pet);
-													if (($qt_animais_total % 2) != 0) {
+													// if (($qt_animais_total % 2) != 0) {
 														echo ('
 															
 																<div class="pet-options d-flex pet-option-group">
 																<label class="btn btn-outline-secondary pet-option mr-3">
-																	<input checked type="checkbox" name="animal" value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1" disabled>');
+																	<input checked type="checkbox" name="animal' . $qt_animais_total . '"value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1">');
 														if (isset($pega_img_pet['dir_img_pet'])) {
 															echo ('
 																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
@@ -459,31 +468,27 @@ $qt_animais_total = 1;
 																</label>
 																</div>
 															');
-													} else {
-														echo ('
-															<label class="btn btn-outline-secondary pet-option mr-3">
-																<input checked type="checkbox" name="animal" value="opcao2" autocomplete="off" class="opcao2" disabled>');
-														if (isset($pega_img_pet['dir_img_pet'])) {
-															echo ('
-																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
-														} else {
-															echo ('
-																	<img src="images/imgPet/placeholder_pet.png" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
-														}
-														echo ('
-																<span class="pet-name">' . $row_animal['nome_pet'] . '</span>
-															</label>
-															</div>
-														</div>');
-													}
+													// }
+													// else {
+													// 	echo ('
+													// 		<label class="btn btn-outline-secondary pet-option mr-3">
+													// 			<input checked type="checkbox" name="animal' . $qt_animais_total . '"value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao2">');
+													// 	if (isset($pega_img_pet['dir_img_pet'])) {
+													// 		echo ('
+													// 					<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
+													// 	} else {
+													// 		echo ('
+													// 				<img src="images/imgPet/placeholder_pet.png" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
+													// 	}
+													// 	echo ('
+													// 			<span class="pet-name">' . $row_animal['nome_pet'] . '</span>
+													// 		</label>
+													// 		</div>
+													// 	</div>');
+													// }
 													
+													$qt_animais_total++;
 												}
-												// if (($qt_animais_total % 2) != 0) {
-													echo ('
-															
-														');
-												// }
-												$qt_animais_total++;
 												?>
 											</div>
 										</div>

@@ -436,17 +436,17 @@ $qt_animais_total = 1;
 									<div class="form-row pet-form">
 										<div class="form-group col-md-12">
 											<label class="cor-agenda">Seu pet selecionado:</label>
-											<div class="row">
+											<div class="row" id="row-animais">
 												<?php
 												while ($row_animal = mysqli_fetch_assoc($animais_cliente)) {
 													$img_pet = mysqli_query($conn, "SELECT * FROM imagem_pet WHERE id_pet = " . $row_animal['idPet']);
 													$pega_img_pet = mysqli_fetch_assoc($img_pet);
 													if (($qt_animais_total % 2) != 0) {
 														echo ('
-															<div class="col-md-6">
+															
 																<div class="pet-options d-flex pet-option-group">
 																<label class="btn btn-outline-secondary pet-option mr-3">
-																	<input checked type="checkbox" name="animal" value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1">');
+																	<input checked type="checkbox" name="animal" value="' . $row_animal['idPet'] . '" autocomplete="off" class="opcao1" disabled>');
 														if (isset($pega_img_pet['dir_img_pet'])) {
 															echo ('
 																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
@@ -456,11 +456,13 @@ $qt_animais_total = 1;
 														}
 														echo ('
 																	<span class="pet-name">' . $row_animal['nome_pet'] . '</span>
-																</label>');
+																</label>
+																</div>
+															');
 													} else {
 														echo ('
 															<label class="btn btn-outline-secondary pet-option mr-3">
-																<input checked type="checkbox" name="animal" value="opcao2" autocomplete="off" class="opcao2">');
+																<input checked type="checkbox" name="animal" value="opcao2" autocomplete="off" class="opcao2" disabled>');
 														if (isset($pega_img_pet['dir_img_pet'])) {
 															echo ('
 																		<img src="' . $pega_img_pet['dir_img_pet'] . '" alt="' . $row_animal['nome_pet'] . '" class="pet-img">');
@@ -474,14 +476,14 @@ $qt_animais_total = 1;
 															</div>
 														</div>');
 													}
-													$qt_animais_total++;
+													
 												}
-												if (($qt_animais_total % 2) != 0) {
+												// if (($qt_animais_total % 2) != 0) {
 													echo ('
-															</div>
-														</div>
+															
 														');
-												}
+												// }
+												$qt_animais_total++;
 												?>
 											</div>
 										</div>

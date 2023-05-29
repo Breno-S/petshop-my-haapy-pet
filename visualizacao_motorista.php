@@ -307,7 +307,7 @@ if (!isset($_SESSION['idFuncionario'])) {
 
         $select_transporte = mysqli_query($conn, $query_transporte);
 
-        // TRANSPORTES QUE ESTÃO PARA ACONTECER
+        // TRANSPORTES QUE JÁ ACONTECERAM
         $query_transporte_anterior = 
 		"SELECT nome_pet,raca AS raca_pet,nome AS nome_cliente,sobrenome AS sobrenome_cliente,nome_funcionario,data_transporte,placa,modelo,tipo FROM rel_transporte 
 			INNER JOIN transporte ON fk_transporte = pk_transporte

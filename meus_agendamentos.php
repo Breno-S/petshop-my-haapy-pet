@@ -349,81 +349,80 @@ $resultados = mysqli_fetch_assoc($query);
 
 
 
-        if ($querry_agendamentos -> num_rows > 0){
-          echo "<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>";
+        if ($querry_agendamentos -> num_rows > 0 || $querry_agendamentos_anterior -> num_rows > 0){
+			echo "<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>";
+			if ($querry_agendamentos -> num_rows > 0) {
 
-          echo "<h2 id= agend>Meus Agendamentos:</h2><br>";
-          echo "<table class='table-responsive'>
-            <thead>
-              <tr class='accordion'>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Serviço</th>
-                <th>Animal</th>
-                <th>Valor</th>
-                <th class='toggle-arrow'>▼</th>
-              </tr>
-            </thead>	
-          ";
-          while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
-            echo('
-            <tbody class="visible">
-              <tr>
-                <td>'. $row_agendamentos["data"] .'</td>
-                <td>'. $row_agendamentos["horario"] .'</td>
-                <td>'. $row_agendamentos["servico"] .'</td>
-                <td>'. $row_agendamentos["nome_pet"] .'</td>
-				<td>'. $row_agendamentos["valor_total"] .'</td>
-                <td></td>
-              </tr>
-            </tbody>
-              ');
-          }
-          echo "</table>
-          <br><br>";
-          echo "<hr>";
-		} else {
-			$vazio1 = 1;
-		}
+				echo "<h2 id= agend>Meus Agendamentos:</h2><br>";
+				echo "<table class='table-responsive'>
+					<thead>
+					<tr class='accordion'>
+						<th>Data</th>
+						<th>Horário</th>
+						<th>Serviço</th>
+						<th>Animal</th>
+						<th>Valor</th>
+						<th class='toggle-arrow'>▼</th>
+					</tr>
+					</thead>	
+				";
 
-		echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
-		echo "<table class='table-responsive'>
-		<thead>
-			<tr class='accordion'>
-			<th>Data</th>
-			<th>Horário</th>
-			<th>Serviço</th>
-			<th>Animal</th>
-			<th>Valor</th>
-			<th class='toggle-arrow'>▼</th>
-			</tr>
-		</thead>	
-		";
+				while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
+					echo('
+					<tbody class="visible">
+					<tr>
+						<td>'. $row_agendamentos["data"] .'</td>
+						<td>'. $row_agendamentos["horario"] .'</td>
+						<td>'. $row_agendamentos["servico"] .'</td>
+						<td>'. $row_agendamentos["nome_pet"] .'</td>
+						<td>'. $row_agendamentos["valor_total"] .'</td>
+						<td></td>
+					</tr>
+					</tbody>
+					');
+					}
 
-		if ($querry_agendamentos_anterior -> num_rows > 0){
-			while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
-				echo('
-				<tbody class="visible">
-				<tr>
-					<td>'. $row_agendamentos_anterior["data"] .'</td>
-					<td>'. $row_agendamentos_anterior["horario"] .'</td>
-					<td>'. $row_agendamentos_anterior["servico"] .'</td>
-					<td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
-					<td>'. $row_agendamentos_anterior["valor_total"] .'</td>
-					<td></td>
-				</tr>
-				</tbody>
-				');
+					echo "</table>
+					<br><br>";
+					echo "<hr>";
 			}
-		echo "</table>
-		<br><br>";
-		echo "<hr>";
-		echo "</div>";
-		} else {
-			$vazio2 = 1;
-		}
 
-        if(isset($vazio1) && isset($vazio2)){
+			if ($querry_agendamentos_anterior -> num_rows > 0){
+				echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
+				echo "<table class='table-responsive'>
+				<thead>
+					<tr class='accordion'>
+					<th>Data</th>
+					<th>Horário</th>
+					<th>Serviço</th>
+					<th>Animal</th>
+					<th>Valor</th>
+					<th class='toggle-arrow'>▼</th>
+					</tr>
+				</thead>
+				";
+
+				while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
+					echo('
+					<tbody class="visible">
+					<tr>
+						<td>'. $row_agendamentos_anterior["data"] .'</td>
+						<td>'. $row_agendamentos_anterior["horario"] .'</td>
+						<td>'. $row_agendamentos_anterior["servico"] .'</td>
+						<td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
+						<td>'. $row_agendamentos_anterior["valor_total"] .'</td>
+						<td></td>
+					</tr>
+					</tbody>
+					');
+				}
+				echo "</table>
+				<br><br>";
+				echo "<hr>";
+			}
+		
+		echo "</div>";	
+		} else {
           echo "<h2 style='color: white;'>Nenhum agendamento encontrado.</h2>";
         }
       ?>

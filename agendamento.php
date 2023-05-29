@@ -623,7 +623,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
 			let cargo = funcionario.split(" ", 2)
 			if (cargo[0] != '') {
 				document.getElementById("servico").removeAttribute("disabled")
-				if (cargo[0] == "Veterinário") {
+				if (cargo[0] == "Veterinario") {
 					document.getElementById("servico").innerHTML= 
 					`
 					<option value=''>Escolha o serviço</option>

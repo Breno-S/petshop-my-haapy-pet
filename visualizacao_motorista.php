@@ -3,27 +3,18 @@ include_once('php/conexao.php');
 
 if (!isset($_SESSION)) {
 	session_start();
+    $id = $_SESSION['idFuncionario'];
 }
-if (!isset($_SESSION['idCliente'])) {
+if (!isset($_SESSION['idFuncionario'])) {
 	header('Location:login.php');
 }
-
-?>
-
-
-<?php
-$id = $_SESSION['idCliente'];
-$dados = "SELECT * FROM cliente INNER JOIN endereco ON id_endereco = idEndereco INNER JOIN cadastro_cliente ON idCliente = id_cliente  WHERE idCliente = '$id'";
-$query = mysqli_query($conn, $dados);
-$resultados = mysqli_fetch_assoc($query);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-	<title>Meus Agendamentos</title>
+	<title>Transportes</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -73,7 +64,7 @@ $resultados = mysqli_fetch_assoc($query);
 
 <body class="animsition">
 
-	<!-- Header -->
+	<!-- ====================================== Header  ================================ -->
 	<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
@@ -218,7 +209,6 @@ $resultados = mysqli_fetch_assoc($query);
 					<a href="agendamento.php">Agendamento</a>
 				</li>
 
-
 				<li>
 					<a href="blog.html">Blog</a>
 				</li>
@@ -267,13 +257,16 @@ $resultados = mysqli_fetch_assoc($query);
 	<!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			Meus Agendamentos
+			Transportes
 		</h2>
 	</section>
+	<!-- ============================================ FIM Header ============================================================== -->
 
-
-	<!-- ======= Header ======= -->
+	
+	
+	<!-- ========== MAIN =========== -->
 	<div class="wrapper d-flex align-items-stretch">
+		<!-- ======== SIDE BAR ========= -->
 		<nav id="sidebar" class="order-last" class="img" style="background-image: url(images/bg_1.jpg);">
 			<div class="custom-menu">
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -282,144 +275,143 @@ $resultados = mysqli_fetch_assoc($query);
 
 			<div class="">
 				<h1><a href="index.html" class="logo"><span>Conta</span></a></h1>
-				<ul class="list-unstyled components mb-5">
-					<li class="active">
-						<a href="meus_dados.php"><span class="fa fa-user mr-3"></span> Meus Dados</a>
-					</li>
-					<li>
-						<a href="editar_dados.php"><span class="fa fa-edit mr-3"></span>Editar Dados</a>
-					</li>
-					<li>
-						<a href="meus_pet.php"><span class="fa fa-paw mr-3"></span>Meus Pets</a>
-					</li>
-          <li class="active">
-						<a href="meus_agendamentos.php"><span class="fa fa-user mr-3"></span> Meus Agendamentos</a>
-					</li>
-					<li>
-						<a href="senha_seguranca.php"><span class="fa fa-lock mr-3"></span> Senha e Segurança</a>
-					</li>
-					<li>
-						<a href="cartao.php"><span class="fa fa-credit-card mr-3"></span>Metodo de Pagamento</a>
-					</li>
-					<li>
-						<a href="agendamento.php"><span class="fa fa-server mr-3"></span>Agendar</a>
-					</li>
-				</ul>
 
 				<div class="mb-5 px-4">
 					<a href="php/proc_logout.php" class="subscribe-form">
-						<h3 class="h6 mb-3">Sair</h3>
+						<h3 class="h6 mb-3"><span class="fa fa-user mr-3"></span>Sair</h3>
 					</a>
 				</div>
 
 			</div>
 
 		</nav><br><br><br>
+		<!-- ======== FIM SIDE BAR ========= -->
 
-
+		<!-- ==================== MAIN ===================== -->
 		<div class="wrapper d-flex justify-content-center" style="padding: 25px">
   
       <?php
         date_default_timezone_set('America/Sao_Paulo');
         $data_atual = date("Y-m-d");
 
-        // AGENDAMENTOS QUE ESTÃO PARA ACONTECER
-        $select_agendamentos = "SELECT * FROM agendamento 
-        INNER JOIN cliente on id_cliente = idCliente
-        INNER JOIN cadastro_pet on id_animal = idPet
-        INNER JOIN horarios_disponiveis on id_horario = idHorario
-        WHERE idCliente = $id AND data >= CURDATE()
-        ORDER BY data ASC;";
+        // TRANSPORTES QUE ESTÃO PARA ACONTECER
+		$query_transporte = 
+		"SELECT nome_pet,raca AS raca_pet,nome AS nome_cliente,sobrenome AS sobrenome_cliente,nome_funcionario,data_transporte,placa,modelo,tipo FROM rel_transporte 
+			INNER JOIN transporte ON fk_transporte = pk_transporte
+			INNER JOIN carro ON fk_carro = pk_carro
+			INNER JOIN funcionarios ON fk_funcionario = idFuncionario
+			INNER JOIN cadastro_pet ON fk_animal = idPet
+			INNER JOIN cliente ON fk_cliente = idCliente
+            WHERE idFuncionario = $id AND data_transporte >= CURDATE()
+			ORDER BY data_transporte DESC";
 
-        $querry_agendamentos = mysqli_query($conn, $select_agendamentos);
+        $select_transporte = mysqli_query($conn, $query_transporte);
 
-        // AGENDAMENTOS QUE JÁ ACONTECERAM
+        // TRANSPORTES QUE ESTÃO PARA ACONTECER
+        $query_transporte_anterior = 
+		"SELECT nome_pet,raca AS raca_pet,nome AS nome_cliente,sobrenome AS sobrenome_cliente,nome_funcionario,data_transporte,placa,modelo,tipo FROM rel_transporte 
+			INNER JOIN transporte ON fk_transporte = pk_transporte
+			INNER JOIN carro ON fk_carro = pk_carro
+			INNER JOIN funcionarios ON fk_funcionario = idFuncionario
+			INNER JOIN cadastro_pet ON fk_animal = idPet
+			INNER JOIN cliente ON fk_cliente = idCliente
+            WHERE idFuncionario = $id AND data_transporte < CURDATE()
+			ORDER BY data_transporte DESC";
 
-        $select_agendamentos_anterior = "SELECT * FROM agendamento 
-        INNER JOIN cliente on id_cliente = idCliente
-        INNER JOIN cadastro_pet on id_animal = idPet
-        INNER JOIN horarios_disponiveis on id_horario = idHorario
-        WHERE idCliente = $id AND data < CURDATE()
-        ORDER BY data DESC;";
-
-        $querry_agendamentos_anterior = mysqli_query($conn, $select_agendamentos_anterior);
+        $select_transporte_anterior = mysqli_query($conn, $query_transporte_anterior);
 
 
+        if ($select_transporte -> num_rows > 0 || $select_transporte_anterior -> num_rows > 0){
+          echo "<div id='div' style='width: 820px !important; margin-left: 0% !important;'><br>";
 
-        if ($querry_agendamentos -> num_rows > 0 || $querry_agendamentos_anterior -> num_rows > 0){
-          echo "<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>";
-
-          echo "<h2 id= agend>Meus Agendamentos:</h2><br>";
-          echo "<table class='table-responsive'>
+          echo "<h2 id= agend>Transportes:</h2><br>";
+          echo "<table class='table-responsive' style='width: 100%;'>
             <thead>
               <tr class='accordion'>
                 <th>Data</th>
-                <th>Horário</th>
-                <th>Serviço</th>
+                <th>Tipo</th>
+                <th>Nome do Cliente</th>
                 <th>Animal</th>
+                <th>Raça do Animal</th>
+                <th>Placa do Carro</th>
+                <th>Modelo do Carro</th>
                 <th class='toggle-arrow'>▼</th>
               </tr>
             </thead>	
           ";
-          while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
+          while ($info_transporte = mysqli_fetch_assoc($select_transporte)) {
             echo('
             <tbody class="visible">
               <tr>
-                <td>'. $row_agendamentos["data"] .'</td>
-                <td>'. $row_agendamentos["horario"] .'</td>
-                <td>'. $row_agendamentos["servico"] .'</td>
-                <td>'. $row_agendamentos["nome_pet"] .'</td>
+                <td>'. $info_transporte["data_transporte"] .'</td>
+                <td>'. $info_transporte["tipo"] .'</td>
+                <td>'. $info_transporte["nome_cliente"] . ' ' . $info_transporte["sobrenome_cliente"] . '</td>
+                <td>'. $info_transporte["nome_pet"] .'</td>
+                <td>'. $info_transporte["raca_pet"] .'</td>
+                <td>'. $info_transporte["placa"] .'</td>
+                <td>'. $info_transporte["modelo"] .'</td>
                 <td></td>
               </tr>
             </tbody>
               ');
           }
+          echo "</table>
+          <br><br>
+          <hr>";
+
+          echo "<div id='div' style='width: 820px !important; margin-left: 0% !important;'><br>";
+
+          echo "<h2 id= agend>Transportes Anteriores:</h2><br>";
+          echo "<table class='table-responsive' style='width: 100%;'>
+            <thead>
+              <tr class='accordion'>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Nome do Cliente</th>
+                <th>Animal</th>
+                <th>Raça do Animal</th>
+                <th>Placa do Carro</th>
+                <th>Modelo do Carro</th>
+                <th class='toggle-arrow'>▼</th>
+              </tr>
+            </thead>	
+          ";
+          
+          while ($info_transporte_anterior = mysqli_fetch_assoc($select_transporte_anterior)) {
+            echo('
+            <tbody class="visible">
+              <tr>
+                <td>'. $info_transporte_anterior["data_transporte"] .'</td>
+                <td>'. $info_transporte_anterior["tipo"] .'</td>
+                <td>'. $info_transporte_anterior["nome_cliente"] . ' ' . $info_transporte_anterior["sobrenome_cliente"] . '</td>
+                <td>'. $info_transporte_anterior["nome_pet"] .'</td>
+                <td>'. $info_transporte_anterior["raca_pet"] .'</td>
+                <td>'. $info_transporte_anterior["placa"] .'</td>
+                <td>'. $info_transporte_anterior["modelo"] .'</td>
+                <td></td>
+              </tr>
+            </tbody>
+              ');
+          }
+
           echo "</table>
           <br><br>";
           echo "<hr>";
           
-
-          echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
-          echo "<table class='table-responsive'>
-            <thead>
-              <tr class='accordion'>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Serviço</th>
-                <th>Animal</th>
-                <th class='toggle-arrow'>▼</th>
-              </tr>
-            </thead>	
-          ";
-
-          while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
-            echo('
-            <tbody class="visible">
-              <tr>
-                <td>'. $row_agendamentos_anterior["data"] .'</td>
-                <td>'. $row_agendamentos_anterior["horario"] .'</td>
-                <td>'. $row_agendamentos_anterior["servico"] .'</td>
-                <td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
-                <td></td>
-              </tr>
-            </tbody>
-              ');
-          }
-          echo "</table>
-          <br><br>";
-          echo "<hr>";
-          echo "</div>";
-
         }
         else{
-          echo "<h2 style='color: white;'>Nenhum agendamento encontrado.</h2>";
+          echo "<h2 style='color: white;'>Nenhum transporte encontrado.</h2>";
         }
       ?>
 
 				</div>
+				</div>
+                </div>
 			</div>
 
-	<!-- Footer -->
+	<!-- ========================= FIM MAIN =========================== -->
+	
+	<!-- ========================= FOOTER =========================== -->
 	<footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">

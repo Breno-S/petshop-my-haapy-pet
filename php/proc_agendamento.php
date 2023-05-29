@@ -3,7 +3,7 @@
     include_once('conexao.php');
     session_start();
 
-    $taxa_transporte = 0;
+    $arrayFuncionario = array();
     $preco_servico = 0;
     $valor_total = 0;
 
@@ -36,6 +36,7 @@
         $taxa_transporte = 80;
     } else {
         $transporte = false;
+        $taxa_transporte = 0;
     }
     
     // obter os animais selecionados
@@ -57,7 +58,28 @@
 
         $horario_reservado = mysqli_query($conn, "UPDATE horarios_disponiveis SET reservado = 1 WHERE idHorario = $id_horario");
 
+        $query = "SELECT data, horario FROM horarios_disponiveis WHERE idHorario = $id_horario";
+        $query = mysqli_query($conn, $query);   
+        $datetime = mysqli_fetch_assoc($query);
+
+        $query = "SELECT idFuncionario FROM funcionarios WHERE cargo='Motorista'";
+        $query = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_assoc($query)) {
+            array_push($arrayFuncionario, $row);
+        }
+        shuffle($arrayFuncionario);
+
+        for($i=0; $i < count($arrayFuncionario); $i++) {
+            // print_r($arrayFuncionario[$i]['idFuncionario']); 
+            $funcionario = ($arrayFuncionario[$i]['idFuncionario']); 
+            $query = 'SELECT data_transporte,horario_transporte FROM transporte WHERE fk_funcionario = "$funcionario",
+            data_transporte = $datetime["data"], horario_transporte = $datetime["horario"] ';
+        }
+        
+        // $reserva_transporte = mysqli_query($conn, "INSERT INTO transporte (fk_funcionario,fk_carro, data_transporte, horario_transporte ,tipo) 
+        // VALUES ()");
+
     }
 
-    header('Location:../agendamento.php');
+    // header('Location:../agendamento.php');
 ?>

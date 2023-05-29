@@ -46,7 +46,7 @@
                 header('Location: ../relatorio.php');
                 break;
             case 'Motorista':
-                header('Location: ../relatorio.php');
+                header('Location: ../visualizacao_motorista.php');
                 break;
             default:
                 $_SESSION['msg'] = "<center><span style='color:red;'>Erro no Cargo. Consulte um Administrador.</span></center>";

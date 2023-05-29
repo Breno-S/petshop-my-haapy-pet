@@ -324,20 +324,23 @@ $resultados = mysqli_fetch_assoc($query);
         $data_atual = date("Y-m-d");
 
         // AGENDAMENTOS QUE ESTÃO PARA ACONTECER
-        $select_agendamentos = "SELECT * FROM agendamento 
+        $select_agendamentos = "SELECT * FROM agendamento
+		INNER JOIN rel_agendamento on fk_agendamento = idAgendamento 
         INNER JOIN cliente on id_cliente = idCliente
-        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN cadastro_pet on fk_animal = idPet
         INNER JOIN horarios_disponiveis on id_horario = idHorario
         WHERE idCliente = $id AND data >= CURDATE()
         ORDER BY data ASC;";
 
+
         $querry_agendamentos = mysqli_query($conn, $select_agendamentos);
 
-        // AGENDAMENTOS QUE JÁ ACONTECERAM
 
-        $select_agendamentos_anterior = "SELECT * FROM agendamento 
+        // AGENDAMENTOS QUE JÁ ACONTECERAM
+        $select_agendamentos_anterior = "SELECT * FROM agendamento
+		INNER JOIN rel_agendamento on fk_agendamento = idAgendamento 
         INNER JOIN cliente on id_cliente = idCliente
-        INNER JOIN cadastro_pet on id_animal = idPet
+        INNER JOIN cadastro_pet on fk_animal = idPet
         INNER JOIN horarios_disponiveis on id_horario = idHorario
         WHERE idCliente = $id AND data < CURDATE()
         ORDER BY data DESC;";
@@ -377,22 +380,25 @@ $resultados = mysqli_fetch_assoc($query);
           echo "</table>
           <br><br>";
           echo "<hr>";
-          
+		} else {
+			$vazio1 = 1;
+		}
 
-          echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
-          echo "<table class='table-responsive'>
-            <thead>
-              <tr class='accordion'>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Serviço</th>
-                <th>Animal</th>
-                <th class='toggle-arrow'>▼</th>
-              </tr>
-            </thead>	
-          ";
+		echo "<h2 id= agend>Agendamentos Anteriores:</h2><br>";
+		echo "<table class='table-responsive'>
+		<thead>
+			<tr class='accordion'>
+			<th>Data</th>
+			<th>Horário</th>
+			<th>Serviço</th>
+			<th>Animal</th>
+			<th class='toggle-arrow'>▼</th>
+			</tr>
+		</thead>	
+		";
 
-          while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
+		if ($querry_agendamentos_anterior -> num_rows > 0){
+		while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
             echo('
             <tbody class="visible">
               <tr>
@@ -409,9 +415,11 @@ $resultados = mysqli_fetch_assoc($query);
           <br><br>";
           echo "<hr>";
           echo "</div>";
+		} else {
+			$vazio2 = 1;
+		}
 
-        }
-        else{
+        if(isset($vazio1) && isset($vazio2)){
           echo "<h2 style='color: white;'>Nenhum agendamento encontrado.</h2>";
         }
       ?>

@@ -464,6 +464,7 @@ $resultados = mysqli_fetch_assoc($query);
 					</div>
 				</div>
 			</section>
+			<br><br>
 		</div>
 	</div>
 

@@ -59,6 +59,8 @@
             $valor_total += $preco_servico + $taxa_transporte;
         }
 
+        $update_valor_total = mysqli_query($conn, "UPDATE agendamento SET valor_total = $valor_total WHERE idAgendamento = $id_agendamento");
+
         // Muda o horário para reservado
         $horario_reservado = mysqli_query($conn, "UPDATE horarios_disponiveis SET reservado = 1 WHERE idHorario = $id_horario");
 

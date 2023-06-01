@@ -330,7 +330,8 @@ $resultados = mysqli_fetch_assoc($query);
         INNER JOIN cadastro_pet on fk_animal = idPet
         INNER JOIN horarios_disponiveis on id_horario = idHorario
         WHERE idCliente = $id AND data >= CURDATE()
-        ORDER BY data ASC;";
+		GROUP BY idAgendamento
+        ORDER BY data ASC, horario ASC;";
 
 
         $querry_agendamentos = mysqli_query($conn, $select_agendamentos);
@@ -343,14 +344,15 @@ $resultados = mysqli_fetch_assoc($query);
         INNER JOIN cadastro_pet on fk_animal = idPet
         INNER JOIN horarios_disponiveis on id_horario = idHorario
         WHERE idCliente = $id AND data < CURDATE()
-        ORDER BY data DESC;";
+		GROUP BY idAgendamento
+        ORDER BY data DESC, horario DESC;";
 
         $querry_agendamentos_anterior = mysqli_query($conn, $select_agendamentos_anterior);
 
 
 
         if ($querry_agendamentos -> num_rows > 0 || $querry_agendamentos_anterior -> num_rows > 0){
-			echo "<div id='div' style='width: 515px !important; margin-left: 0% !important'><br>";
+			echo "<div id='div' style='width: 812px !important; margin-left: 0% !important'><br>";
 			if ($querry_agendamentos -> num_rows > 0) {
 
 				echo "<h2 id= agend>Meus Agendamentos:</h2><br>";
@@ -368,13 +370,29 @@ $resultados = mysqli_fetch_assoc($query);
 				";
 
 				while ($row_agendamentos = mysqli_fetch_assoc($querry_agendamentos)) {
+
+					// Pegar nome dos animais do respectivo agendamento
+					$query_animais = "SELECT nome_pet FROM cadastro_pet
+					INNER JOIN rel_agendamento ON fk_animal = idPet
+					INNER JOIN agendamento ON idAgendamento = fk_agendamento
+					WHERE idAgendamento = $row_agendamentos[idAgendamento]";
+
+					$nomes_pets = [];
+					$result_animais = mysqli_query($conn, $query_animais);
+
+					while ($row_animais_agendamento = mysqli_fetch_assoc($result_animais)) {
+						$nomes_pets[] = $row_animais_agendamento['nome_pet'];
+					}
+
 					echo('
 					<tbody class="visible">
 					<tr>
 						<td>'. $row_agendamentos["data"] .'</td>
 						<td>'. $row_agendamentos["horario"] .'</td>
 						<td>'. $row_agendamentos["servico"] .'</td>
-						<td>'. $row_agendamentos["nome_pet"] .'</td>
+						<td>'); for ($i=0; $i < count($nomes_pets); $i++) { 
+							echo "• " . $nomes_pets[$i] . "<br>";
+						}; echo('</td>
 						<td>'. $row_agendamentos["valor_total"] .'</td>
 						<td></td>
 					</tr>
@@ -403,13 +421,29 @@ $resultados = mysqli_fetch_assoc($query);
 				";
 
 				while ($row_agendamentos_anterior = mysqli_fetch_assoc($querry_agendamentos_anterior)) {
+
+					// Pegar nome dos animais do respectivo agendamento
+					$query_animais = "SELECT nome_pet FROM cadastro_pet
+					INNER JOIN rel_agendamento ON fk_animal = idPet
+					INNER JOIN agendamento ON idAgendamento = fk_agendamento
+					WHERE idAgendamento = $row_agendamentos_anterior[idAgendamento]";
+
+					$nomes_pets = [];
+					$result_animais = mysqli_query($conn, $query_animais);
+
+					while ($row_animais_agendamento = mysqli_fetch_assoc($result_animais)) {
+						$nomes_pets[] = $row_animais_agendamento['nome_pet'];
+					}
+
 					echo('
 					<tbody class="visible">
 					<tr>
 						<td>'. $row_agendamentos_anterior["data"] .'</td>
 						<td>'. $row_agendamentos_anterior["horario"] .'</td>
 						<td>'. $row_agendamentos_anterior["servico"] .'</td>
-						<td>'. $row_agendamentos_anterior["nome_pet"] .'</td>
+						<td>'); for ($i=0; $i < count($nomes_pets); $i++) { 
+							echo "• " . $nomes_pets[$i] . "<br>";
+						}; echo('</td>
 						<td>'. $row_agendamentos_anterior["valor_total"] .'</td>
 						<td></td>
 					</tr>

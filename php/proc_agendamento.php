@@ -6,6 +6,8 @@
     $arrayFuncionario = array();
     $preco_servico = 0;
     $valor_total = 0;
+    
+    $query_rel = '';
 
     $id_cliente = intval($_SESSION['idCliente']);
     $id_horario = intval(filter_input(INPUT_POST, 'horario', FILTER_SANITIZE_NUMBER_INT));
@@ -60,6 +62,9 @@
         // Muda o horário para reservado
         $horario_reservado = mysqli_query($conn, "UPDATE horarios_disponiveis SET reservado = 1 WHERE idHorario = $id_horario");
 
+
+        
+
         $query = "SELECT data, horario FROM horarios_disponiveis WHERE idHorario = $id_horario";
         $query = mysqli_query($conn, $query);   
         $datetime = mysqli_fetch_assoc($query);
@@ -71,15 +76,47 @@
         }
         shuffle($arrayFuncionario);
 
+        // echo ($datetime['horario']);
+        // echo '<br>';
+        $horario_entrega = date('H:i:s', strtotime($datetime['horario'] . '+1 hour'));
+        $horario_busca = date('H:i:s', strtotime($datetime['horario'] . '-1 hour'));
+        // echo $horario_entrega;
+        // echo '<br>';
+        // echo $horario_busca;
+
+        
+
         for($i=0; $i < count($arrayFuncionario); $i++) {
             // print_r($arrayFuncionario[$i]['idFuncionario']); 
-            $funcionario = ($arrayFuncionario[$i]['idFuncionario']); 
-            $query = 'SELECT data_transporte,horario_transporte FROM transporte WHERE fk_funcionario = "$funcionario",
-            data_transporte = $datetime["data"], horario_transporte = $datetime["horario"] ';
+            $funcionario = ($arrayFuncionario[$i]['idFuncionario']);
+            $query = "SELECT data_transporte, horario_transporte FROM transporte WHERE fk_funcionario = '$funcionario' AND
+            data_transporte = '{$datetime['data']}' AND horario_transporte = '{$datetime['horario']}'";
+            $query = mysqli_query($conn, $query);
+            $resultado_query = mysqli_fetch_assoc($query);
+
+            if (empty($resultado_query)){
+                
+                // Inserir na tabela de transporte, a busca do animal
+                $query = "INSERT INTO transporte VALUES (DEFAULT, '$funcionario', 0, '{$datetime['data']}', '$horario_busca', 'Busca' )";
+                $insert_query = mysqli_query($conn, $query);
+                $id_transporte = mysqli_insert_id($conn);
+
+                //Inserir na tabela de relacionamento de transporte a busca do animal
+                $query_rel = "INSERT INTO rel_transporte (pk_reltransporte, fk_animal, fk_transporte, fk_cliente) VALUES ( DEFAULT, '$id_animal', '$id_transporte', '$id_cliente')";
+                $query_rel = mysqli_query($conn, $query_rel);
+
+                //Inserir na tabela de transporte, a entrega do animal
+                $query = "INSERT INTO transporte VALUES (DEFAULT, '$funcionario', 0, '{$datetime['data']}', '$horario_entrega', 'Entrega' )";
+                $insert_query = mysqli_query($conn, $query);
+                $id_transporte = mysqli_insert_id($conn);
+
+                //Inserir na tabela de relacionamento de transporte a entrega do animal
+                $query_rel = "INSERT INTO rel_transporte (pk_reltransporte, fk_animal, fk_transporte, fk_cliente) VALUES ( DEFAULT, '$id_animal', '$id_transporte', '$id_cliente')";
+                $query_rel = mysqli_query($conn, $query_rel);
+                
+            }
         }
         
-        // $reserva_transporte = mysqli_query($conn, "INSERT INTO transporte (fk_funcionario,fk_carro, data_transporte, horario_transporte ,tipo) 
-        // VALUES ()");
 
     }
 

@@ -62,9 +62,6 @@
         // Muda o horário para reservado
         $horario_reservado = mysqli_query($conn, "UPDATE horarios_disponiveis SET reservado = 1 WHERE idHorario = $id_horario");
 
-
-        
-
         $query = "SELECT data, horario FROM horarios_disponiveis WHERE idHorario = $id_horario";
         $query = mysqli_query($conn, $query);   
         $datetime = mysqli_fetch_assoc($query);
@@ -76,18 +73,10 @@
         }
         shuffle($arrayFuncionario);
 
-        // echo ($datetime['horario']);
-        // echo '<br>';
         $horario_entrega = date('H:i:s', strtotime($datetime['horario'] . '+1 hour'));
         $horario_busca = date('H:i:s', strtotime($datetime['horario'] . '-1 hour'));
-        // echo $horario_entrega;
-        // echo '<br>';
-        // echo $horario_busca;
-
         
-
         for($i=0; $i < count($arrayFuncionario); $i++) {
-            // print_r($arrayFuncionario[$i]['idFuncionario']); 
             $funcionario = ($arrayFuncionario[$i]['idFuncionario']);
             $query = "SELECT data_transporte, horario_transporte FROM transporte WHERE fk_funcionario = '$funcionario' AND
             data_transporte = '{$datetime['data']}' AND horario_transporte = '{$datetime['horario']}'";
@@ -120,5 +109,5 @@
 
     }
 
-    // header('Location:../agendamento.php');
+    header('Location:../agendamento.php');
 ?>

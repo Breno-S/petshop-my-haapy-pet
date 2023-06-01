@@ -324,3 +324,16 @@ body {
     }
 }
 
+#form-cartao {
+	background-color: white;
+}
+
+#label-form-cartao{
+	color: black;
+}
+
+#span-form-cartao{
+	color: black;
+}
+
+

@@ -309,11 +309,11 @@ if (!isset($_SESSION['idCliente'])) {
 
 		<div class="wrapper d-flex justify-content-center">
 
-			<form action="" class="form-container">
+			<form action="" class="form-container form-cartao" id="form-cartao">
 				<div class="box-form">
 					<div class="input-content">
 						<div class="box-input">
-							<label>Número do cartão</label>
+							<label id="label-form-cartao">Número do cartão</label>
 							<input autocomplete="off" id="input-number" type="text" maxlength="19"
 								placeholder="Número do cartão" style="word-spacing: 8px;"
 								onkeydown="handleNumber(event)"
@@ -328,7 +328,7 @@ if (!isset($_SESSION['idCliente'])) {
 						</div>
 
 						<div class="box-input">
-							<label>Nome do titular</label>
+							<label id="label-form-cartao">Nome do titular</label>
 							<input autocomplete="off" id="input-name" type="text" placeholder="Nome como está no cartão"
 								oninput="this.value = this.value.replace(/[^A-z ]/g, '').replace(/(\..*)\./g, '$1');"
 								onkeydown="handleName(event)">
@@ -343,7 +343,7 @@ if (!isset($_SESSION['idCliente'])) {
 
 						<div class="box-input-more">
 							<div class="box-one">
-								<label>Validade</label>
+								<label id="label-form-cartao">Validade</label>
 								<input autocomplete="off" id="input-validate" maxlength="7" type="text"
 									placeholder="mm/aa" onkeydown="handleValidate(event)"
 									oninput="this.value = this.value.replace(/[^0-9\/]/g, '').replace(/(\..*)\./g, '$1');">
@@ -357,7 +357,7 @@ if (!isset($_SESSION['idCliente'])) {
 							</div>
 
 							<div class="box-two">
-								<label>
+								<label id="label-form-cartao">
 									CVV
 									<span class="icon" title="Ajuda">
 										<img src="./assets/help.svg" />
@@ -416,7 +416,7 @@ if (!isset($_SESSION['idCliente'])) {
 
 						<div class="status-security">
 							<span class="icon"><img src="./assets/shield.svg" /></span>
-							<span>Seus dados estão seguros</span>
+							<span id="span-form-cartao">Seus dados estão seguros</span>
 						</div>
 					</div>
 				</div>

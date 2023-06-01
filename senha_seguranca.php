@@ -413,6 +413,7 @@ if (!isset($_SESSION['idCliente'])) {
 					</div>
 				</div>
 			</section>
+			<br><br>
 		</div>
 	</div>
 

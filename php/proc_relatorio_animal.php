@@ -30,7 +30,7 @@
             $_SESSION['msg'] = "<p style = 'color:red;'>Animal não encontrado</p>";
             header('Location: ../relatorio_animal.php');
         }
-        $result_usuario2 = "SELECT COUNT(idAgendamento) as quantidade FROM agendamento WHERE id_animal =". $row_usuario1['idPet'];
+        $result_usuario2 = "SELECT COUNT(idAgendamento) as quantidade FROM agendamento INNER JOIN rel_agendamento on fk_agendamento = idAgendamento INNER JOIN cadastro_pet on fk_animal = idPet WHERE fk_animal =". $row_usuario1['idPet'];
         $resultado_usuario2 = mysqli_query($conn, $result_usuario2);
         $row_usuario2 = mysqli_fetch_assoc($resultado_usuario2);
 

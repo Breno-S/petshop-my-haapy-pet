@@ -355,7 +355,7 @@
 										<div class="form-group row " id="teste">
 											
 											<p>ㅤ</p><input type="checkbox" value="transporte" id="checkbox" name="transporte">
-											<label for="checkbox" id="cor">Busca e entrega do animal</label>
+											<label for="checkbox" id="cor">Busca e entrega do animal (R$80,00 cada Animal)</label>
 										</div>
 									</div>
 									<h6 class="form-row text-justify text-left" id="formato_texto">Caso queira que seja feita a busca e entrega do animal em sua residência</h6>
